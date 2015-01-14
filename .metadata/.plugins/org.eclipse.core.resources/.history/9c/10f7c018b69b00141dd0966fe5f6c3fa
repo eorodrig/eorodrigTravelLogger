@@ -26,22 +26,22 @@
         android:text="Add New Claim" />
 
     <Button
-        android:id="@+id/ViewEditSubmitClaimButton"
+        android:id="@+id/ViewEditClaimButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/AddNewClaimButton"
         android:layout_below="@+id/AddNewClaimButton"
         android:layout_marginTop="14dp"
         android:onClick="onClickViewEditClaim"
-        android:text="View/Edit/Submit Claims" />
+        android:text="View/Edit Existing Claims" />
 
     <Button
-        android:id="@+id/ViewSubmittedClaimButton"
+        android:id="@+id/SubmitClaimButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/ViewEditSubmitClaimButton"
-        android:layout_below="@+id/ViewEditSubmitClaimButton"
+        android:layout_alignLeft="@+id/ViewEditClaimButton"
+        android:layout_below="@+id/ViewEditClaimButton"
         android:layout_marginTop="13dp"
-        android:text="View Submitted Claims" />
+        android:text="Submit A Claim" />
 
 </RelativeLayout>

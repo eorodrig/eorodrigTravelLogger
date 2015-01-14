@@ -18,8 +18,8 @@ public class ViewEditClaimListActivity extends Activity {
 		
 		ListView listView = (ListView) findViewById(R.id.ClaimListView);
 		ArrayList<Claim> list = new ArrayList<Claim>();
-		Claim claim = new Claim("Meeting in Calgary\n Dec 12,2014 - Dec 20,2014\n Total: $20 CAD");
-		Claim claim2 = new Claim("Meeting in Toronto\n Dec 20,2014 - Dec 24,2014\n Total: $80 USD");
+		Claim claim = new Claim("Meeting in Calgary\n Dec 20,2014");
+		Claim claim2 = new Claim("Meeting in Toronto Dec 20,2014 to Dec 24,2014");
 
 		list.add(claim);
 		list.add(claim2);

@@ -11,11 +11,7 @@ public class Claim {
 	protected double totalAmount;
 	
 	public Claim(String claimName) {
-		this.claimName = claimName;
-	}
-	
-	public String toString(){
-		return claimName;
+		// TODO Auto-generated constructor stub
 	}
 
 }
