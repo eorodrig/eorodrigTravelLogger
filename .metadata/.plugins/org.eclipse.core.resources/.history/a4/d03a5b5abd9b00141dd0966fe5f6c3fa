@@ -89,15 +89,6 @@
         android1:layout_height="wrap_content"
         android1:layout_alignLeft="@+id/ClaimEndDateText"
         android1:layout_alignTop="@+id/CurrencyTextView"
-        android1:entries="@array/currency_spinner" />
-
-    <Button
-        android1:id="@+id/AddClaimButton"
-        android1:layout_width="match_parent"
-        android1:layout_height="wrap_content"
-        android1:layout_alignRight="@+id/ClaimCurrencySpinner"
-        android1:layout_below="@+id/ClaimCurrencySpinner"
-        android1:layout_marginTop="16dp"
-        android1:text="Add Claim" />
+        android1:onClick="onClickCurrencySpinner" />
 
 </RelativeLayout>

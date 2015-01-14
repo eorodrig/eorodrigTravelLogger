@@ -8,16 +8,4 @@
     <string name="title_activity_expense__list">expense_list</string>
     <string name="title_activity_new_claim">NewClaim</string>
 
-    
-     <string-array name="currency_spinner">
-        <item>USD</item>
-        <item>CAD</item>
-        <item>EUR</item>
-        <item>GBP</item>
-        <item>CNY</item>
-        <item>RUB</item>
-        <item>JPY</item>
-        <item>HDK</item>
-    </string-array>
-    
 </resources>

@@ -10,14 +10,14 @@
 
     
      <string-array name="currency_spinner">
-        <item>USD</item>
-        <item>CAD</item>
-        <item>EUR</item>
-        <item>GBP</item>
-        <item>CNY</item>
-        <item>RUB</item>
-        <item>JPY</item>
-        <item>HDK</item>
+        <item>Mercury</item>
+        <item>Venus</item>
+        <item>Earth</item>
+        <item>Mars</item>
+        <item>Jupiter</item>
+        <item>Saturn</item>
+        <item>Uranus</item>
+        <item>Neptune</item>
     </string-array>
     
 </resources>
