@@ -6,24 +6,11 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:background="@drawable/bg"
     tools:context="com.example.eorodrigtravellogger.ExpenseListActivity" >
 
-    <ExpandableListView
-        android:id="@+id/ExpenseExpandableListView"
-        android:layout_width="match_parent"
-        android:layout_height="350dp"
-        android:layout_centerHorizontal="true" >
-
-    </ExpandableListView>
-
-    <Button
-        android:id="@+id/button1"
-        android:layout_width="match_parent"
+    <TextView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/ExpenseExpandableListView"
-        android:layout_marginTop="18dp"
-        android:text="Button" />
+        android:text="@string/hello_world" />
 
 </RelativeLayout>

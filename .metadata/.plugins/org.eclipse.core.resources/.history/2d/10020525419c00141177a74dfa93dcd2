@@ -16,11 +16,11 @@ public class ExpenseListActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_expense_list);
 		
-		ListView listView = (ListView) findViewById(R.id.ExpenseExpandableListView);
+		ListView listView = (ListView) findViewById(R.id.ExpenseExpandableListViewp);
 		ArrayList<Claim> list = new ArrayList<Claim>();
-		Claim claim = new Claim("Acommedations:Hotel\n2 night Marriot Hotel\nDecember 14,2014\n$234.4 CAD");
-		Claim claim2 = new Claim("Travel:Air Fair\nPlane ticket From Edmonton to Calgary\nDecember 14,2014\n$430.34 CAD");
-		Claim claim3 = new Claim("Travel:Vehicle Rental\n1 day car rental\nDecember 14,2014\n$420.34 CAD");
+		Claim claim = new Claim("Pending:	Meeting in Calgary\nDec 12,2014 - Dec 20,2014\nTotal: $20 CAD");
+		Claim claim2 = new Claim("Approved:	Meeting in Toronto\nDec 20,2014 - Dec 24,2014\nTotal: $80 USD");
+		Claim claim3 = new Claim("Rejected:	Meeting in NY\nOct 20,2014 - Oct 24,2014\nTotal: $245 USD");
 		list.add(claim);
 		list.add(claim2);
 		list.add(claim3);

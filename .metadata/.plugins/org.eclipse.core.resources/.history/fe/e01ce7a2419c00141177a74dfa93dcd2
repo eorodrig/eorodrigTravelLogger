@@ -18,9 +18,9 @@ public class ExpenseListActivity extends Activity {
 		
 		ListView listView = (ListView) findViewById(R.id.ExpenseExpandableListView);
 		ArrayList<Claim> list = new ArrayList<Claim>();
-		Claim claim = new Claim("Acommedations:Hotel\n2 night Marriot Hotel\nDecember 14,2014\n$234.4 CAD");
-		Claim claim2 = new Claim("Travel:Air Fair\nPlane ticket From Edmonton to Calgary\nDecember 14,2014\n$430.34 CAD");
-		Claim claim3 = new Claim("Travel:Vehicle Rental\n1 day car rental\nDecember 14,2014\n$420.34 CAD");
+		Claim claim = new Claim("category: description\n$Amount Currency");
+		Claim claim2 = new Claim("Travel:Air Fair\nPlane ticket From Edmonton to Calgary\n$430.34 CAD");
+		Claim claim3 = new Claim("Travel:Vehicle Rental\n1 day car rental\n$430.34 CAD");
 		list.add(claim);
 		list.add(claim2);
 		list.add(claim3);
