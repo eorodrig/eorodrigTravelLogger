@@ -17,7 +17,7 @@
 <!--         android:text="@string/hello_world" /> -->
 
     <Button
-        android:id="@+id/button1"
+        android:id="@+id/AddNewClaimButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
@@ -26,21 +26,21 @@
         android:text="Add New Claim" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/ViewEditClaimButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/button1"
-        android:layout_below="@+id/button1"
+        android:layout_alignLeft="@+id/AddNewClaimButton"
+        android:layout_below="@+id/AddNewClaimButton"
         android:layout_marginTop="14dp"
         android:onClick="onClickViewEditClaim"
         android:text="View/Edit Existing Claims" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/SubmitClaimButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/button2"
-        android:layout_below="@+id/button2"
+        android:layout_alignLeft="@+id/ViewEditClaimButton"
+        android:layout_below="@+id/ViewEditClaimButton"
         android:layout_marginTop="13dp"
         android:text="Submit A Claim" />
 

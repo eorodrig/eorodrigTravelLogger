@@ -23,8 +23,12 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ViewEditClaimActivity"
+            android:name=".ViewEditClaimListActivity"
             android:label="@string/title_activity_view_edit_claim" >
+        </activity>
+        <activity
+            android:name=".ExpenseListActivity"
+            android:label="@string/title_activity_expense__list" >
         </activity>
     </application>
 
