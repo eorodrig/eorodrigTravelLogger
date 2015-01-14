@@ -23,7 +23,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ViewEditClaim"
+            android:name=".ViewEditClaimActivity"
             android:label="@string/title_activity_view_edit_claim" >
         </activity>
     </application>

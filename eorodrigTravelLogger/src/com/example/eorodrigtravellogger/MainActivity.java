@@ -36,7 +36,7 @@ public class MainActivity extends Activity {
     }
     
     public void onClickViewEditClaim(View view){
-    	 Intent intent = new Intent(this, ViewEditClaim.class);
+    	 Intent intent = new Intent(this, ViewEditClaimActivity.class);
     	 startActivity(intent);
     }
     
