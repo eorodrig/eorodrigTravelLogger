@@ -9,7 +9,8 @@
     <string name="title_activity_new_claim">New Claim</string>
     <string name="title_activity_submitted__claims">Submitted_Claims</string>
     <string name="title_activity_add_new_expense">AddNewExpense</string>
-
+    
+    
     <string-array name="currency_spinner">
         <item>USD: US Dollars</item>
         <item>CAD: Canadian Dollars</item>
@@ -18,6 +19,7 @@
         <item>CNY: Chinese Yen</item>
         <item>RUB: Rubble</item>
     </string-array>
+    
     <string-array name="expense_category">
         <item>Accomodations: Hotel</item>
         <item>Accomodations: Private Residense</item>
@@ -35,7 +37,6 @@
         <item>Other</item>
     </string-array>
 
-    <string name="title_activity_edit_expense">EditExpense</string>
-    <string name="title_activity_edit_claim">EditClaim</string>
+
 
 </resources>

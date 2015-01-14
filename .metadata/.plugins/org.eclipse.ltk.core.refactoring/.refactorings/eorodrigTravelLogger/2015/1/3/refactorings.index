@@ -18,3 +18,5 @@
 1421274533738	Rename resource 'activity_expense__list.xml'
 1421274579718	Rename type 'AddNewExpense'
 1421275157290	Rename field 'listView1'
+1421277415225	Rename type 'EditExpense'
+1421277444426	Rename type 'EditClaim'

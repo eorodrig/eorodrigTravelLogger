@@ -43,12 +43,8 @@
             android:label="@string/title_activity_add_new_expense" >
         </activity>
         <activity
-            android:name=".EditExpenseActivity"
+            android:name=".EditExpense"
             android:label="@string/title_activity_edit_expense" >
-        </activity>
-        <activity
-            android:name=".EditClaimActivity"
-            android:label="@string/title_activity_edit_claim" >
         </activity>
     </application>
 

@@ -36,6 +36,5 @@
     </string-array>
 
     <string name="title_activity_edit_expense">EditExpense</string>
-    <string name="title_activity_edit_claim">EditClaim</string>
 
 </resources>
