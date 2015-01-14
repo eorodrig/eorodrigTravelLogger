@@ -1,0 +1,12 @@
+package com.example.eorodrigtravellogger.test;
+
+import junit.framework.TestCase;
+import com.example.eorodrigtravellogger.Claim;
+
+public class ClaimTest extends TestCase {
+
+	public void testClaim(){
+		Claim claim - new Claim(name, date);
+	}
+	
+}

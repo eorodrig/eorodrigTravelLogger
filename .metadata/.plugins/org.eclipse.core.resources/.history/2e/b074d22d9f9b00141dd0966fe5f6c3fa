@@ -1,0 +1,18 @@
+package com.example.eorodrigtravellogger;
+
+import java.util.ArrayList;
+
+public class ClaimViewList {
+
+	protected ArrayList<Claim> claimList;
+	
+	public ClaimViewList(){
+		claimList = new ArrayList<Claim>();
+	}
+	
+	
+	public Collection<Claim> getClaims(){
+		return claimList;
+	}
+	
+}

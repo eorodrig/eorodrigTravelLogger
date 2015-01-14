@@ -1,0 +1,14 @@
+package com.example.eorodrigtravellogger;
+
+public class Claim {
+
+	protected String claimName;
+	
+	protected String startDate;
+	protected String endDate;
+	
+	public Claim(String claimName) {
+		// TODO Auto-generated constructor stub
+	}
+
+}

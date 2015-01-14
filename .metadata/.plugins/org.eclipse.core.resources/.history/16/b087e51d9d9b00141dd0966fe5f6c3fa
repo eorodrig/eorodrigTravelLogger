@@ -1,0 +1,8 @@
+package com.example.eorodrigtravellogger.test;
+
+import junit.framework.TestCase;
+import eorodrigTravelLogger;
+
+public class ClaimTest extends TestCase {
+
+}

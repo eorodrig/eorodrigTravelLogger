@@ -1,0 +1,18 @@
+package com.example.eorodrigtravellogger;
+
+import java.util.ArrayList;
+import java.util.Collection;
+
+public class ExpenseViewList {
+
+	protected ArrayList<Expense> ExpenseList;
+	
+	public ExpenseViewList(){
+		ExpenseList = new ArrayList<Expense>();
+	}
+	
+	
+	public Collection<Expense> getExpenses(){
+		return ExpenseList;
+	}
+}

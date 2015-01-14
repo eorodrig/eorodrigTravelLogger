@@ -1,0 +1,9 @@
+package com.example.eorodrigtravellogger;
+
+public class Claim {
+
+	public Claim(String claimName) {
+		// TODO Auto-generated constructor stub
+	}
+
+}
