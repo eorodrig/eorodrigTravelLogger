@@ -35,13 +35,23 @@ public class MainActivity extends Activity {
         return super.onOptionsItemSelected(item);
     }
     
+    
+    /*Buttons*/
+    /*This is the View Edit Submit button*/
     public void onClickViewEditSubmitClaim(View view){
     	 Intent intent = new Intent(MainActivity.this, ViewEditSubmitClaimListActivity.class);
     	 startActivity(intent);
     }
     
+    /*This is the make new claim button*/
     public void onClickAddNewClaim(View view){
    	 	Intent intent = new Intent(MainActivity.this, NewClaimActivity.class);
+   	 	startActivity(intent);
+   }
+    
+    /*This is the view submitted claims button*/
+    public void onClickViewSubmittedClaims(View view){
+   	 	Intent intent = new Intent(MainActivity.this, SubmittedClaimsActivity.class);
    	 	startActivity(intent);
    }
     

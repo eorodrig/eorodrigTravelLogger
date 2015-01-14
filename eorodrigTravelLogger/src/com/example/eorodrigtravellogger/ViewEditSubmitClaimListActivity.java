@@ -14,7 +14,7 @@ public class ViewEditSubmitClaimListActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_view_edit_claim);
+		setContentView(R.layout.activity_view_edit_submit_claim);
 		
 		ListView listView = (ListView) findViewById(R.id.ClaimListView);
 		ArrayList<Claim> list = new ArrayList<Claim>();

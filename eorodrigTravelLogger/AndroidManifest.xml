@@ -34,6 +34,14 @@
             android:name=".NewClaimActivity"
             android:label="@string/title_activity_new_claim" >
         </activity>
+        <activity
+            android:name=".SubmittedClaimsActivity"
+            android:label="@string/title_activity_submitted__claims" >
+        </activity>
+        <activity
+            android:name=".AddNewExpenseActivity"
+            android:label="@string/title_activity_add_new_expense" >
+        </activity>
     </application>
 
 </manifest>
