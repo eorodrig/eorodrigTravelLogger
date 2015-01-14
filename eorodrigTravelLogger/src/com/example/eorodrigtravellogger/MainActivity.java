@@ -35,10 +35,15 @@ public class MainActivity extends Activity {
         return super.onOptionsItemSelected(item);
     }
     
-    public void onClickViewEditClaim(View view){
-    	 Intent intent = new Intent(MainActivity.this, ViewEditClaimListActivity.class);
+    public void onClickViewEditSubmitClaim(View view){
+    	 Intent intent = new Intent(MainActivity.this, ViewEditSubmitClaimListActivity.class);
     	 startActivity(intent);
     }
+    
+    public void onClickAddNewClaim(View view){
+   	 	Intent intent = new Intent(MainActivity.this, NewClaimActivity.class);
+   	 	startActivity(intent);
+   }
     
     
 }

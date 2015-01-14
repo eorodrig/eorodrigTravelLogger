@@ -9,3 +9,6 @@
 1421212037444	Rename field 'button3'
 1421216687484	Rename field 'SubmitClaimButton'
 1421216699258	Rename field 'ViewEditClaimButton'
+1421217607119	Rename type 'NewClaim'
+1421218217698	Rename field 'textView1'
+1421219091198	Rename type 'ViewEditClaimListActivity'
