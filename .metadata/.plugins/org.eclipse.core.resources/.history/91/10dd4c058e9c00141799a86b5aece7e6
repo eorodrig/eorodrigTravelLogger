@@ -1,0 +1,172 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@drawable/bg"
+    tools:context="com.example.eorodrigtravellogger.EditClaimActivity" >
+
+    <LinearLayout
+        android1:id="@+id/ClaimNameLinearLayout"
+        android1:layout_width="match_parent"
+        android1:layout_height="wrap_content"
+        android1:orientation="vertical" >
+
+        <TextView
+            android1:id="@+id/ClaimNameTextView"
+            android1:layout_width="match_parent"
+            android1:layout_height="wrap_content"
+            android1:layout_marginTop="22dp"
+            android1:text="Claim Name:"
+            android1:textSize="20sp" />
+
+        <EditText
+            android1:id="@+id/ClaimNameEditText"
+            android1:layout_width="match_parent"
+            android1:layout_height="wrap_content"
+            android1:ems="10" />
+    </LinearLayout>
+
+    <LinearLayout
+        android1:id="@+id/ClaimDescriptionLinearLayout"
+        android1:layout_width="match_parent"
+        android1:layout_height="wrap_content"
+        android1:orientation="vertical" >
+
+        <TextView
+            android1:id="@+id/ClaimDescriptionTextView"
+            android1:layout_width="match_parent"
+            android1:layout_height="wrap_content"
+            android1:layout_marginTop="22dp"
+            android1:text="Claim Description:"
+            android1:textSize="20sp" />
+
+        <EditText
+            android1:id="@+id/ClaimDescriptionEditText"
+            android1:layout_width="match_parent"
+            android1:layout_height="wrap_content"
+            android1:ems="10" >
+
+            <requestFocus />
+        </EditText>
+    </LinearLayout>
+
+    <LinearLayout
+        android1:id="@+id/StartDatelinearLayout"
+        android1:layout_width="match_parent"
+        android1:layout_height="wrap_content"
+        android1:layout_marginBottom="18dp" >
+
+        <TextView
+            android1:id="@+id/StartDateTextView"
+            android1:layout_width="113dp"
+            android1:layout_height="wrap_content"
+            android1:layout_gravity="center_horizontal"
+            android1:layout_marginTop="16dp"
+            android1:text="Start Date:"
+            android1:textSize="20sp" />
+
+        <EditText
+            android1:id="@+id/StartDateEditText"
+            android1:layout_width="45dp"
+            android1:layout_height="wrap_content"
+            android1:layout_weight="1"
+            android1:ems="10"
+            android1:hint="dd"
+            android1:inputType="number" />
+
+        <EditText
+            android1:id="@+id/StartMonthEditText"
+            android1:layout_width="60dp"
+            android1:layout_height="wrap_content"
+            android1:layout_weight="1"
+            android1:ems="10"
+            android1:hint="mm"
+            android1:inputType="number" />
+
+        <EditText
+            android1:id="@+id/StartYearEditText"
+            android1:layout_width="71dp"
+            android1:layout_height="wrap_content"
+            android1:ems="10"
+            android1:hint="yyyy"
+            android1:inputType="number" />
+    </LinearLayout>
+
+    <LinearLayout
+        android1:id="@+id/EndDatelinearLayout"
+        android1:layout_width="match_parent"
+        android1:layout_height="wrap_content"
+        android1:layout_marginBottom="18dp" >
+
+        <TextView
+            android1:id="@+id/EndDateTextView"
+            android1:layout_width="113dp"
+            android1:layout_height="wrap_content"
+            android1:layout_gravity="center_horizontal"
+            android1:layout_marginTop="16dp"
+            android1:text="End Date:"
+            android1:textSize="20sp" />
+
+        <EditText
+            android1:id="@+id/EndDateEditText"
+            android1:layout_width="45dp"
+            android1:layout_height="wrap_content"
+            android1:layout_weight="1"
+            android1:ems="10"
+            android1:hint="dd"
+            android1:inputType="number" />
+
+        <EditText
+            android1:id="@+id/EndMonthEditText"
+            android1:layout_width="60dp"
+            android1:layout_height="wrap_content"
+            android1:layout_weight="1"
+            android1:ems="10"
+            android1:hint="mm"
+            android1:inputType="number" />
+
+        <EditText
+            android1:id="@+id/EndYearEditText"
+            android1:layout_width="71dp"
+            android1:layout_height="wrap_content"
+            android1:ems="10"
+            android1:hint="yyyy"
+            android1:inputType="number" />
+    </LinearLayout>
+
+    <LinearLayout
+        android1:id="@+id/LinearLayout2"
+        android1:layout_width="match_parent"
+        android1:layout_height="63dp"
+        android1:layout_marginBottom="22dp"
+        android1:layout_weight="0.08"
+        android1:orientation="horizontal" >
+
+        <TextView
+            android1:id="@+id/CurrencyTextView"
+            android1:layout_width="116dp"
+            android1:layout_height="wrap_content"
+            android1:text="Preferred Currency:"
+            android1:textSize="20sp" />
+
+        <Spinner
+            android1:id="@+id/ClaimCurrencySpinner"
+            android1:layout_width="match_parent"
+            android1:layout_height="wrap_content"
+            android1:layout_marginBottom="38dp"
+            android1:entries="@array/currency_spinner" />
+    </LinearLayout>
+
+    <Button
+        android1:id="@+id/UpdateClaimButton"
+        android1:layout_width="match_parent"
+        android1:layout_height="wrap_content"
+        android1:layout_marginBottom="24dp"
+        android1:onClick="testing"
+        android1:text="Add Claim" />
+
+</LinearLayout>

@@ -33,3 +33,41 @@
 1421308917943	Change Layout
 1421308965510	Change Layout
 1421308980669	Change Layout
+1421309592013	Rename field 'UpdateClaimButton'
+1421309628468	Rename field 'LinearLayout2'
+1421309702739	Change Layout
+1421309710400	Change Layout
+1421309767550	Rename field 'LinearLayout1'
+1421309822306	Rename field 'EditClaimLinearLayout'
+1421310100785	Change Layout
+1421310109113	Change Layout
+1421310443829	Rename field 'LinearLayout2'
+1421310490250	Rename field 'StartDatelinearLayout'
+1421310592981	Rename field 'CategoryTextView'
+1421310603182	Rename field 'CategorySpinner'
+1421310612420	Rename field 'DescriptionTextView'
+1421310620039	Rename field 'DescriptionEditText'
+1421310637319	Rename field 'StartDateTextView'
+1421310650519	Rename field 'StartDateEditText'
+1421310660639	Rename field 'StartMonthEditText'
+1421310671773	Rename field 'StartYearEditText'
+1421310707077	Rename field 'AmountSpentTextView'
+1421310714594	Rename field 'AmountSpentEditText'
+1421310737546	Rename field 'CurrencyTextView'
+1421310746042	Rename field 'currencySpinner'
+1421310754377	Rename field 'EditExpenseButton'
+1421310767733	Rename field 'NewExpenseEditExpenseButton'
+1421310813687	Rename field 'ClaimNameLinearLayout'
+1421310820406	Rename field 'ClaimNameTextView'
+1421310824903	Rename field 'ClaimNameEditText'
+1421310830664	Rename field 'ClaimDescriptionLinearLayout'
+1421310836796	Rename field 'ClaimDescriptionTextView'
+1421310842109	Rename field 'ClaimDescriptionEditText'
+1421310863475	Rename field 'EndDatelinearLayout'
+1421310876820	Rename field 'EndDateTextView'
+1421310882829	Rename field 'EndDateEditText'
+1421310887575	Rename field 'EndMonthEditText'
+1421310891898	Rename field 'EndYearEditText'
+1421310897409	Rename field 'CurrencyLinearLayout'
+1421310938987	Rename field 'ClaimCurrencySpinner'
+1421310949069	Rename field 'AddClaimButton'

@@ -1,0 +1,100 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@drawable/bg"
+    tools:context="com.example.eorodrigtravellogger.EditClaimActivity" >
+
+    <TextView
+        android:id="@+id/ClaimNameTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/ClaimNameEditText"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="18dp"
+        android:text="Claim Name:"
+        android:textSize="20sp" />
+
+    <EditText
+        android:id="@+id/ClaimNameEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ClaimNameTextView"
+        android:layout_centerHorizontal="true"
+        android:ems="10" >
+
+        <requestFocus />
+    </EditText>
+
+    <TextView
+        android:id="@+id/StartDateTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/ClaimNameEditText"
+        android:layout_below="@+id/ClaimNameEditText"
+        android:layout_marginTop="14dp"
+        android:text="Start Date:"
+        android:textSize="20sp" />
+
+    <EditText
+        android:id="@+id/ClaimStartDateText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/StartDateTextView"
+        android:layout_below="@+id/StartDateTextView"
+        android:ems="10"
+        android:hint="DD/MM/YYYY"
+        android:inputType="datetime" />
+
+    <TextView
+        android:id="@+id/EndDateTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/ClaimStartDateText"
+        android:layout_below="@+id/ClaimStartDateText"
+        android:layout_marginTop="15dp"
+        android:text="End Date:"
+        android:textSize="20sp" />
+
+    <EditText
+        android:id="@+id/ClaimEndDateText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/EndDateTextView"
+        android:layout_centerVertical="true"
+        android:ems="10"
+        android:hint="DD/MM/YYYY"
+        android:inputType="datetime" />
+
+    <TextView
+        android:id="@+id/CurrencyTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/ClaimEndDateText"
+        android:layout_below="@+id/ClaimEndDateText"
+        android:layout_marginTop="18dp"
+        android:text="Preferred Currency:"
+        android:textSize="20sp" />
+
+    <Spinner
+        android:id="@+id/ClaimCurrencySpinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/CurrencyTextView"
+        android:layout_below="@+id/CurrencyTextView"
+        android:entries="@array/currency_spinner" />
+
+    <Button
+        android:id="@+id/UpdateClaimButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/ClaimCurrencySpinner"
+        android:layout_below="@+id/ClaimCurrencySpinner"
+        android:layout_marginTop="26dp"
+        android:text="Update Claim" />
+
+</RelativeLayout>

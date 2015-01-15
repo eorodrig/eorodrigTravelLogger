@@ -1,7 +1,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:android1="http://schemas.android.com/apk/res/android"
-    android1:id="@+id/LinearLayout1"
+    android1:id="@+id/NewClaimLinearLayout"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:background="@drawable/bg"
@@ -18,13 +18,13 @@
     <!-- android:text="@string/hello_world" /> -->
 
     <LinearLayout
-        android1:id="@+id/ClaimNameLinearLayout"
+        android1:id="@+id/NewClaimNameLinearLayout"
         android1:layout_width="match_parent"
         android1:layout_height="wrap_content"
         android1:orientation="vertical" >
 
         <TextView
-            android1:id="@+id/ClaimNameTextView"
+            android1:id="@+id/NewClaimNameTextView"
             android1:layout_width="match_parent"
             android1:layout_height="wrap_content"
             android1:layout_marginTop="22dp"
@@ -32,20 +32,20 @@
             android1:textSize="20sp" />
 
         <EditText
-            android1:id="@+id/ClaimNameEditText"
+            android1:id="@+id/NewClaimNameEditText"
             android1:layout_width="match_parent"
             android1:layout_height="wrap_content"
             android1:ems="10" />
     </LinearLayout>
 
     <LinearLayout
-        android1:id="@+id/ClaimDescriptionLinearLayout"
+        android1:id="@+id/NewClaimDescriptionLinearLayout"
         android1:layout_width="match_parent"
         android1:layout_height="wrap_content"
         android1:orientation="vertical" >
 
         <TextView
-            android1:id="@+id/ClaimDescriptionTextView"
+            android1:id="@+id/NewClaimDescriptionTextView"
             android1:layout_width="match_parent"
             android1:layout_height="wrap_content"
             android1:layout_marginTop="22dp"
@@ -53,7 +53,7 @@
             android1:textSize="20sp" />
 
         <EditText
-            android1:id="@+id/ClaimDescriptionEditText"
+            android1:id="@+id/NewClaimDescriptionEditText"
             android1:layout_width="match_parent"
             android1:layout_height="wrap_content"
             android1:ems="10" >
@@ -63,13 +63,13 @@
     </LinearLayout>
 
     <LinearLayout
-        android1:id="@+id/StartDatelinearLayout"
+        android1:id="@+id/NewClaimDatelinearLayout"
         android1:layout_width="match_parent"
         android1:layout_height="wrap_content"
         android1:layout_marginBottom="18dp" >
 
         <TextView
-            android1:id="@+id/StartDateTextView"
+            android1:id="@+id/NewClaimDateTextView"
             android1:layout_width="113dp"
             android1:layout_height="wrap_content"
             android1:layout_gravity="center_horizontal"
@@ -78,7 +78,7 @@
             android1:textSize="20sp" />
 
         <EditText
-            android1:id="@+id/StartDateEditText"
+            android1:id="@+id/NewClaimDateEditText"
             android1:layout_width="45dp"
             android1:layout_height="wrap_content"
             android1:layout_weight="1"
@@ -87,7 +87,7 @@
             android1:inputType="number" />
 
         <EditText
-            android1:id="@+id/StartMonthEditText"
+            android1:id="@+id/NewClaimMonthEditText"
             android1:layout_width="60dp"
             android1:layout_height="wrap_content"
             android1:layout_weight="1"
@@ -96,7 +96,7 @@
             android1:inputType="number" />
 
         <EditText
-            android1:id="@+id/StartYearEditText"
+            android1:id="@+id/NewClaimYearEditText"
             android1:layout_width="71dp"
             android1:layout_height="wrap_content"
             android1:ems="10"
@@ -105,13 +105,13 @@
     </LinearLayout>
 
     <LinearLayout
-        android1:id="@+id/EndDatelinearLayout"
+        android1:id="@+id/NewClaimEndDatelinearLayout"
         android1:layout_width="match_parent"
         android1:layout_height="wrap_content"
         android1:layout_marginBottom="18dp" >
 
         <TextView
-            android1:id="@+id/EndDateTextView"
+            android1:id="@+id/NewClaimEndDateTextView"
             android1:layout_width="113dp"
             android1:layout_height="wrap_content"
             android1:layout_gravity="center_horizontal"
@@ -120,7 +120,7 @@
             android1:textSize="20sp" />
 
         <EditText
-            android1:id="@+id/EndDateEditText"
+            android1:id="@+id/NewClaimEndDateEditText"
             android1:layout_width="45dp"
             android1:layout_height="wrap_content"
             android1:layout_weight="1"
@@ -129,7 +129,7 @@
             android1:inputType="number" />
 
         <EditText
-            android1:id="@+id/EndMonthEditText"
+            android1:id="@+id/NewClaimEndMonthEditText"
             android1:layout_width="60dp"
             android1:layout_height="wrap_content"
             android1:layout_weight="1"
@@ -138,7 +138,7 @@
             android1:inputType="number" />
 
         <EditText
-            android1:id="@+id/EndYearEditText"
+            android1:id="@+id/NewClaimEndYearEditText"
             android1:layout_width="71dp"
             android1:layout_height="wrap_content"
             android1:ems="10"
@@ -147,7 +147,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android1:id="@+id/LinearLayout2"
+        android1:id="@+id/NewClaimCurrencyLinearLayout"
         android1:layout_width="match_parent"
         android1:layout_height="63dp"
         android1:layout_marginBottom="22dp"
@@ -155,14 +155,14 @@
         android1:orientation="horizontal" >
 
         <TextView
-            android1:id="@+id/CurrencyTextView"
+            android1:id="@+id/NewClaimCurrencyTextView"
             android1:layout_width="116dp"
             android1:layout_height="wrap_content"
             android1:text="Preferred Currency:"
             android1:textSize="20sp" />
 
         <Spinner
-            android1:id="@+id/ClaimCurrencySpinner"
+            android1:id="@+id/NewClaimCurrencySpinner"
             android1:layout_width="match_parent"
             android1:layout_height="wrap_content"
             android1:layout_marginBottom="38dp"
@@ -170,7 +170,7 @@
     </LinearLayout>
 
     <Button
-        android1:id="@+id/UpdateClaimButton"
+        android1:id="@+id/NewClaimAddClaimButton"
         android1:layout_width="match_parent"
         android1:layout_height="wrap_content"
         android1:layout_marginBottom="24dp"

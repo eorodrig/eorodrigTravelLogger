@@ -9,7 +9,7 @@ public class ClaimTest extends TestCase {
 		
 		String claimName = "test claim";
 	
-		Claim claim = new Claim(claimName);
+		//Claim claim = new Claim(claimName);
 		
 		//assert. for tests
 		

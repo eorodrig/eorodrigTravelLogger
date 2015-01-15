@@ -1,0 +1,121 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.eorodrigtravellogger.EditExpenseActivity" >
+
+ <TextView
+        android:id="@+id/ExpenseDateTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="27dp"
+        android:text="Date:"
+        android:textSize="16sp" />
+
+    <EditText
+        android:id="@+id/ExpenseDateText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/NewExpenseCategoryTextView"
+        android:layout_marginLeft="29dp"
+        android:layout_toRightOf="@+id/ExpenseDateTextView"
+        android:ems="10"
+        android:hint="DD/MM/YYYY"
+        android:inputType="date"
+        android:textSize="16sp" >
+
+        <requestFocus />
+    </EditText>
+
+    <EditText
+        android:id="@+id/NexExpenseDescriptionEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/NewExpenseDescriptionTextView"
+        android:layout_alignRight="@+id/NewExpenseCategorySpinner"
+        android:layout_below="@+id/NewExpenseDescriptionTextView"
+        android:ems="10"
+        android:inputType="textMultiLine"
+        android:lines="3" />
+
+    <TextView
+        android:id="@+id/NewExpenseCategoryTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/ExpenseDateTextView"
+        android:layout_below="@+id/ExpenseDateTextView"
+        android:layout_marginTop="14dp"
+        android:text="Category:"
+        android:textSize="16sp" />
+
+    <Spinner
+        android:id="@+id/NewExpenseCategorySpinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/ExpenseDateText"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/ExpenseDateTextView" />
+
+    <TextView
+        android:id="@+id/NewExpenseDescriptionTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/NewExpenseCategoryTextView"
+        android:layout_below="@+id/NewExpenseCategorySpinner"
+        android:text="Expense Description:"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/AmountSpentTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/NexExpenseDescriptionEditText"
+        android:layout_below="@+id/NexExpenseDescriptionEditText"
+        android:layout_marginTop="14dp"
+        android:text="Amount Spent:"
+        android:textSize="16sp" />
+
+    <EditText
+        android:id="@+id/AmountSpentEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/NexExpenseDescriptionEditText"
+        android:layout_toRightOf="@+id/AmountSpentTextView"
+        android:ems="10"
+        android:inputType="numberDecimal" />
+
+    <TextView
+        android:id="@+id/CurrencyTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/AmountSpentTextView"
+        android:layout_below="@+id/AmountSpentEditText"
+        android:layout_marginTop="14dp"
+        android:text="Select Currency:"
+        android:textSize="16sp" />
+
+    <Spinner
+        android:id="@+id/currencySpinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/CurrencyTextView"
+        android:layout_below="@+id/CurrencyTextView"
+        android:entries="@array/expense_category" />
+
+    <Button
+        android:id="@+id/EditExpenseButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/currencySpinner"
+        android:layout_below="@+id/currencySpinner"
+        android:layout_marginTop="19dp"
+        android:text="Update Expense" />
+
+</RelativeLayout>

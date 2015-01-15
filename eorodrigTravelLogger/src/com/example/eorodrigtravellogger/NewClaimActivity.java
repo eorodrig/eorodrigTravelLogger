@@ -42,7 +42,7 @@ public class NewClaimActivity extends Activity {
 	}
 	
 
-	
+	/*
 	public void testing(View view)
 	{
 		TextView testing = (TextView)findViewById(R.id.ClaimStartDateText);
@@ -74,7 +74,7 @@ public class NewClaimActivity extends Activity {
 		
 		//System.out.println(testing);
 	}
-
+*/
 	
 
 	
