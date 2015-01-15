@@ -1,0 +1,20 @@
+package com.example.eorodrigtravellogger;
+
+import java.util.Date;
+
+public class Expense {
+
+	protected Date date;
+	
+	protected String category;
+	protected String description;
+	
+	protected double amountSpent;
+	protected String currency;
+	
+	
+	public Expense(String name, Date expenseDate, String category, String description, double amountSpent, String currency){
+		
+	}
+	
+}

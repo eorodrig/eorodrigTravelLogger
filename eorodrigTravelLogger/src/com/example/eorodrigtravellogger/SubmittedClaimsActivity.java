@@ -16,7 +16,7 @@ public class SubmittedClaimsActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_submitted_claims);
 		
-		
+		/*
 		ListView listView = (ListView) findViewById(R.id.SubmittedClaimListView);
 		ArrayList<Claim> list = new ArrayList<Claim>();
 		Claim claim = new Claim("Pending:	Meeting in Calgary\nDec 12,2014 - Dec 20,2014\nTotal: $20 CAD");
@@ -29,6 +29,7 @@ public class SubmittedClaimsActivity extends Activity {
 		
 		
 		listView.setAdapter(claimAdapter);
+		*/
 	}
 
 	@Override

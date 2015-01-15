@@ -20,3 +20,16 @@
 1421275157290	Rename field 'listView1'
 1421277415225	Rename type 'EditExpense'
 1421277444426	Rename type 'EditClaim'
+1421298780809	Rename field 'AddClaimButton'
+1421298794197	Rename field 'button1'
+1421299310352	Rename field 'AddExpenseButton'
+1421302583664	Wrap in Container
+1421305593201	Wrap in Container
+1421306811245	Rename field 'editText1'
+1421308265326	Rename field 'linearLayout1'
+1421308387801	Change Layout
+1421308728082	Rename field 'ClaimNameText'
+1421308898701	Change Layout
+1421308917943	Change Layout
+1421308965510	Change Layout
+1421308980669	Change Layout

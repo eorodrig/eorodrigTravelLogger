@@ -18,6 +18,7 @@
         <item>CNY: Chinese Yen</item>
         <item>RUB: Rubble</item>
     </string-array>
+    
     <string-array name="expense_category">
         <item>Accomodations: Hotel</item>
         <item>Accomodations: Private Residense</item>
@@ -33,6 +34,21 @@
         <item>Travel: Taxi Fair</item>
         <item>Travel: Parking</item>
         <item>Other</item>
+    </string-array>
+    
+        <string-array name="month_spinner">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
     </string-array>
 
     <string name="title_activity_edit_expense">EditExpense</string>

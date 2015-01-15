@@ -1,0 +1,151 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android1="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.eorodrigtravellogger.NewClaimActivity" >
+
+    <!-- <TextView -->
+    <!-- android:layout_width="wrap_content" -->
+    <!-- android:layout_height="wrap_content" -->
+    <!-- android:text="@string/hello_world" /> -->
+
+    <EditText
+        android1:id="@+id/ClaimNameText"
+        android1:layout_width="match_parent"
+        android1:layout_height="wrap_content"
+        android1:layout_alignLeft="@+id/ClaimNameTextView"
+        android1:layout_alignRight="@+id/UpdateClaimButton"
+        android1:layout_below="@+id/ClaimNameTextView"
+        android1:ems="10" >
+
+        <requestFocus />
+    </EditText>
+
+    <Spinner
+        android1:id="@+id/ClaimCurrencySpinner"
+        android1:layout_width="match_parent"
+        android1:layout_height="wrap_content"
+        android1:layout_alignLeft="@+id/CurrencyTextView"
+        android1:layout_below="@+id/CurrencyTextView"
+        android1:entries="@array/currency_spinner" />
+
+    <TextView
+        android1:id="@+id/ClaimNameTextView"
+        android1:layout_width="match_parent"
+        android1:layout_height="wrap_content"
+        android1:layout_alignLeft="@+id/CurrencyTextView"
+        android1:layout_alignParentTop="true"
+        android1:layout_marginTop="22dp"
+        android1:text="Claim Name:"
+        android1:textSize="20sp" />
+
+    <Button
+        android1:id="@+id/UpdateClaimButton"
+        android1:layout_width="match_parent"
+        android1:layout_height="wrap_content"
+        android1:layout_alignParentBottom="true"
+        android1:layout_centerHorizontal="true"
+        android1:layout_marginBottom="70dp"
+        android1:onClick="testing"
+        android1:text="Add Claim" />
+
+    <TextView
+        android1:id="@+id/CurrencyTextView"
+        android1:layout_width="match_parent"
+        android1:layout_height="wrap_content"
+        android1:layout_alignLeft="@+id/UpdateClaimButton"
+        android1:layout_below="@+id/EndDateTextView"
+        android1:layout_marginTop="70dp"
+        android1:text="Preferred Currency:"
+        android1:textSize="20sp" />
+
+    <TextView
+        android1:id="@+id/EndDateTextView"
+        android1:layout_width="match_parent"
+        android1:layout_height="wrap_content"
+        android1:layout_alignLeft="@+id/StartDatelinearLayout"
+        android1:layout_below="@+id/StartDatelinearLayout"
+        android1:text="End Date:"
+        android1:textSize="20sp" />
+    
+        <LinearLayout
+        android1:id="@+id/EndDatelinearLayout"
+        android1:layout_width="match_parent"
+        android1:layout_height="wrap_content"
+        android1:layout_alignLeft="@+id/EndDateTextView"
+        android1:layout_below="@+id/EndDateTextView" >
+
+        <EditText
+            android1:id="@+id/EndDateEditText"
+            android1:layout_width="50dp"
+            android1:layout_height="wrap_content"
+            android1:layout_weight="0.59"
+            android1:ems="10"
+            android1:inputType="number" />
+
+        <Spinner
+            android1:id="@+id/EndMonthSpinner"
+            android1:layout_width="88dp"
+            android1:layout_height="wrap_content"
+            android1:layout_weight="1.75"
+            android1:entries="@array/month_spinner" />
+
+        <EditText
+            android1:id="@+id/EndYearEditText"
+            android1:layout_width="70dp"
+            android1:layout_height="wrap_content"
+            android1:layout_weight="0.50"
+            android1:ems="10"
+            android1:inputType="number" />
+
+    </LinearLayout>
+
+        <LinearLayout
+            android1:id="@+id/StartDatelinearLayout"
+            android1:layout_width="match_parent"
+            android1:layout_height="wrap_content"
+            android1:layout_alignLeft="@+id/ClaimNameText"
+            android1:layout_below="@+id/ClaimNameText"
+            android1:layout_marginTop="22dp" >
+
+            <TextView
+                android1:id="@+id/StartDateTextView"
+                android1:layout_width="wrap_content"
+                android1:layout_height="wrap_content"
+                android1:layout_marginTop="16dp"
+                android1:text="Start Date:"
+                android1:textSize="20sp" />
+
+            <EditText
+                android1:id="@+id/StartYearEditText"
+                android1:layout_width="47dp"
+                android1:layout_height="wrap_content"
+                android1:ems="10"
+                android1:hint="DD"
+                android1:inputType="number" />
+
+            <Spinner
+                android1:id="@+id/StartMonthSpinner"
+                android1:layout_width="68dp"
+                android1:layout_height="wrap_content"
+                android1:layout_weight="0.11"
+                android1:entries="@array/month_spinner" />
+
+            <EditText
+                android1:id="@+id/StartDateEditText"
+                android1:layout_width="50dp"
+                android1:layout_height="wrap_content"
+                android1:layout_weight="0.21"
+                android1:ems="10"
+                android1:hint="YYYY"
+                android1:inputType="number" />
+
+        </LinearLayout>
+
+</RelativeLayout>

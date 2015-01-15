@@ -1,6 +1,7 @@
 package com.example.eorodrigtravellogger;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -18,9 +19,18 @@ public class ViewEditSubmitClaimListActivity extends Activity {
 		
 		ListView listView = (ListView) findViewById(R.id.ClaimListView);
 		ArrayList<Claim> list = new ArrayList<Claim>();
-		Claim claim = new Claim("Meeting in Calgary\n Dec 12,2014 - Dec 20,2014\n Total: $20 CAD");
-		Claim claim2 = new Claim("Meeting in Toronto\n Dec 20,2014 - Dec 24,2014\n Total: $80 USD");
-
+		
+		Date dateA1 = new Date(2014,11,12);
+		Date dateA2 = new Date(2014,12,20);
+		
+		Date dateB1 = new Date(2014,12,20);
+		Date dateB2 = new Date(2014,12,24);
+		Claim claim = new Claim("Meeting in Calgary","Team meeting for QWE Project", dateA1, dateA2, "CAD");
+		Claim claim2 = new Claim("Meeting in Toronto", "Team meeting for wwwE Project", dateB1, dateB2, "USD");
+		
+		claim.editAmount(242.32);
+		claim2.editAmount(452.12);
+		
 		list.add(claim);
 		list.add(claim2);
 		

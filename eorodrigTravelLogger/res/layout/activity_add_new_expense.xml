@@ -111,7 +111,7 @@
         android:entries="@array/expense_category" />
 
     <Button
-        android:id="@+id/AddExpenseButton"
+        android:id="@+id/EditExpenseButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/currencySpinner"

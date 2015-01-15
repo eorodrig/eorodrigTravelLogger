@@ -8,9 +8,114 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.eorodrigtravellogger.EditExpenseActivity" >
 
-    <TextView
+ <TextView
+        android:id="@+id/ExpenseDateTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/hello_world" />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="27dp"
+        android:text="Date:"
+        android:textSize="16sp" />
+
+    <EditText
+        android:id="@+id/ExpenseDateText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/CategoryTextView"
+        android:layout_marginLeft="29dp"
+        android:layout_toRightOf="@+id/ExpenseDateTextView"
+        android:ems="10"
+        android:hint="DD/MM/YYYY"
+        android:inputType="date"
+        android:textSize="16sp" >
+
+        <requestFocus />
+    </EditText>
+
+    <EditText
+        android:id="@+id/DescriptionEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/DescriptionTextView"
+        android:layout_alignRight="@+id/CategorySpinner"
+        android:layout_below="@+id/DescriptionTextView"
+        android:ems="10"
+        android:inputType="textMultiLine"
+        android:lines="3" />
+
+    <TextView
+        android:id="@+id/CategoryTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/ExpenseDateTextView"
+        android:layout_below="@+id/ExpenseDateTextView"
+        android:layout_marginTop="14dp"
+        android:text="Category:"
+        android:textSize="16sp" />
+
+    <Spinner
+        android:id="@+id/CategorySpinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/ExpenseDateText"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/ExpenseDateTextView" />
+
+    <TextView
+        android:id="@+id/DescriptionTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/CategoryTextView"
+        android:layout_below="@+id/CategorySpinner"
+        android:text="Expense Description:"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/AmountSpentTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/DescriptionEditText"
+        android:layout_below="@+id/DescriptionEditText"
+        android:layout_marginTop="14dp"
+        android:text="Amount Spent:"
+        android:textSize="16sp" />
+
+    <EditText
+        android:id="@+id/AmountSpentEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/DescriptionEditText"
+        android:layout_toRightOf="@+id/AmountSpentTextView"
+        android:ems="10"
+        android:inputType="numberDecimal" />
+
+    <TextView
+        android:id="@+id/CurrencyTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/AmountSpentTextView"
+        android:layout_below="@+id/AmountSpentEditText"
+        android:layout_marginTop="14dp"
+        android:text="Select Currency:"
+        android:textSize="16sp" />
+
+    <Spinner
+        android:id="@+id/currencySpinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/CurrencyTextView"
+        android:layout_below="@+id/CurrencyTextView"
+        android:entries="@array/expense_category" />
+
+    <Button
+        android:id="@+id/EditExpenseButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/currencySpinner"
+        android:layout_below="@+id/currencySpinner"
+        android:layout_marginTop="19dp"
+        android:text="Update Expense" />
 
 </RelativeLayout>

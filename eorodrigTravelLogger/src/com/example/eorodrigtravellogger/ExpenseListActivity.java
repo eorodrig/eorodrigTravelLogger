@@ -16,6 +16,7 @@ public class ExpenseListActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_expense_list);
 		
+		/*
 		ListView listView = (ListView) findViewById(R.id.ExpenseExpandableListView);
 		ArrayList<Claim> list = new ArrayList<Claim>();
 		Claim claim = new Claim("Acommedations:Hotel\n2 night Marriot Hotel\nDecember 14,2014\n$234.4 CAD");
@@ -28,6 +29,7 @@ public class ExpenseListActivity extends Activity {
 		
 		
 		listView.setAdapter(claimAdapter);
+		*/
 	}
 
 	@Override

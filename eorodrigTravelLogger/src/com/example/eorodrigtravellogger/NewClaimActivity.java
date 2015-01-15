@@ -1,12 +1,18 @@
 package com.example.eorodrigtravellogger;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import android.app.Activity;
+import android.net.ParseException;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.widget.TextView;
+import android.widget.Toast;
 
 public class NewClaimActivity extends Activity {
 
@@ -36,6 +42,38 @@ public class NewClaimActivity extends Activity {
 	}
 	
 
+	
+	public void testing(View view)
+	{
+		TextView testing = (TextView)findViewById(R.id.ClaimStartDateText);
+		
+		SimpleDateFormat dt = new SimpleDateFormat("dd/mm/yyyy");		
+		
+
+		
+		String test = "";
+		Date date = new Date();
+		
+		
+			try {
+				date = dt.parse(testing.getText().toString());
+			} catch (java.text.ParseException e) {
+				// TODO Auto-generated catch block
+				Toast toasty = Toast.makeText(NewClaimActivity.this, "Failed", Toast.LENGTH_SHORT);
+			}	
+			
+
+		test = new SimpleDateFormat("MMM dd,yyyy").format(date);
+		
+
+		
+		Toast toast = Toast.makeText(NewClaimActivity.this, test , Toast.LENGTH_LONG);
+		toast.show();
+		
+		
+		
+		//System.out.println(testing);
+	}
 
 	
 
