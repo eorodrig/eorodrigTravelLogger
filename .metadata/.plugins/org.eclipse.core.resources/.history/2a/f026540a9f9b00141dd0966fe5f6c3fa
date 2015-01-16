@@ -1,8 +1,0 @@
-package com.example.eorodrigtravellogger;
-
-import java.util.ArrayList;
-
-public class ClaimViewList {
-
-	protected ArrayList<Claim> claimList;
-}

@@ -7,7 +7,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:background="@drawable/expenseclaims"
-    tools:context="com.example.eorodrigtravellogger.ViewEditSubmitClaimListActivity" >
+    tools:context="com.example.PROTOTYPEeorodrigtravellogger.ViewEditSubmitClaimListActivity" >
 
     <!-- <TextView -->
     <!-- android:id="@+id/textView1" -->

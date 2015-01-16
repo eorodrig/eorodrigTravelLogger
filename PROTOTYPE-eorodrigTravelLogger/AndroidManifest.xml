@@ -14,7 +14,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".MainActivity"
+            android:name="com.example.PROTOTYPEeorodrigtravellogger.MainActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,31 +23,31 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ViewEditSubmitClaimListActivity"
+            android:name="com.example.PROTOTYPEeorodrigtravellogger.ViewEditSubmitClaimListActivity"
             android:label="@string/title_activity_view_edit_claim" >
         </activity>
         <activity
-            android:name=".ExpenseListActivity"
+            android:name="com.example.PROTOTYPEeorodrigtravellogger.ExpenseListActivity"
             android:label="@string/title_activity_expense__list" >
         </activity>
         <activity
-            android:name=".NewClaimActivity"
+            android:name="com.example.PROTOTYPEeorodrigtravellogger.NewClaimActivity"
             android:label="@string/title_activity_new_claim" >
         </activity>
         <activity
-            android:name=".SubmittedClaimsActivity"
+            android:name="com.example.PROTOTYPEeorodrigtravellogger.SubmittedClaimsActivity"
             android:label="@string/title_activity_submitted__claims" >
         </activity>
         <activity
-            android:name=".AddNewExpenseActivity"
+            android:name="com.example.PROTOTYPEeorodrigtravellogger.AddNewExpenseActivity"
             android:label="@string/title_activity_add_new_expense" >
         </activity>
         <activity
-            android:name=".EditExpenseActivity"
+            android:name="com.example.PROTOTYPEeorodrigtravellogger.EditExpenseActivity"
             android:label="@string/title_activity_edit_expense" >
         </activity>
         <activity
-            android:name=".EditClaimActivity"
+            android:name="com.example.PROTOTYPEeorodrigtravellogger.EditClaimActivity"
             android:label="@string/title_activity_edit_claim" >
         </activity>
     </application>
