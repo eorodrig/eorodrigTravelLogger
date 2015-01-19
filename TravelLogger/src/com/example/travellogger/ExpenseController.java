@@ -48,9 +48,9 @@ public class ExpenseController {
 
 
 
-	public void saveExpense() {
+	public void updateExpenses() {
 		ClaimController claimController = new ClaimController();
-		claimController.saveClaim(currentClaim);
+		claimController.updateClaims(currentClaim);
 
 		
 	}

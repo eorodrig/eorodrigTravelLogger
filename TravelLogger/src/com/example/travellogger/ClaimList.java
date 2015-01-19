@@ -29,6 +29,8 @@ public class ClaimList {
 		claimList.remove(claim);
 		notifyListeners();
 	}
+	
+
 
 	
 	public Claim getClaim(int index){
@@ -39,6 +41,7 @@ public class ClaimList {
 	public void updateClaim(int index, Claim newClaim){
 		claimList.remove(index);
 		claimList.add(index, newClaim);
+		notifyListeners();
 	}
 	
 	public int size(){

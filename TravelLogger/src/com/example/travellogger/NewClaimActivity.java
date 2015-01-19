@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -15,6 +16,68 @@ public class NewClaimActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_new_claim);
+		
+		ClaimController claimController = new ClaimController();
+		
+		//if not null, we edit
+		if (claimController.getClaimToEdit() ==null){
+			claimController.setEditStatus(false);
+			
+			Button button = (Button) findViewById(R.id.NewClaimAddButton);
+			button.setText("Add New Claim");
+		}
+		else
+			{
+			Claim editableClaim = claimController.getClaimToEdit();
+			TextView dataExtractor;
+			Spinner spinnerExtractor;
+			
+		
+			
+			dataExtractor = (TextView)findViewById(R.id.NewClaimNameText);
+			dataExtractor.setText(editableClaim.getName());
+			
+			dataExtractor = (TextView)findViewById(R.id.NewClaimDescriptionText);
+			dataExtractor.setText(editableClaim.getDescription());
+			
+			
+			
+			String day, month, year;
+			
+			day = editableClaim.getStartDate().substring(0, 2);
+			month = editableClaim.getStartDate().substring(3, 5);
+			year = editableClaim.getStartDate().substring(6, 10);
+			
+			dataExtractor = (TextView)findViewById(R.id.NewClaimFromDayText);
+			dataExtractor.setText(day);
+			dataExtractor = (TextView)findViewById(R.id.NewClaimFromMonthText);
+			dataExtractor.setText(month);
+			dataExtractor = (TextView)findViewById(R.id.NewClaimFromYearText);
+			dataExtractor.setText(year);
+			
+			day = editableClaim.getEndDate().substring(0, 2);
+			month = editableClaim.getEndDate().substring(3, 5);
+			year = editableClaim.getEndDate().substring(6, 10);
+			
+			dataExtractor = (TextView)findViewById(R.id.NewClaimToDayText);
+			dataExtractor.setText(day);
+			dataExtractor = (TextView)findViewById(R.id.NewClaimToMonthText);
+			dataExtractor.setText(month);
+			dataExtractor = (TextView)findViewById(R.id.NewClaimToYearText);
+			dataExtractor.setText(year);
+			
+			
+			spinnerExtractor = (Spinner)findViewById(R.id.NewClaimCurrencySpinner);
+			spinnerExtractor.setSelection(editableClaim.getCurrencySpinnerID());
+			
+			claimController.resetClaimToEdit();
+			claimController.setEditStatus(true);
+			
+			Button button = (Button) findViewById(R.id.NewClaimAddButton);
+			button.setText("Edit Claim");
+
+			}
+		
 	}
 
 	@Override
@@ -45,6 +108,8 @@ public class NewClaimActivity extends Activity {
 			String fd, fm, fy, fromDate;
 			String td, tm, ty, toDate;
 			String currency;
+			int currencySpinnerID;
+			
 			
 			TextView dataExtractor;
 			Spinner spinnerExtractor;
@@ -75,6 +140,8 @@ public class NewClaimActivity extends Activity {
 			
 			spinnerExtractor = (Spinner)findViewById(R.id.NewClaimCurrencySpinner);
 			currency = spinnerExtractor.getSelectedItem().toString();
+			currencySpinnerID = spinnerExtractor.getSelectedItemPosition();
+			
 			
 			
 			if ((claim.isEmpty()) || (claimDescription.isEmpty()) || (fd.isEmpty()) || (fm.isEmpty()) || (fy.isEmpty())  || (td.isEmpty()) || (tm.isEmpty()) || (ty.isEmpty()))
@@ -85,10 +152,16 @@ public class NewClaimActivity extends Activity {
 				}
 			else
 			{
-				Claim newClaim = new Claim(claim, claimDescription, fromDate, toDate, currency);
+				Claim newClaim = new Claim(claim, claimDescription, fromDate, toDate, currency, currencySpinnerID);
 				ClaimController claimController = new ClaimController();
 				
-				claimController.addClaim(newClaim);
+				if (claimController.getEditStatus() == false){
+					claimController.addClaim(newClaim);
+				}
+				else
+				{
+					claimController.editClaim(newClaim);
+				}
 				
 				//MainActivity.claimList.addClaim(newClaim);
 

@@ -11,6 +11,7 @@ public class Claim {
 	protected String endDate;
 	
 	protected String currency;
+	protected int currencySpinnerPosition;
 	protected double totalAmount;
 	
 	protected String claimStatus;
@@ -26,7 +27,7 @@ public class Claim {
 	 * @param end = End Date
 	 * @param currencyType = Currency Type for Claim
 	 */
-	public Claim(String name, String description, String start, String end, String currencyType) {
+	public Claim(String name, String description, String start, String end, String currencyType, int currencySpinnerID) {
 		this.claimName = name;
 		this.claimDescription = description;
 		this.startDate = start;
@@ -35,6 +36,7 @@ public class Claim {
 		this.totalAmount = 0;
 		this.claimStatus = "Unsubmitted";
 		this.expenseList = new ExpenseList();
+		this.currencySpinnerPosition = currencySpinnerID;
 	}
 	
 	
@@ -46,12 +48,13 @@ public class Claim {
 	 * @param end = End Date
 	 * @param currencyType = Currency Type for Claim
 	 */
-	public void editClaim(String name, String description, String start, String end, String currencyType){
+	public void editClaim(String name, String description, String start, String end, String currencyType, int currencySpinnerID){
 		this.claimName = name;
 		this.claimDescription = description;
 		this.startDate = start;
 		this.endDate = end;
 		this.currency = currencyType;
+		this.currencySpinnerPosition = currencySpinnerID;
 	}
 	
 	/**
@@ -84,6 +87,26 @@ public class Claim {
 		return this.claimName;
 	}
 	
+	
+	public String getDescription(){
+		return claimDescription;
+	}
+	
+	public String getStartDate(){
+		return startDate;
+	}
+	
+	public String getEndDate(){
+		return endDate;
+	}
+	
+	public String getcurrencyType(){
+		return currency;
+	}
+	
+	public int getCurrencySpinnerID(){
+		return currencySpinnerPosition;
+	}
 
 	/**
 	 * This gets all the expenses associated with a claim

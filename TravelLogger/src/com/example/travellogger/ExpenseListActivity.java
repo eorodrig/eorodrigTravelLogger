@@ -27,15 +27,11 @@ public class ExpenseListActivity extends Activity {
 		setContentView(R.layout.activity_expense_list);
 		
 		ListView listView = (ListView)findViewById(R.id.ExpenseListView);
-		//ClaimController claimController = new ClaimController();
-	//	int currentClaimIndex = claimController.getIndexOfCurrentClaim();
-		//final Claim currentClaim = ClaimController.getClaimList().getClaim(currentClaimIndex);
-	
-//		final ArrayList<Expense> expenseList = currentClaim.getExpenses().getExpenseList();
+
 		
 		final ExpenseController expenseController = new ExpenseController();
 		expenseController.setCurrentClaim();
-		ClaimController claimController = new ClaimController();
+
 		
 		final ArrayList<Expense> expenseList = ExpenseController.getExpenseList().getExpenseList();
 		
@@ -50,7 +46,7 @@ public class ExpenseListActivity extends Activity {
 			@Override
 			public void update(){
 				
-				expenseController.saveExpense();
+				expenseController.updateExpenses();
 				
 				int expenseListSize = expenseList.size();
 				int expenseListNewSize = ExpenseController.getExpenseList().getExpenseList().size();
@@ -108,9 +104,7 @@ public class ExpenseListActivity extends Activity {
 							
 							
 							expenseController.removeExpense(removedExpense);
-							//Toast.makeText(ClaimListActivity.this, "toast here", Toast.LENGTH_SHORT).show();
-							//Toast.makeText(ClaimListActivity.this, String.valueOf(finalClaimPosition), Toast.LENGTH_SHORT).show();
-							//Toast.makeText(ClaimListActivity.this, "toast end", Toast.LENGTH_SHORT).show();
+
 						}
 							
 						

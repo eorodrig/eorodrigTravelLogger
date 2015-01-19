@@ -79,16 +79,25 @@ public class ClaimListActivity extends Activity{
 					@Override
 					public void onClick(DialogInterface dialog, int which) {
 
-						
+						//view
 						if (which == 0){
-							ClaimController cc = new ClaimController();
-							cc.setIndexOfCurrentClaim(finalClaimPosition);
+
+							ClaimController claimController = new ClaimController();
+							claimController.setIndexOfCurrentClaim(finalClaimPosition);
 					   	 	Intent intent = new Intent(ClaimListActivity.this, ExpenseListActivity.class);
 					   	 	startActivity(intent);
 						}
+						//edit
 						if (which == 1){
+							ClaimController claimController = new ClaimController();
+							claimController.setIndexOfCurrentClaim(finalClaimPosition);
+							
+							claimController.setClaimToEdit(finalClaimPosition);
+					   	 	Intent intent = new Intent(ClaimListActivity.this, NewClaimActivity.class);
+					   	 	startActivity(intent);
 							
 						}
+						//delete
 						if (which == 2){
 							
 							ClaimController claimController = new ClaimController();
@@ -97,6 +106,7 @@ public class ClaimListActivity extends Activity{
 							claimController.removeClaim(removedClaim);
 
 						}
+						//submit
 						if (which == 3){
 
 
