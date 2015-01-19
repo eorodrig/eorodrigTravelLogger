@@ -76,22 +76,32 @@ public class NewClaimActivity extends Activity {
 			spinnerExtractor = (Spinner)findViewById(R.id.NewClaimCurrencySpinner);
 			currency = spinnerExtractor.getSelectedItem().toString();
 			
-			Claim newClaim = new Claim(claim, claimDescription, fromDate, toDate, currency);
-			MainActivity.claimList.addClaim(newClaim);
 			
-			
-			/*Testing
-			String testOutput1 = claim + " : " + claimDescription;
-			String testOutput2 = fromDate + " to "  +  toDate;
-			String testOutput3 = currency;
+			if ((claim.isEmpty()) || (claimDescription.isEmpty()) || (fd.isEmpty()) || (fm.isEmpty()) || (fy.isEmpty())  || (td.isEmpty()) || (tm.isEmpty()) || (ty.isEmpty()))
+				{ 
+					Toast toast = Toast.makeText(NewClaimActivity.this, "Complete All Fields Before Adding Claim", Toast.LENGTH_LONG);
+					toast.show();
 
-			Toast toast = Toast.makeText(NewClaimActivity.this, testOutput1 , Toast.LENGTH_SHORT);
-			toast.show();
-			toast = Toast.makeText(NewClaimActivity.this, testOutput2 , Toast.LENGTH_SHORT);
-			toast.show();
-			toast = Toast.makeText(NewClaimActivity.this, testOutput3 , Toast.LENGTH_SHORT);
-			toast.show();
-			*/
+				}
+			else
+			{
+				Claim newClaim = new Claim(claim, claimDescription, fromDate, toDate, currency);
+				ClaimController claimController = new ClaimController();
+				
+				claimController.addClaim(newClaim);
+				
+				//MainActivity.claimList.addClaim(newClaim);
+
+				Toast toast = Toast.makeText(NewClaimActivity.this, "New Claim Added", Toast.LENGTH_SHORT);
+				toast.show();
+	
+				
+				toast = Toast.makeText(NewClaimActivity.this, claimController.getClaimList().getClaims().get(0).toString(), Toast.LENGTH_SHORT);
+				toast.show();
+				
+				onBackPressed();
+			}
+			
 
 		}
 }

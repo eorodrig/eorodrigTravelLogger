@@ -12,7 +12,7 @@ public class ExpenseViewList {
 	}
 	
 	
-	public Collection<Expense> getExpenses(){
+	public ArrayList<Expense> getExpenses(){
 		return expenseList;
 	}
 	

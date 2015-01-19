@@ -1,0 +1,24 @@
+package com.example.travellogger;
+
+public class ClaimController {
+
+	private static ClaimViewList claimList = null;
+	
+	static public ClaimViewList getClaimList(){
+		
+		if (claimList == null){
+			claimList = new ClaimViewList();
+		}
+		
+		return claimList;
+		
+	}
+	
+	public void addClaim(Claim claim){
+		claimList.add(newClaim);
+	}
+	
+	
+	
+	
+}

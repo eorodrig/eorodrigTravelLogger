@@ -10,7 +10,7 @@ import android.view.View;
 
 public class MainActivity extends Activity {
 
-	public static final ClaimViewList claimList = new ClaimViewList();
+	public static final ClaimList claimList = new ClaimList();
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

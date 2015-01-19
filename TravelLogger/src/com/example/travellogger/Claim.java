@@ -80,7 +80,7 @@ public class Claim {
 	 */
 	public String toString(){
 		
-		return this.claimName + "\n" + this.claimDescription + "\n" + this.startDate + " to " + this.endDate + "\n" + "Total:" + this.currency + ":" +  this.totalAmount  ; 
+		return this.claimName + "\n" + this.claimDescription + "\n" + this.startDate + " to " + this.endDate + "\n" + "Total:" + this.totalAmount  + " " +  this.currency.substring(0, 3)  ; 
 	}
 
 

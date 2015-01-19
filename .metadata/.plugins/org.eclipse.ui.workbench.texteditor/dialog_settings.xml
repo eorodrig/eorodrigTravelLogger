@@ -2,12 +2,13 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="CancelClaimButton" key="selection"/>
+		<item value="t" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="f"/>
 			<item value="CancelClaimButton"/>
 			<item value="NewClaim"/>
 			<item value="NewExpense"/>
@@ -15,9 +16,9 @@
 			<item value="android1:textSize=&quot;20sp&quot;"/>
 			<item value="Start"/>
 			<item value="myDate"/>
-			<item value="Claim"/>
 		</list>
 		<list key="replacehistory">
+			<item value="t"/>
 			<item value="EditClaim"/>
 			<item value="EditExpense"/>
 			<item value="NewClaim"/>

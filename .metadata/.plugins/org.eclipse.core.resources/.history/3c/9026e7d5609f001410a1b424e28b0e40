@@ -1,0 +1,18 @@
+package com.example.travellogger;
+
+public class ClaimController {
+
+	private static claimList claimList = null;
+	
+	static public claimList getStudentList(){
+		
+		if (claimList == null){
+			
+		}
+		
+	}
+	
+	
+	
+	
+}

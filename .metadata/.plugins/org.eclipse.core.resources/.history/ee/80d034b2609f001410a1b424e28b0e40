@@ -1,0 +1,8 @@
+package com.example.travellogger;
+
+public class ClaimController {
+
+	private static ClaimList claimList = null;
+	
+	
+}
