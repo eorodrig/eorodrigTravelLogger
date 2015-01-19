@@ -18,11 +18,6 @@ public class ExpenseController {
 	
 
 	
-	public Expense getExpense(int index){
-		return expenseList.getExpense(index);
-	
-	}
-	
 	public void addExpense(Expense newExpense){
 		if (expenseList == null){
 			expenseList = new ExpenseList();

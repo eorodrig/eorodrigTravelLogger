@@ -57,10 +57,11 @@ public class ClaimListActivity extends Activity{
 				}
 
 				claimAdapter.notifyDataSetChanged();
-				
+				//claimList = ClaimController.getClaimList().getClaims();
 			}
 		});
 		
+		//ClaimController.getClaimList().removeAllListeners();
 		
 		listView.setOnItemLongClickListener(new OnItemLongClickListener() {
 
@@ -95,10 +96,6 @@ public class ClaimListActivity extends Activity{
 							Claim removedClaim = claimController.getClaimAtIndex(finalClaimPosition);
 							
 							claimController.removeClaim(removedClaim);
-
-						}
-						if (which == 3){
-
 
 						}
 							

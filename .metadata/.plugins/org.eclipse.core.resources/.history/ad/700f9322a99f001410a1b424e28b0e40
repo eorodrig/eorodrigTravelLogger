@@ -17,7 +17,6 @@
         <item>View</item>
         <item>Edit</item>
         <item>Delete</item>
-        <item>Submit</item>
     </string-array>
     
         <string-array name="selected_expense_list">

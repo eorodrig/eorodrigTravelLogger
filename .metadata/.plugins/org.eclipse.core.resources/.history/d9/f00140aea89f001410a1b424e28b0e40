@@ -19,7 +19,7 @@ public class ExpenseController {
 
 	
 	public Expense getExpense(int index){
-		return expenseList.getExpense(index);
+		return expenseList.get(index);
 	
 	}
 	

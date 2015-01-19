@@ -91,7 +91,7 @@ public class ExpenseListActivity extends Activity {
 				
 			   //builder.setItems(R.array.selected_item_list, new OnClickListener());
 
-				builder.setItems(R.array.selected_expense_list, new OnClickListener() {
+				builder.setItems(R.array.selected_expese_list, new OnClickListener() {
 					
 					@Override
 					public void onClick(DialogInterface dialog, int which) {
@@ -103,11 +103,10 @@ public class ExpenseListActivity extends Activity {
 						}
 						if (which == 1){
 							
-							Expense removedExpense = expenseController.getExpense(finalClaimPosition);
+							ClaimController claimController = new ClaimController();
+							Claim removedClaim = claimController.getClaimAtIndex(finalClaimPosition);
 							
-							
-							
-							expenseController.removeExpense(removedExpense);
+							claimController.removeClaim(removedClaim);
 							//Toast.makeText(ClaimListActivity.this, "toast here", Toast.LENGTH_SHORT).show();
 							//Toast.makeText(ClaimListActivity.this, String.valueOf(finalClaimPosition), Toast.LENGTH_SHORT).show();
 							//Toast.makeText(ClaimListActivity.this, "toast end", Toast.LENGTH_SHORT).show();
@@ -129,7 +128,7 @@ public class ExpenseListActivity extends Activity {
 				return false;
 			}
 		});
-	
+	*/	
 		
 	}
 

@@ -29,10 +29,6 @@ public class ExpenseList {
 		notifyListeners();
 	}
 	
-	public Expense getExpense(int index){
-		return expenseList.get(index);
-	
-	}
 	
 	public void addListener(Listener listener){
 		listeners.add(listener);

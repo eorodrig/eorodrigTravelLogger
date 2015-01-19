@@ -98,7 +98,11 @@ public class ClaimListActivity extends Activity{
 
 						}
 						if (which == 3){
-
+							
+							ClaimController claimController = new ClaimController();
+							Claim removedClaim = claimController.getClaimAtIndex(finalClaimPosition);
+							
+							claimController.removeClaim(removedClaim);
 
 						}
 							

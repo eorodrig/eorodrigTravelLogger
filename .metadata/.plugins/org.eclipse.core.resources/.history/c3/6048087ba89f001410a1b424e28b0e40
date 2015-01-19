@@ -30,7 +30,7 @@ public class ExpenseList {
 	}
 	
 	public Expense getExpense(int index){
-		return expenseList.get(index);
+		return claimList.get(index);
 	
 	}
 	

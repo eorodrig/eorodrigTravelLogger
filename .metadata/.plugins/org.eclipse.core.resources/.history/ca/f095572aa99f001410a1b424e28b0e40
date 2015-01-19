@@ -97,10 +97,6 @@ public class ClaimListActivity extends Activity{
 							claimController.removeClaim(removedClaim);
 
 						}
-						if (which == 3){
-
-
-						}
 							
 						
 					}
