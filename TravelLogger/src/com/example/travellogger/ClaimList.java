@@ -18,14 +18,27 @@ public class ClaimList {
 		return claimList;
 	}
 	
+	
 	public void addClaim(Claim newClaim){
 		claimList.add(newClaim);
 		notifyListeners();
+		
 	}
 	
 	public void removeClaim(Claim claim){
 		claimList.remove(claim);
 		notifyListeners();
+	}
+
+	
+	public Claim getClaim(int index){
+		return claimList.get(index);
+	
+	}
+	
+	public void updateClaim(int index, Claim newClaim){
+		claimList.remove(index);
+		claimList.add(index, newClaim);
 	}
 	
 	public int size(){
@@ -40,10 +53,17 @@ public class ClaimList {
 		for (Listener listener: listeners){
 			listener.update();
 		}
+		
 	}
 	
-	public void removeListener(Listener listener){
+	private void removeListener(Listener listener){
 		listeners.remove(listener);
 	}
+	
+	public void removeAllListeners(){
+		listeners.clear();
+	}
+	
+	
 	
 }

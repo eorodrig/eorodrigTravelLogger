@@ -46,5 +46,12 @@ public class Expense {
 	}
 	
 	
+	public String toString(){
+		
+		return this.category + "\n" + this.description + "\n" + this.date +  "\n" + "Total: " + this.amountSpent  + " " +  this.currency.substring(0, 3)  ; 
+
+		
+	}
+	
 	
 }

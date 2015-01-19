@@ -1,0 +1,14 @@
+package com.example.travellogger;
+
+public class ExpenseController {
+
+	public static void addExpense(Expense newExpense) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	
+	
+	
+	
+}

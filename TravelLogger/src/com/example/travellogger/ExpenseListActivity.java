@@ -3,15 +3,21 @@ package com.example.travellogger;
 import java.util.ArrayList;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.DialogInterface.OnClickListener;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.AdapterView.OnItemLongClickListener;
 
 public class ExpenseListActivity extends Activity {
 
@@ -20,24 +26,110 @@ public class ExpenseListActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_expense_list);
 		
-		ArrayList<Expense> list = new ArrayList<Expense>();
-		
-		
-		//list = MainActivity
+		ListView listView = (ListView)findViewById(R.id.ExpenseListView);
+		//ClaimController claimController = new ClaimController();
+	//	int currentClaimIndex = claimController.getIndexOfCurrentClaim();
+		//final Claim currentClaim = ClaimController.getClaimList().getClaim(currentClaimIndex);
 	
+//		final ArrayList<Expense> expenseList = currentClaim.getExpenses().getExpenseList();
 		
-		Toast toast = Toast.makeText(ExpenseListActivity.this, String.valueOf(list.size()) , Toast.LENGTH_SHORT);
-		toast.show();
+		final ExpenseController expenseController = new ExpenseController();
+		expenseController.setCurrentClaim();
+		ClaimController claimController = new ClaimController();
 		
-		if (list.size() > 0){
-		toast = Toast.makeText(ExpenseListActivity.this, list.get(0).toString() , Toast.LENGTH_SHORT);
-		toast.show();
+		final ArrayList<Expense> expenseList = ExpenseController.getExpenseList().getExpenseList();
 		
-		ArrayAdapter<Expense> claimAdapter = new ArrayAdapter<Expense>(this, android.R.layout.simple_list_item_1, list);
+		final ArrayAdapter <Expense> expenseAdapter = new ArrayAdapter<Expense>(this, android.R.layout.simple_list_item_1, expenseList);
 		
-		ListView listView = (ListView) findViewById(R.id.ExpenseListView);
-		listView.setAdapter(claimAdapter);
-		}
+		listView.setAdapter(expenseAdapter);
+		
+		
+		//add observer
+		
+		ExpenseController.getExpenseList().addListener(new Listener(){
+			@Override
+			public void update(){
+				
+				expenseController.saveExpense();
+				
+				int expenseListSize = expenseList.size();
+				int expenseListNewSize = ExpenseController.getExpenseList().getExpenseList().size();
+					
+
+				
+				if (expenseListNewSize < expenseListSize )
+				{
+					expenseList.addAll(0, ExpenseController.getExpenseList().getExpenseList());
+					expenseList.remove(expenseListSize);
+				}
+				if (expenseListNewSize > expenseListSize )
+				{
+					expenseList.addAll(0, ExpenseController.getExpenseList().getExpenseList());
+					expenseList.remove(expenseListSize);
+				}
+
+				expenseAdapter.notifyDataSetChanged();
+				//claimList = ClaimController.getClaimList().getClaims();
+			}
+		});
+		
+		//ClaimController.getClaimList().removeAllListeners();
+
+/*
+		listView.setOnItemLongClickListener(new OnItemLongClickListener() {
+
+			
+			//http://developer.android.com/guide/topics/ui/dialogs.html  jan  18 710pm
+			@Override
+			public boolean onItemLongClick(AdapterView<?> adapterView, View view,
+					int position, long id) {
+				
+				AlertDialog.Builder builder = new AlertDialog.Builder(ExpenseListActivity.this);
+				builder.setCancelable(true);
+				final int finalClaimPosition = position;
+				//Toast.makeText(ClaimListActivity.this, claimList.get(position).toString(), Toast.LENGTH_SHORT).show();
+				
+			   //builder.setItems(R.array.selected_item_list, new OnClickListener());
+
+				builder.setItems(R.array.selected_expese_list, new OnClickListener() {
+					
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+						//Toast.makeText(ClaimListActivity.this, String.valueOf(which), Toast.LENGTH_SHORT).show();
+						
+						if (which == 0){
+					   	 	Intent intent = new Intent(ExpenseListActivity.this, NewExpenseActivity.class);
+					   	 	startActivity(intent);
+						}
+						if (which == 1){
+							
+							ClaimController claimController = new ClaimController();
+							Claim removedClaim = claimController.getClaimAtIndex(finalClaimPosition);
+							
+							claimController.removeClaim(removedClaim);
+							//Toast.makeText(ClaimListActivity.this, "toast here", Toast.LENGTH_SHORT).show();
+							//Toast.makeText(ClaimListActivity.this, String.valueOf(finalClaimPosition), Toast.LENGTH_SHORT).show();
+							//Toast.makeText(ClaimListActivity.this, "toast end", Toast.LENGTH_SHORT).show();
+						}
+							
+						
+					}
+				});
+				
+			
+				builder.show();
+				   // return builder.create();
+
+				              
+
+				
+				//Toast.makeText(ClaimListActivity.this, claimList.get(position).toString(), Toast.LENGTH_SHORT).show();
+				// TODO Auto-generated method stub
+				return false;
+			}
+		});
+	*/	
+		
 	}
 
 	@Override
@@ -59,9 +151,12 @@ public class ExpenseListActivity extends Activity {
 		return super.onOptionsItemSelected(item);
 	}
 	
-
 	
 	
+	public void onClickNewExpenseButton(View view){
+		Intent intent = new Intent(ExpenseListActivity.this, NewExpenseActivity.class);
+		startActivity(intent);
+	}
 	
 }
 

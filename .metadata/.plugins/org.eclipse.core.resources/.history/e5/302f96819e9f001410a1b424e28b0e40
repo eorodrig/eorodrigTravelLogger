@@ -1,0 +1,43 @@
+package com.example.travellogger;
+
+public class ExpenseController {
+	
+	private static ExpenseList expenseList = null;
+	
+	static public ExpenseList getExpeseList(){
+		
+		if (expenseList == null){
+			expenseList = new ExpenseList();
+		}
+		
+		
+		return expenseList;
+		
+	}
+	
+	public void setIndexOfCurrentClaim(int index){
+		expenseList = index;
+	}
+	
+	public int getIndexOfCurrentClaim(){
+		return expenseList;
+	}
+	
+	public void addClaim(Claim newClaim){
+		if (expenseList == null){
+			expenseList = new ClaimList();
+		}
+		expenseList.addClaim(newClaim);
+	}
+	
+	public void removeClaim(Claim newClaim){
+		expenseList.removeClaim(newClaim);
+		
+	}
+	
+	
+	
+	public Claim getClaimAtIndex(int index){
+		return claimList.getClaims().get(index);
+	}
+}

@@ -29,6 +29,7 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/linearLayout1"
         android:layout_alignParentBottom="true"
+        android:onClick="onClickNewExpenseButton"
         android:text="@string/new_expense_button" />
 
 </RelativeLayout>

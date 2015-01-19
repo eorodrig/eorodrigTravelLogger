@@ -96,8 +96,8 @@ public class NewClaimActivity extends Activity {
 				toast.show();
 	
 				
-				toast = Toast.makeText(NewClaimActivity.this, claimController.getClaimList().getClaims().get(0).toString(), Toast.LENGTH_SHORT);
-				toast.show();
+				//toast = Toast.makeText(NewClaimActivity.this, claimController.getClaimList().getClaims().get(0).toString(), Toast.LENGTH_SHORT);
+				//toast.show();
 				
 				onBackPressed();
 			}

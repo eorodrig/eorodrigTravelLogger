@@ -1,5 +1,7 @@
 package com.example.travellogger;
 
+import java.util.ArrayList;
+
 public class Claim {
 
 	protected String claimName;
@@ -12,6 +14,8 @@ public class Claim {
 	protected double totalAmount;
 	
 	protected String claimStatus;
+	
+	protected ExpenseList expenseList;
 	
 	/**
 	 * This is a the constructor for a claim. Every claim needs the following parameters.
@@ -30,6 +34,7 @@ public class Claim {
 		this.currency = currencyType;
 		this.totalAmount = 0;
 		this.claimStatus = "Unsubmitted";
+		this.expenseList = new ExpenseList();
 	}
 	
 	
@@ -74,13 +79,28 @@ public class Claim {
 		this.claimStatus = status;
 	}
 
+	
+	public String getName(){
+		return this.claimName;
+	}
+	
 
+	/**
+	 * This gets all the expenses associated with a claim
+	 * @return
+	 */
+	
+	public ExpenseList getExpenses(){
+		
+		return this.expenseList;
+	}
+	
 	/**
 	 * This method returns a formatted string of a claim. It is in the form required by the ViewTestList
 	 */
 	public String toString(){
 		
-		return this.claimName + "\n" + this.claimDescription + "\n" + this.startDate + " to " + this.endDate + "\n" + "Total:" + this.totalAmount  + " " +  this.currency.substring(0, 3)  ; 
+		return this.claimName + "\n" + this.claimDescription + "\n" + this.startDate + " to " + this.endDate + "\n" + "Total: " + this.totalAmount  + " " +  this.currency.substring(0, 3)  ; 
 	}
 
 
