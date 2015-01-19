@@ -52,6 +52,14 @@ public class ExpenseList {
 	public void removeAllListeners(){
 		listeners.clear();
 	}
+
+
+	public void updateClaim(int index, Expense newExpense) {
+		expenseList.remove(index);
+		expenseList.add(index, newExpense);
+		notifyListeners();
+		
+	}
 	
 	
 	

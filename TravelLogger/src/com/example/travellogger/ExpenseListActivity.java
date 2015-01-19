@@ -82,7 +82,7 @@ public class ExpenseListActivity extends Activity {
 				
 				AlertDialog.Builder builder = new AlertDialog.Builder(ExpenseListActivity.this);
 				builder.setCancelable(true);
-				final int finalClaimPosition = position;
+				final int finalExpensePosition = position;
 				//Toast.makeText(ClaimListActivity.this, claimList.get(position).toString(), Toast.LENGTH_SHORT).show();
 				
 			   //builder.setItems(R.array.selected_item_list, new OnClickListener());
@@ -92,14 +92,21 @@ public class ExpenseListActivity extends Activity {
 					@Override
 					public void onClick(DialogInterface dialog, int which) {
 						//Toast.makeText(ClaimListActivity.this, String.valueOf(which), Toast.LENGTH_SHORT).show();
-						
+						//edit
 						if (which == 0){
+							ExpenseController expenseController = new ExpenseController();
+							expenseController.setIndexOfCurrentExpense(finalExpensePosition);
+							
+							expenseController.setExpenseToEdit();
+							
+							//Toast.makeText(ExpenseListActivity.this, , Toast.LENGTH_SHORT).show();
 					   	 	Intent intent = new Intent(ExpenseListActivity.this, NewExpenseActivity.class);
 					   	 	startActivity(intent);
 						}
+						//delete
 						if (which == 1){
 							
-							Expense removedExpense = expenseController.getExpense(finalClaimPosition);
+							Expense removedExpense = expenseController.getExpense(finalExpensePosition);
 							
 							
 							

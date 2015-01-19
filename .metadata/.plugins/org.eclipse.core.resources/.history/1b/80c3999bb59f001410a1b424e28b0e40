@@ -1,0 +1,84 @@
+package com.example.travellogger;
+
+public class ExpenseController {
+
+	private static ExpenseList expenseList = null;
+	private Claim currentClaim;
+	private static int expenseListNumber = 0;
+	
+	static public ExpenseList getExpenseList(){
+		
+		if (expenseList == null){
+			expenseList = new ExpenseList();
+		}
+		
+		
+		return expenseList;
+		
+	}
+	
+
+	
+	public Expense getExpense(int index){
+		return expenseList.getExpense(index);
+	
+	}
+	
+	public void addExpense(Expense newExpense){
+		if (expenseList == null){
+			expenseList = new ExpenseList();
+		}
+	
+		 expenseList.addExpense(newExpense);
+	}
+	
+	public void removeExpense(Expense expense){
+		expenseList.removeExpense(expense);
+		
+	}
+	
+	public void setCurrentClaim(){
+		ClaimController claimController = new ClaimController();
+		int currentClaimIndex = claimController.getIndexOfCurrentClaim();
+		currentClaim = ClaimController.getClaimList().getClaim(currentClaimIndex);
+
+		expenseList = currentClaim.getExpenses();
+		
+
+	}
+
+
+
+	public void updateExpenses() {
+		ClaimController claimController = new ClaimController();
+		claimController.updateClaims(currentClaim);
+
+		
+	}
+
+
+
+	public void setIndexOfCurrentClaim(int finalClaimPosition) {
+		this.expenseListNumber = finalClaimPosition;
+		
+	}
+	
+	
+	/*
+	public Claim getClaimAtIndex(int index){
+		return claimList.getClaims().get(index);
+	}
+	
+		/*
+	public void setIndexOfCurrentClaim(int index){
+		claimListNumber = index;
+	}
+	
+	public int getIndexOfCurrentClaim(){
+		return claimListNumber;
+	}
+	
+*/
+
+	
+}

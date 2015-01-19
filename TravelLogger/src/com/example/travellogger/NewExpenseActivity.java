@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -15,6 +16,61 @@ public class NewExpenseActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_new_expense);
+		
+		ExpenseController expenseController = new ExpenseController();
+		
+		//if not null, we edit
+		if (expenseController.getExpenseToEdit() ==null){
+			expenseController.setEditStatus(false);
+			
+			Button button = (Button) findViewById(R.id.AddExpenseButton);			
+			button.setText("Add New Expense");
+		}
+		
+		else
+			{
+			Expense editableExpense = expenseController.getExpenseToEdit();
+			TextView dataExtractor;
+			Spinner spinnerExtractor;
+			
+		
+			
+			spinnerExtractor = (Spinner)findViewById(R.id.NewExpenseTypeSpinner);
+			spinnerExtractor.setSelection(editableExpense.getCategoryID());
+			
+			dataExtractor = (TextView)findViewById(R.id.NewExpenseDescriptionText);
+			dataExtractor.setText(editableExpense.getDescription());
+			
+			
+			String day, month, year;
+			
+			day = editableExpense.getDate().substring(0, 2);
+			month = editableExpense.getDate().substring(3, 5);
+			year = editableExpense.getDate().substring(6, 10);			
+			
+			dataExtractor = (TextView)findViewById(R.id.NewExpenseDayText);
+			dataExtractor.setText(day);
+			dataExtractor = (TextView)findViewById(R.id.NewExpenseMonthText);
+			dataExtractor.setText(month);
+			dataExtractor = (TextView)findViewById(R.id.NewExpenseYearText);
+			dataExtractor.setText(year);
+			
+			
+			spinnerExtractor = (Spinner)findViewById(R.id.NewExpenseCurrencySpinner);
+			spinnerExtractor.setSelection(editableExpense.getCurrencyID());
+			
+			dataExtractor = (TextView)findViewById(R.id.NewExpenseAmountText);
+			dataExtractor.setText(editableExpense.getAmount());
+			
+			
+			expenseController.resetExpenseToEdit();;
+			expenseController.setEditStatus(true);
+			
+			Button button = (Button) findViewById(R.id.AddExpenseButton);			
+			button.setText("Edit Expense");
+
+			}
+
 	}
 
 	@Override
@@ -41,6 +97,8 @@ public class NewExpenseActivity extends Activity {
 		String expenseType, expenseDescription;
 		String ed, em, ey, expenseDate;
 		String currency, amount;
+		
+		int currencyID, categoryID;
 
 		
 		TextView dataExtractor;
@@ -48,6 +106,7 @@ public class NewExpenseActivity extends Activity {
 		
 		spinnerExtractor = (Spinner)findViewById(R.id.NewExpenseTypeSpinner);
 		expenseType = spinnerExtractor.getSelectedItem().toString();
+		categoryID = spinnerExtractor.getSelectedItemPosition();
 	
 		
 		dataExtractor = (TextView)findViewById(R.id.NewExpenseDescriptionText);
@@ -66,6 +125,7 @@ public class NewExpenseActivity extends Activity {
 		amount = dataExtractor.getText().toString();
 		spinnerExtractor = (Spinner)findViewById(R.id.NewExpenseCurrencySpinner);
 		currency = spinnerExtractor.getSelectedItem().toString();
+		currencyID = spinnerExtractor.getSelectedItemPosition();
 		
 		
 		if (((expenseDescription.isEmpty()) || (ed.isEmpty()) || (em.isEmpty()) || (ey.isEmpty())  ||(amount.isEmpty())))
@@ -76,10 +136,20 @@ public class NewExpenseActivity extends Activity {
 			}
 		else
 		{
-			Expense newExpense = new Expense(expenseDate,expenseType, expenseDescription, Double.valueOf(amount), currency);
+			//Expense newExpense = new Expense(expenseDate,expenseType, expenseDescription, Double.valueOf(amount), currency, categoryID, categoryID);
 			
+			Expense newExpense = new Expense(expenseDate,expenseType, expenseDescription, Double.valueOf(amount), currency, currencyID, categoryID);
 			ExpenseController expenseController = new ExpenseController();
-			expenseController.addExpense(newExpense);
+			
+			if (expenseController.getEditStatus() == false){
+				expenseController.addExpense(newExpense);
+			}
+			else
+			{
+				expenseController.editExpense(newExpense);
+			}
+			
+
 			
 			//MainActivity.claimList.addClaim(newClaim);
 

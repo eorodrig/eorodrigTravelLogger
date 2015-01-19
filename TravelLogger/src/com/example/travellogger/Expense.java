@@ -10,6 +10,8 @@ public class Expense {
 	protected double amountSpent;
 	protected String currency;
 	
+	protected int currencySpinnerID, categorySpinnerID;
+	
 	
 	/**
 	 * This is a constructor for an expense item. Every expense needs the following information.
@@ -19,12 +21,14 @@ public class Expense {
 	 * @param amountSpent	= Expense Amount
 	 * @param currency		= Currency Type
 	 */
-	public Expense(String expenseDate, String category, String description, double amountSpent, String currency){
+	public Expense(String expenseDate, String category, String description, double amountSpent, String currency, int currencyID, int categoryID){
 		this.date = expenseDate;
 		this.category = category;
 		this.description = description;
 		this.amountSpent = amountSpent;
 		this.currency = currency;
+		this.categorySpinnerID = categoryID;
+		this.currencySpinnerID = currencyID;
 	}
 	
 	
@@ -37,12 +41,14 @@ public class Expense {
 	 * @param amountSpent	= Expense Amount
 	 * @param currency		= Currency Type
 	 */
-	public void updateExpense(String expenseDate, String category, String description, double amountSpent, String currency){
+	public void updateExpense(String expenseDate, String category, String description, double amountSpent, String currency, int currencyID, int categoryID){
 		this.date = expenseDate;
 		this.category = category;
 		this.description = description;
 		this.amountSpent = amountSpent;
 		this.currency = currency;
+		this.categorySpinnerID = categoryID;
+		this.currencySpinnerID = currencyID;
 	}
 	
 	
@@ -53,5 +59,24 @@ public class Expense {
 		
 	}
 	
+	public String getDate(){
+		return date;
+	}
+	
+	public int getCategoryID(){
+		return categorySpinnerID;
+	}
+	
+	public String getDescription(){
+		return description;
+	}
+	
+	public String getAmount(){
+		return String.valueOf(amountSpent);
+	}
+	
+	public int getCurrencyID(){
+		return currencySpinnerID;
+	}
 	
 }
