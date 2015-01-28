@@ -10,6 +10,8 @@ public class Expense {
 	protected double amountSpent;
 	protected String currency;
 	
+	
+	
 	protected int currencySpinnerID, categorySpinnerID;
 	
 	

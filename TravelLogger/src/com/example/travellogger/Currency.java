@@ -1,0 +1,121 @@
+package com.example.travellogger;
+
+import java.text.DecimalFormat;
+
+
+/**
+ * This class holds a currency object and has all the methods associated with currency
+ * @author eorod_000
+ *
+ */
+public class Currency {
+
+	protected double eurCurrency = 0;
+	protected double usdCurrency = 0;
+	protected double cadCurrency = 0;
+	protected double gbpCurrency = 0;
+	protected double rubCurrency = 0;
+	protected double cnyCurrency = 0;
+
+
+	public double getEurCurrency() {
+		return eurCurrency;
+	}
+
+
+	public double getUsdCurrency() {
+		return usdCurrency;
+	}
+
+
+	public double getCadCurrency() {
+		return cadCurrency;
+	}
+
+
+	public double getGbpCurrency() {
+		return gbpCurrency;
+	}
+
+
+	public double getRubCurrency() {
+		return rubCurrency;
+	}
+
+
+	public double getCnyCurrency() {
+		return cnyCurrency;
+	}
+
+	
+	/**
+	 * This will add a selected amount of a selected currency to the object
+	 * @param amount =amount
+	 * @param currency	= type of currency (looks for 3 digit code)
+	 */
+	public void setCurrency(double amount, String currency){
+		if (currency.toLowerCase().contains("eur"))
+		{
+			this.eurCurrency += amount;
+		}
+		else if (currency.toLowerCase().contains("usd"))
+		{
+			this.usdCurrency += amount;
+		}
+		else if (currency.toLowerCase().contains("cad"))
+		{
+			this.cadCurrency += amount;
+		}
+		else if (currency.toLowerCase().contains("gbp"))
+		{
+			this.gbpCurrency += amount;
+		}
+		else if (currency.toLowerCase().contains("rub"))
+		{
+			this.rubCurrency += amount;
+		}
+		else if (currency.toLowerCase().contains("cny"))
+		{
+			this.cnyCurrency += amount;
+		}
+		
+	}
+	
+	
+	
+	/**
+	 * This will return a formatted string containing all of the currencies which are not 0.
+	 * Will return a default value of 0 if all of the defined values are 0.
+	 */
+	public String toString(){
+		
+		String currencyString = "";
+		DecimalFormat decimalFormat = new DecimalFormat("#.##");
+		
+
+		if (this.eurCurrency >0)
+			currencyString = currencyString +  "\n" + "Total: " + decimalFormat.format(this.eurCurrency)  + " EUR";
+		if (this.usdCurrency >0)
+			currencyString = currencyString +  "\n" + "Total: " + decimalFormat.format(this.usdCurrency)  + " USD";
+		if (this.cadCurrency >0)
+			currencyString = currencyString +  "\n" + "Total: " + decimalFormat.format(this.cadCurrency)  + " CAD";
+		if (this.gbpCurrency >0)
+			currencyString = currencyString +  "\n" + "Total: " + decimalFormat.format(this.gbpCurrency)  + " GBP";
+		if (this.rubCurrency >0)
+			currencyString = currencyString +  "\n" + "Total: " + decimalFormat.format(this.rubCurrency)  + " RUB";
+		if (this.cnyCurrency >0)
+			currencyString = currencyString +  "\n" + "Total: " + decimalFormat.format(this.cnyCurrency)  + " CNY";
+		
+		if (currencyString.equals(""))
+			currencyString =  "\n" + "Total: 0.00 USD";
+			
+		
+		
+		
+		
+		
+		return currencyString;
+		
+	}
+	
+}

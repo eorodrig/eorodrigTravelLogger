@@ -1,0 +1,56 @@
+package com.example.travellogger;
+
+
+/**
+ * This class holds a currency object and has all the methods associated with currency
+ * @author eorod_000
+ *
+ */
+public class Currency {
+
+	protected double eurCurrency = 0;
+	protected double usCurrency = 0;
+	protected double cadCurrency = 0;
+	protected double gbpCurrency = 0;
+	protected double rubCurrency = 0;
+	protected double cnyCurrency = 0;
+
+
+	public double getEurCurrency() {
+		return eurCurrency;
+	}
+
+
+	public double getUsCurrency() {
+		return usCurrency;
+	}
+
+
+	public double getCadCurrency() {
+		return cadCurrency;
+	}
+
+
+	public double getGbpCurrency() {
+		return gbpCurrency;
+	}
+
+
+	public double getRubCurrency() {
+		return rubCurrency;
+	}
+
+
+	public double getCnyCurrency() {
+		return cnyCurrency;
+	}
+
+	
+	public void setCurrency(double amount, String currency){
+		if (currency.toLowerCase().contains("eur"))
+		{
+			this.eurCurrency =+ amount;
+		}
+		
+	}
+}

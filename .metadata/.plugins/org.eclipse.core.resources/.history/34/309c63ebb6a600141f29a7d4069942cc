@@ -1,0 +1,7 @@
+package com.example.travellogger;
+
+public class Currency {
+
+	protected double euroCurrency = 0;
+	
+}

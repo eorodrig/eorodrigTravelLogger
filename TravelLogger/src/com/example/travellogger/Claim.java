@@ -1,6 +1,7 @@
 package com.example.travellogger;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 public class Claim {
 
@@ -10,11 +11,17 @@ public class Claim {
 	protected String startDate;
 	protected String endDate;
 	
+	protected Date start;
+	protected Date end;
+	
+	
 	protected String currency;
 	protected int currencySpinnerPosition;
+	
 	protected double totalAmount;
 	
 	protected String claimStatus;
+	
 	
 	protected ExpenseList expenseList;
 	
