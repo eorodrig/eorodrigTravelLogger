@@ -6,6 +6,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -17,7 +18,23 @@ public class NewClaimActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_new_claim);
 		
+		
+		DatePicker fdp = (DatePicker) findViewById(R.id.fromDatePicker);
+		DatePicker tdp = (DatePicker) findViewById(R.id.toDatePicker);
+		
+		fdp.setCalendarViewShown(false);
+		//fdp.setSpinnersShown(false);
+		//fdp.setScaleX(Float.valueOf("0.5"));
+		//fdp.setScaleY(Float.valueOf("0.5"));
+		//dp.setScaleX(500);
+		//dp.setScaleY(500);
+		
+		tdp.setCalendarViewShown(false);
+
+		
+		//dp.setScaleX(500);
 		ClaimController claimController = new ClaimController();
+		
 		
 		//if not null, we edit
 		if (claimController.getClaimToEdit() ==null){
@@ -48,6 +65,7 @@ public class NewClaimActivity extends Activity {
 			month = editableClaim.getStartDate().substring(3, 5);
 			year = editableClaim.getStartDate().substring(6, 10);
 			
+			/*
 			dataExtractor = (TextView)findViewById(R.id.NewClaimFromDayText);
 			dataExtractor.setText(day);
 			dataExtractor = (TextView)findViewById(R.id.NewClaimFromMonthText);
@@ -66,9 +84,9 @@ public class NewClaimActivity extends Activity {
 			dataExtractor = (TextView)findViewById(R.id.NewClaimToYearText);
 			dataExtractor.setText(year);
 			
-			
-			spinnerExtractor = (Spinner)findViewById(R.id.NewClaimCurrencySpinner);
-			spinnerExtractor.setSelection(editableClaim.getCurrencySpinnerID());
+			*/
+			//spinnerExtractor = (Spinner)findViewById(R.id.NewClaimCurrencySpinner);
+			//spinnerExtractor.setSelection(editableClaim.getCurrencySpinnerID());
 			
 			claimController.resetClaimToEdit();
 			claimController.setEditStatus(true);
@@ -120,8 +138,8 @@ public class NewClaimActivity extends Activity {
 			
 			dataExtractor = (TextView)findViewById(R.id.NewClaimDescriptionText);
 			claimDescription = dataExtractor.getText().toString();
-			
-			
+		
+			/*
 			dataExtractor = (TextView)findViewById(R.id.NewClaimFromDayText);
 			fd = dataExtractor.getText().toString();
 			dataExtractor = (TextView)findViewById(R.id.NewClaimFromMonthText);
@@ -138,18 +156,20 @@ public class NewClaimActivity extends Activity {
 			ty = dataExtractor.getText().toString();
 			toDate = td + "/" + tm +"/" + ty;
 			
+			
 			spinnerExtractor = (Spinner)findViewById(R.id.NewClaimCurrencySpinner);
 			currency = spinnerExtractor.getSelectedItem().toString();
 			currencySpinnerID = spinnerExtractor.getSelectedItemPosition();
+			*/
 			
-			
-			
+			/*
 			if ((claim.isEmpty()) || (claimDescription.isEmpty()) || (fd.isEmpty()) || (fm.isEmpty()) || (fy.isEmpty())  || (td.isEmpty()) || (tm.isEmpty()) || (ty.isEmpty()))
 				{ 
 					Toast toast = Toast.makeText(NewClaimActivity.this, "Complete All Fields Before Adding Claim", Toast.LENGTH_LONG);
 					toast.show();
 
 				}
+			
 			else
 			{
 				Claim newClaim = new Claim(claim, claimDescription, fromDate, toDate, currency, currencySpinnerID);
@@ -172,9 +192,10 @@ public class NewClaimActivity extends Activity {
 				//toast = Toast.makeText(NewClaimActivity.this, claimController.getClaimList().getClaims().get(0).toString(), Toast.LENGTH_SHORT);
 				//toast.show();
 				
-				onBackPressed();
+				finish();
+				//onBackPressed();
 			}
-			
+			*/
 
 		}
 }

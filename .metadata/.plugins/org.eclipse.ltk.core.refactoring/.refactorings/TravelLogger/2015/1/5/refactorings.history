@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename field &apos;datePicker1&apos; in &apos;com.example.travellogger.R.id&apos; to &apos;fromDatePicker&apos;&#x0D;&#x0A;- Original project: &apos;TravelLogger&apos;&#x0D;&#x0A;- Original element: &apos;com.example.travellogger.R.id.datePicker1&apos;&#x0D;&#x0A;- Renamed element: &apos;com.example.travellogger.R.id.fromDatePicker&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" delegate="false" deprecate="true" description="Rename field &apos;datePicker1&apos;" flags="589830" getter="false" id="org.eclipse.jdt.ui.rename.field" input="/gen&lt;com.example.travellogger{R.java[R[id^datePicker1" name="fromDatePicker" references="true" setter="false" stamp="1422743836176" textual="false" version="1.0"/>
+</session>

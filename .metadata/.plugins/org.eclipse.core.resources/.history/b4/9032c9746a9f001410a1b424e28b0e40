@@ -1,5 +1,0 @@
-package com.example.travellogger;
-
-public interface Listener {
-
-	public void update()

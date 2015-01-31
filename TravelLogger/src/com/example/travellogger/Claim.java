@@ -13,17 +13,14 @@ public class Claim {
 	
 	protected Date start;
 	protected Date end;
-	
-	
-	protected String currency;
-	protected int currencySpinnerPosition;
-	
+
 	protected double totalAmount;
 	
 	protected String claimStatus;
 	
 	
 	protected ExpenseList expenseList;
+	
 	
 	/**
 	 * This is a the constructor for a claim. Every claim needs the following parameters.
@@ -34,36 +31,18 @@ public class Claim {
 	 * @param end = End Date
 	 * @param currencyType = Currency Type for Claim
 	 */
-	public Claim(String name, String description, String start, String end, String currencyType, int currencySpinnerID) {
+	public Claim(String name, String description, Date start, Date end) {
 		this.claimName = name;
 		this.claimDescription = description;
-		this.startDate = start;
-		this.endDate = end;
-		this.currency = currencyType;
+		this.start = start;
+		this.end = end;
 		this.totalAmount = 0;
-		this.claimStatus = "Unsubmitted";
+		this.claimStatus = "In Progress";
 		this.expenseList = new ExpenseList();
-		this.currencySpinnerPosition = currencySpinnerID;
+
 	}
 	
-	
-	/**
-	 * This method updates the Claim based on the user input
-	 * @param name = Claim Name
-	 * @param description = claim description
-	 * @param start = Start Date
-	 * @param end = End Date
-	 * @param currencyType = Currency Type for Claim
-	 */
-	public void editClaim(String name, String description, String start, String end, String currencyType, int currencySpinnerID){
-		this.claimName = name;
-		this.claimDescription = description;
-		this.startDate = start;
-		this.endDate = end;
-		this.currency = currencyType;
-		this.currencySpinnerPosition = currencySpinnerID;
-	}
-	
+		
 	/**
 	 * This updates the claim amount
 	 * @param newAmount = the new amount for the claim
@@ -90,30 +69,62 @@ public class Claim {
 	}
 
 	
+	/*
+	 * Editting claim methods
+	 */
+	
+	/**
+	 * This is is a master edit claim method. it updates a claim
+	 * We also init the claim amount to 0.
+	 * @param name = Claim Name
+	 * @param description = claim description
+	 * @param start = Start Date
+	 * @param end = End Date
+	 * @param currencyType = Currency Type for Claim
+	 */
+	public void editClaim(String name, String description, Date start, Date end) {
+		this.claimName = name;
+		this.claimDescription = description;
+		this.start = start;
+		this.end = end;
+
+	}
+	
+	/**
+	 * This gets the name of the claim
+	 * @return
+	 */
 	public String getName(){
 		return this.claimName;
 	}
 	
 	
+	/**
+	 * This gets the description of the claim
+	 * @return
+	 */
 	public String getDescription(){
 		return claimDescription;
 	}
 	
-	public String getStartDate(){
-		return startDate;
+	
+	/**
+	 * This gets the start date for the claim
+	 * @return
+	 */
+	public Date getStartDate(){
+		return start;
 	}
 	
-	public String getEndDate(){
-		return endDate;
-	}
 	
-	public String getcurrencyType(){
-		return currency;
+	/**
+	 * This gets the end date for the claim
+	 * @return
+	 */
+	public Date getEndDate(){
+		return end;
 	}
-	
-	public int getCurrencySpinnerID(){
-		return currencySpinnerPosition;
-	}
+
 
 	/**
 	 * This gets all the expenses associated with a claim
@@ -125,12 +136,17 @@ public class Claim {
 		return this.expenseList;
 	}
 	
+	
+	/*
+	 * This is needed for the listView
+	 * 
+	 */
 	/**
 	 * This method returns a formatted string of a claim. It is in the form required by the ViewTestList
 	 */
 	public String toString(){
 		
-		return this.claimName + "\n" + this.claimDescription + "\n" + this.startDate + " to " + this.endDate + "\n" + "Total: " + this.totalAmount  + " " +  this.currency.substring(0, 3)  ; 
+		return this.claimName + "\n" + this.claimDescription + "\n" + this.startDate + " to " + this.endDate + "\n" + "Total: " + this.totalAmount   ; 
 	}
 
 

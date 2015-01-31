@@ -1,9 +1,0 @@
-package com.example.travellogger;
-
-public class EmptyClaimExeption extends Exception {
-
-	public EmptyClaimExeption(){
-		
-	}
-	
-}
