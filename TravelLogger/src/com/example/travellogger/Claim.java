@@ -3,6 +3,8 @@ package com.example.travellogger;
 import java.util.ArrayList;
 import java.util.Date;
 
+import android.text.format.DateFormat;
+
 public class Claim {
 
 	protected String claimName;
@@ -145,6 +147,12 @@ public class Claim {
 	 * This method returns a formatted string of a claim. It is in the form required by the ViewTestList
 	 */
 	public String toString(){
+		
+		DateFormat dateFormat = new DateFormat();
+		
+		
+		this.startDate = dateFormat.format("dd-MMM-yyyy", this.start).toString();
+		this.endDate = dateFormat.format("dd-MMM-yyyy", this.end).toString();
 		
 		return this.claimName + "\n" + this.claimDescription + "\n" + this.startDate + " to " + this.endDate + "\n" + "Total: " + this.totalAmount   ; 
 	}

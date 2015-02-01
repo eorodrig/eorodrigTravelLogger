@@ -1,5 +1,7 @@
 package com.example.travellogger;
 
+import java.util.Date;
+
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -18,85 +20,85 @@ public class NewClaimActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_new_claim);
 		
-		
+		/*This inits the Date pickers*/
 		DatePicker fdp = (DatePicker) findViewById(R.id.fromDatePicker);
 		DatePicker tdp = (DatePicker) findViewById(R.id.toDatePicker);
-		
 		fdp.setCalendarViewShown(false);
-		//fdp.setSpinnersShown(false);
-		//fdp.setScaleX(Float.valueOf("0.5"));
-		//fdp.setScaleY(Float.valueOf("0.5"));
-		//dp.setScaleX(500);
-		//dp.setScaleY(500);
-		
 		tdp.setCalendarViewShown(false);
-
 		
-		//dp.setScaleX(500);
+	}
+	
+	
+
+	@Override
+	protected void onResume(){
+		super.onResume();
+		/*Claim controller for the app*/
 		ClaimController claimController = new ClaimController();
 		
 		
 		//if not null, we edit
 		if (claimController.getClaimToEdit() ==null){
-			claimController.setEditStatus(false);
-			
-			Button button = (Button) findViewById(R.id.NewClaimAddButton);
-			button.setText("Add New Claim");
+			this.initNewClaim(claimController);
 		}
 		else
 			{
-			Claim editableClaim = claimController.getClaimToEdit();
-			TextView dataExtractor;
-			Spinner spinnerExtractor;
+			this.initEditClaim(claimController);
 			
-		
-			
-			dataExtractor = (TextView)findViewById(R.id.NewClaimNameText);
-			dataExtractor.setText(editableClaim.getName());
-			
-			dataExtractor = (TextView)findViewById(R.id.NewClaimDescriptionText);
-			dataExtractor.setText(editableClaim.getDescription());
-			
-			
-			
-			String day, month, year;
-			
-			day = editableClaim.getStartDate().substring(0, 2);
-			month = editableClaim.getStartDate().substring(3, 5);
-			year = editableClaim.getStartDate().substring(6, 10);
-			
-			/*
-			dataExtractor = (TextView)findViewById(R.id.NewClaimFromDayText);
-			dataExtractor.setText(day);
-			dataExtractor = (TextView)findViewById(R.id.NewClaimFromMonthText);
-			dataExtractor.setText(month);
-			dataExtractor = (TextView)findViewById(R.id.NewClaimFromYearText);
-			dataExtractor.setText(year);
-			
-			day = editableClaim.getEndDate().substring(0, 2);
-			month = editableClaim.getEndDate().substring(3, 5);
-			year = editableClaim.getEndDate().substring(6, 10);
-			
-			dataExtractor = (TextView)findViewById(R.id.NewClaimToDayText);
-			dataExtractor.setText(day);
-			dataExtractor = (TextView)findViewById(R.id.NewClaimToMonthText);
-			dataExtractor.setText(month);
-			dataExtractor = (TextView)findViewById(R.id.NewClaimToYearText);
-			dataExtractor.setText(year);
-			
-			*/
-			//spinnerExtractor = (Spinner)findViewById(R.id.NewClaimCurrencySpinner);
-			//spinnerExtractor.setSelection(editableClaim.getCurrencySpinnerID());
-			
-			claimController.resetClaimToEdit();
-			claimController.setEditStatus(true);
-			
-			Button button = (Button) findViewById(R.id.NewClaimAddButton);
-			button.setText("Edit Claim");
 
 			}
 		
 	}
+	
+
+	/*This will make format the page so that it looks like a new claim*/
+	private void initNewClaim(ClaimController claimController){
+		claimController.setEditStatus(false);
+		
+		Button button = (Button) findViewById(R.id.NewClaimAddButton);
+		button.setText("Add New Claim");
+	}
+	
+
+	/*This will extract the claim information and place it their fields*/
+	private void initEditClaim(ClaimController claimController) {
+		
+		/*Extracts the claim we need to edit*/
+		Claim editableClaim = claimController.getClaimToEdit();
+		
+		/*These Things we need to edit*/
+		TextView dataExtractor;
+		DatePicker datePicker;
+		
+		
+		/*We set the claim name*/
+		dataExtractor = (TextView)findViewById(R.id.NewClaimNameText);
+		dataExtractor.setText(editableClaim.getName());
+		
+		/*we set the claim description*/
+		dataExtractor = (TextView)findViewById(R.id.NewClaimDescriptionText);
+		dataExtractor.setText(editableClaim.getDescription());
+		
+		/*we set the claim from date*/
+		datePicker = (DatePicker) findViewById(R.id.fromDatePicker);
+		datePicker.init(editableClaim.getStartDate().getYear()+1900, editableClaim.getStartDate().getMonth(), editableClaim.getStartDate().getDate(), null);
+		
+		/*we set the claim from date*/
+		datePicker = (DatePicker) findViewById(R.id.toDatePicker);
+		datePicker.init(editableClaim.getEndDate().getYear()+1900, editableClaim.getEndDate().getMonth(), editableClaim.getEndDate().getDate(), null);
+		
+		
+		/*resets the edit parameter*/
+		claimController.resetClaimToEdit();
+		
+		/*Sets the state of the claim to edit*/
+		claimController.setEditStatus(true);
+		
+		Button button = (Button) findViewById(R.id.NewClaimAddButton);
+		button.setText("Edit Claim");
+	}
+
+
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -122,80 +124,67 @@ public class NewClaimActivity extends Activity {
 	
 	public void onClickAddClaimButton(View view){
 		
+		
+			
 			String claim, claimDescription;
-			String fd, fm, fy, fromDate;
-			String td, tm, ty, toDate;
-			String currency;
-			int currencySpinnerID;
+			Date start,end;
 			
 			
 			TextView dataExtractor;
-			Spinner spinnerExtractor;
+			DatePicker dateExtractor;
+		
+			/*These will extract the data fields from the new claim/edit claim page*/
 			
+			/*extract claim name*/
 			dataExtractor = (TextView)findViewById(R.id.NewClaimNameText);
 			claim = dataExtractor.getText().toString();		
 		
-			
+			/*extract claim description*/
 			dataExtractor = (TextView)findViewById(R.id.NewClaimDescriptionText);
 			claimDescription = dataExtractor.getText().toString();
 		
-			/*
-			dataExtractor = (TextView)findViewById(R.id.NewClaimFromDayText);
-			fd = dataExtractor.getText().toString();
-			dataExtractor = (TextView)findViewById(R.id.NewClaimFromMonthText);
-			fm = dataExtractor.getText().toString();
-			dataExtractor = (TextView)findViewById(R.id.NewClaimFromYearText);
-			fy = dataExtractor.getText().toString();
-			fromDate = fd + "/" + fm +"/" + fy;
+			/*from Date*/
+			dateExtractor = (DatePicker) findViewById(R.id.fromDatePicker);
+			start = new Date(dateExtractor.getYear()-1900, dateExtractor.getMonth(), dateExtractor.getDayOfMonth());
 			
-			dataExtractor = (TextView)findViewById(R.id.NewClaimToDayText);
-			td = dataExtractor.getText().toString();
-			dataExtractor = (TextView)findViewById(R.id.NewClaimToMonthText);
-			tm = dataExtractor.getText().toString();
-			dataExtractor = (TextView)findViewById(R.id.NewClaimToYearText);
-			ty = dataExtractor.getText().toString();
-			toDate = td + "/" + tm +"/" + ty;
+			/*to Date*/
+			dateExtractor = (DatePicker) findViewById(R.id.toDatePicker);
+			end = new Date(dateExtractor.getYear()-1900, dateExtractor.getMonth(), dateExtractor.getDayOfMonth());
 			
 			
-			spinnerExtractor = (Spinner)findViewById(R.id.NewClaimCurrencySpinner);
-			currency = spinnerExtractor.getSelectedItem().toString();
-			currencySpinnerID = spinnerExtractor.getSelectedItemPosition();
-			*/
-			
-			/*
-			if ((claim.isEmpty()) || (claimDescription.isEmpty()) || (fd.isEmpty()) || (fm.isEmpty()) || (fy.isEmpty())  || (td.isEmpty()) || (tm.isEmpty()) || (ty.isEmpty()))
+			/*verify that the fields are field in*/
+			if ((claim.isEmpty()) || (claimDescription.isEmpty()) )
 				{ 
 					Toast toast = Toast.makeText(NewClaimActivity.this, "Complete All Fields Before Adding Claim", Toast.LENGTH_LONG);
 					toast.show();
 
 				}
-			
+			/*Add the claim*/
 			else
 			{
-				Claim newClaim = new Claim(claim, claimDescription, fromDate, toDate, currency, currencySpinnerID);
+				Claim newClaim = new Claim(claim, claimDescription, start, end);
 				ClaimController claimController = new ClaimController();
 				
 				if (claimController.getEditStatus() == false){
 					claimController.addClaim(newClaim);
+					Toast toast = Toast.makeText(NewClaimActivity.this, "New Claim Added", Toast.LENGTH_SHORT);
+					toast.show();
 				}
 				else
 				{
 					claimController.editClaim(newClaim);
+					Toast toast = Toast.makeText(NewClaimActivity.this, "Edited Claim", Toast.LENGTH_SHORT);
+					toast.show();
 				}
 				
-				//MainActivity.claimList.addClaim(newClaim);
-
-				Toast toast = Toast.makeText(NewClaimActivity.this, "New Claim Added", Toast.LENGTH_SHORT);
-				toast.show();
+				
+				
 	
-				
-				//toast = Toast.makeText(NewClaimActivity.this, claimController.getClaimList().getClaims().get(0).toString(), Toast.LENGTH_SHORT);
-				//toast.show();
-				
+
 				finish();
-				//onBackPressed();
+
 			}
-			*/
+		
 
 		}
 }
