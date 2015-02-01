@@ -90,4 +90,8 @@ public class Expense {
 		return currencySpinnerID;
 	}
 	
+	public String getCurrency(){
+		return currency;
+	}
+	
 }

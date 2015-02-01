@@ -7,6 +7,8 @@ public class ExpenseList {
 
 	protected ArrayList<Expense> expenseList;
 	protected ArrayList<Listener> listeners;
+
+	
 	
 	public ExpenseList(){
 		expenseList = new ArrayList<Expense>();
@@ -61,6 +63,8 @@ public class ExpenseList {
 		
 	}
 	
+
 	
+
 	
 }

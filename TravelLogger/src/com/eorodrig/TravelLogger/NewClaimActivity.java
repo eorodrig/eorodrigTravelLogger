@@ -123,8 +123,6 @@ public class NewClaimActivity extends Activity {
 	
 	public void onClickAddClaimButton(View view){
 		
-		
-			
 			String claim, claimDescription;
 			Date start,end;
 			
@@ -166,17 +164,14 @@ public class NewClaimActivity extends Activity {
 				
 				if (claimController.getEditStatus() == false){
 					claimController.addClaim(newClaim);
-					
-					if (claimController.getClaimList().size() ==0)
-					{
-						
-					}
+
 					Toast toast = Toast.makeText(NewClaimActivity.this, "New Claim Added", Toast.LENGTH_SHORT);
 					toast.show();
 				}
 				else
 				{
-					claimController.editClaim(newClaim);
+					//claimController.editClaim(newClaim);
+					claimController.editClaim(claim, claimDescription, start, end);
 					Toast toast = Toast.makeText(NewClaimActivity.this, "Edited Claim", Toast.LENGTH_SHORT);
 					toast.show();
 				}		

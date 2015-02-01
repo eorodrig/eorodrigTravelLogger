@@ -1,0 +1,8 @@
+package com.eorodrig.TravelLogger;
+
+public class EmptyClaimException extends Exception{
+
+	public message(String message){
+		super(message)''
+	}
+}

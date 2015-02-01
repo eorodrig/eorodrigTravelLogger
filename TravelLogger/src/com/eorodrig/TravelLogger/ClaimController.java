@@ -10,6 +10,7 @@ import java.io.Reader;
 import java.io.Writer;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.Date;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -102,7 +103,7 @@ public class ClaimController {
 		return claimToEdit;
 		
 	}
-	public void editClaim(Claim newClaim) {
+	public void editClaim(Claim newClaim, ExpenseList expenseList) {
 		claimList.updateClaim(claimListNumber, newClaim);
 		
 	}
@@ -142,35 +143,19 @@ public class ClaimController {
 		String fileName = "TravelLoggerDate.sav";
 		Gson gson = new Gson();
 		
-		
-		
-		//ArrayList<String> tweets = new ArrayList<String>();
 		try {
 			FileInputStream fis = context.openFileInput(fileName);
 			InputStreamReader isr = new InputStreamReader(fis);
-			
-			//Type listType = new TypeToken<ArrayList<String>>() {}.getType();
+
 			Type claimListType = new TypeToken<ClaimList>(){}.getType();
 			
 			claimList = (ClaimList) gson.fromJson(isr, claimListType);
-						
-			//tweets = gson.fromJson(isr, listType);
-			
-			
+
 			
 			isr.close();
 			fis.close();
 						
-		//try {
-		//	Reader isReader = new InputStreamReader( new FileInputStream((fileName) ) );
-		//	
-			
-		//	this.claimList = (ClaimList)gson.fromJson(isReader, claimListType);
-
 	
-			
-		 //   isReader.close();
-		    
 		} catch (FileNotFoundException e) {
 			// TODO: handle exception
 		} catch (IOException e) {
@@ -180,6 +165,14 @@ public class ClaimController {
 			
 
 	
+	}
+
+	public void editClaim(String claim, String claimDescription, Date start,
+			Date end) {
+		
+		this.claimList.getClaims().get(claimListNumber).editClaim(claim, claimDescription, start, end);
+		this.claimList.notifyListeners();
+		
 	}
 }
 

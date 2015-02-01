@@ -9,7 +9,7 @@ public class ExpenseController {
 	private static boolean editStatus = false;
 	
 	
-	
+	//get the list of expenses for a claim
 	static public ExpenseList getExpenseList(){
 		
 		if (expenseList == null){
@@ -21,24 +21,27 @@ public class ExpenseController {
 		
 	}
 	
+	
+
 	public void setExpenseToEdit() {
 		expenseToEdit = getExpense(expenseListNumber);
 		
 	}
 	
-	
 	public void resetExpenseToEdit(){
 		this.expenseToEdit = null;
 	}
 	
+	
+
 	public Expense getExpenseToEdit(){
 		return expenseToEdit;
 	}
 	
+	//getter/setter values for edit flag
 	public void setEditStatus(boolean status){
 		this.editStatus = status;
 	}
-	
 	public boolean getEditStatus(){
 		return this.editStatus;
 	}
@@ -65,9 +68,17 @@ public class ExpenseController {
 	public void setCurrentClaim(){
 		ClaimController claimController = new ClaimController();
 		int currentClaimIndex = claimController.getIndexOfCurrentClaim();
-		currentClaim = ClaimController.getClaimList().getClaim(currentClaimIndex);
+		try{
+			currentClaim = ClaimController.getClaimList().getClaim(currentClaimIndex);
+			expenseList = currentClaim.getExpenses();
+		}
+		catch(EmptyClaimException e)
+		{
+			
+		}
+		
 
-		expenseList = currentClaim.getExpenses();
+		
 		
 
 	}
@@ -95,32 +106,12 @@ public class ExpenseController {
 
 
 
-	public void setClaimToEdit(int finalClaimPosition) {
-		// TODO Auto-generated method stub
-		
-	}
-
 	public void editExpense(Expense newExpense) {
 		expenseList.updateClaim(expenseListNumber, newExpense);
 		
 	}
 	
 	
-	/*
-	public Claim getClaimAtIndex(int index){
-		return claimList.getClaims().get(index);
-	}
-	
-		/*
-	public void setIndexOfCurrentClaim(int index){
-		claimListNumber = index;
-	}
-	
-	public int getIndexOfCurrentClaim(){
-		return claimListNumber;
-	}
-	
-*/
 
 	
 }

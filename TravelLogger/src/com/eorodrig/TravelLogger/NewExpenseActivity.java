@@ -42,9 +42,9 @@ public class NewExpenseActivity extends Activity {
 			this.initNewExpense(expenseController);
 		}
 		else
-			{
+		{
 			this.initEditExpense(expenseController);
-			}
+		}
 	}
 
 	
@@ -179,13 +179,17 @@ public class NewExpenseActivity extends Activity {
 			//new expense controller
 			ExpenseController expenseController = new ExpenseController();
 			
+			
+			
 			// Add new expense
 			if (expenseController.getEditStatus() == false){
-				expenseController.addExpense(newExpense);
-				
 				Toast toast = Toast.makeText(NewExpenseActivity.this, "New Expense Added", Toast.LENGTH_SHORT);
 				toast.show();
+				expenseController.addExpense(newExpense);
+				
+
 			}
+			
 			//else edit expense
 			else
 			{

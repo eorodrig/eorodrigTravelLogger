@@ -63,26 +63,9 @@ public class ClaimListActivity extends Activity{
 	@Override
 	protected void onResume(){
 		super.onResume();
-		
-		/*This sets up an adapter for the listView*/
-		//ListView listView = (ListView)findViewById(R.id.ClaimListView);
-		
-		/*Load the GSON file*/
-		//ClaimController controller = new ClaimController();
-		//controller.load();
-		
-		//controller.getClaimList().notifyListeners();
-		
-	//	final ArrayList<Claim> claimList = ClaimController.getClaimList().getClaims();
-	//	final ArrayAdapter <Claim> claimAdapter = new ArrayAdapter<Claim>(this, android.R.layout.simple_list_item_1, claimList);
-	//	listView.setAdapter(claimAdapter);
-	//	
-		/*This sets up a controller for the listview*/
-	//	this.setupControllerListener(claimList, claimAdapter);
-		
-		/*This sets up the listener*/
-	//	this.setupLongClickListener(listView);
-	
+
+		ClaimController.getClaimList().addExpenses();
+		ClaimController.getClaimList().notifyListeners();
 
 	}
 
@@ -90,9 +73,7 @@ public class ClaimListActivity extends Activity{
 	@Override
 	protected void onPause(){
 		super.onPause();
-		
-		//ClaimController.getClaimList().removeAllListeners();
-		
+
 	}
 	
 	
@@ -179,21 +160,7 @@ public class ClaimListActivity extends Activity{
 			//we set the update method for the listener
 			@Override
 			public void update(){
-				//int claimlistSize = claimList.size();
-				//int claimlistNewSize = ClaimController.getClaimList().getClaims().size();
-/*
-				
-				if (claimlistNewSize < claimlistSize )
-				{
-					claimList.addAll(0, ClaimController.getClaimList().getClaims());
-					claimList.remove(claimlistSize);
-				}
-				if (claimlistNewSize > claimlistSize )
-				{
-					claimList.addAll(0, ClaimController.getClaimList().getClaims());
-					claimList.remove(claimlistSize);
-				}
-				*/
+
 
 				claimAdapter.notifyDataSetChanged();
 				

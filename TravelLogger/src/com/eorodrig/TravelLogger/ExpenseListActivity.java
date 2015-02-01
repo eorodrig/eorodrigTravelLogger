@@ -1,11 +1,13 @@
 package com.eorodrig.TravelLogger;
 
 import java.util.ArrayList;
+import java.util.ResourceBundle.Control;
 
 import com.eorodrig.TravelLogger.R;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.DialogInterface.OnClickListener;
@@ -22,59 +24,42 @@ import android.widget.Toast;
 import android.widget.AdapterView.OnItemLongClickListener;
 
 public class ExpenseListActivity extends Activity {
+	
+	
+	private Context context;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_expense_list);
+		context = this;
 		
-		ListView listView = (ListView)findViewById(R.id.ExpenseListView);
-
-		
-		final ExpenseController expenseController = new ExpenseController();
+		//We set expense Controller to the current claim
+		ExpenseController expenseController = new ExpenseController();
 		expenseController.setCurrentClaim();
-
 		
+		//we init the adapter
+		ListView listView = (ListView)findViewById(R.id.ExpenseListView);
 		final ArrayList<Expense> expenseList = ExpenseController.getExpenseList().getExpenseList();
-		
 		final ArrayAdapter <Expense> expenseAdapter = new ArrayAdapter<Expense>(this, android.R.layout.simple_list_item_1, expenseList);
-		
 		listView.setAdapter(expenseAdapter);
 		
-		
+
 		//add observer
+		this.setupExpenseController(expenseAdapter);
 		
-		ExpenseController.getExpenseList().addListener(new Listener(){
-			@Override
-			public void update(){
-				
-				expenseController.updateExpenses();
-				
-				int expenseListSize = expenseList.size();
-				int expenseListNewSize = ExpenseController.getExpenseList().getExpenseList().size();
-					
-
-				
-				if (expenseListNewSize < expenseListSize )
-				{
-					expenseList.addAll(0, ExpenseController.getExpenseList().getExpenseList());
-					expenseList.remove(expenseListSize);
-				}
-				if (expenseListNewSize > expenseListSize )
-				{
-					expenseList.addAll(0, ExpenseController.getExpenseList().getExpenseList());
-					expenseList.remove(expenseListSize);
-				}
-
-				expenseAdapter.notifyDataSetChanged();
-				
-			}
-
-		});
+		//setup long click listener
+		this.setupLongClickListener(listView, expenseController);
 		
 	
 
 
+		
+	
+		
+	}
+
+	private void setupLongClickListener(ListView listView, final ExpenseController expenseController) {
 		listView.setOnItemLongClickListener(new OnItemLongClickListener() {
 
 			
@@ -119,21 +104,30 @@ public class ExpenseListActivity extends Activity {
 							
 						
 					}
-				});
-				
+				});	
 			
 				builder.show();
-				   // return builder.create();
 
-				              
-
-				
-				//Toast.makeText(ClaimListActivity.this, claimList.get(position).toString(), Toast.LENGTH_SHORT).show();
-				// TODO Auto-generated method stub
 				return false;
 			}
 		});
-	
+		
+	}
+
+	private void setupExpenseController(final ArrayAdapter<Expense> expenseAdapter) {
+		ExpenseController.getExpenseList().addListener(new Listener(){
+			@Override
+			public void update(){
+				
+				expenseAdapter.notifyDataSetChanged();
+				
+				ClaimController claimController = new ClaimController();
+				
+				claimController.save(context);
+
+			}
+
+		});
 		
 	}
 

@@ -1,6 +1,9 @@
 package com.eorodrig.TravelLogger;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Date;
 
 
 public class ClaimList {
@@ -24,7 +27,6 @@ public class ClaimList {
 	
 	public void addClaim(Claim newClaim){
 		claimList.add(newClaim);
-		
 		notifyListeners();
 		
 	}
@@ -34,16 +36,20 @@ public class ClaimList {
 		notifyListeners();
 	}
 	
-	public void updateClaim(int index, Claim newClaim){
+	public void updateClaim(int index, Claim newClaim ){
 		claimList.remove(index);
 		claimList.add(index, newClaim);
 		notifyListeners();
 	}
 
+
 	
 	
-	public Claim getClaim(int index){
+	public Claim getClaim(int index) throws EmptyClaimException{
+		if (claimList.size() > 0)
 		return claimList.get(index);
+		else
+			throw new EmptyClaimException("Out of bounds");
 	}
 	
 
@@ -59,10 +65,18 @@ public class ClaimList {
 	}
 	
 	public void notifyListeners(){
-		for (Listener listener: listeners){
-			listener.update();
+		if (listeners.size() >0)
+			{
+				Collections.sort(claimList);
 			
-		}
+				for (Listener listener: listeners){
+		
+				listener.update();
+			
+			
+				}
+		
+			}
 		
 		
 		
@@ -80,7 +94,30 @@ public class ClaimList {
 
 	public void addAll(ArrayList<Claim> list) {
 		this.claimList.addAll(list);
+	
 		
 	}
+
+
+
+	public void addExpenses() {
+		for (Claim claim: claimList){
 	
+			claim.sumExpenses();
+			
+			
+		}
+		
+	}
+
+	
+
+	/*
+	
+
+		
+
+*/
+
+
 }
