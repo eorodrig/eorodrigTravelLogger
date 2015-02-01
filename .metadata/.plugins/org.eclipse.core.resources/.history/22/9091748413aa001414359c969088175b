@@ -39,7 +39,7 @@
             android:label="@string/title_activity_new_expense" >
         </activity>
         <activity
-            android:name=".AdminActivity"
+            android:name=".Admin"
             android:label="@string/title_activity_admin" >
         </activity>
     </application>
