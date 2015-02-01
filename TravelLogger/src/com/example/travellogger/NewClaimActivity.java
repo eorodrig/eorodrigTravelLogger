@@ -9,7 +9,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,7 +20,7 @@ public class NewClaimActivity extends Activity {
 		setContentView(R.layout.activity_new_claim);
 		
 		/*This inits the Date pickers*/
-		DatePicker fdp = (DatePicker) findViewById(R.id.fromDatePicker);
+		DatePicker fdp = (DatePicker) findViewById(R.id.fromDate);
 		DatePicker tdp = (DatePicker) findViewById(R.id.toDatePicker);
 		fdp.setCalendarViewShown(false);
 		tdp.setCalendarViewShown(false);
@@ -37,15 +36,13 @@ public class NewClaimActivity extends Activity {
 		ClaimController claimController = new ClaimController();
 		
 		
-		//if not null, we edit
+		//if this is null, we make a new claim, else we edit a claim
 		if (claimController.getClaimToEdit() ==null){
 			this.initNewClaim(claimController);
 		}
 		else
 			{
 			this.initEditClaim(claimController);
-			
-
 			}
 		
 	}
@@ -80,7 +77,7 @@ public class NewClaimActivity extends Activity {
 		dataExtractor.setText(editableClaim.getDescription());
 		
 		/*we set the claim from date*/
-		datePicker = (DatePicker) findViewById(R.id.fromDatePicker);
+		datePicker = (DatePicker) findViewById(R.id.fromDate);
 		datePicker.init(editableClaim.getStartDate().getYear()+1900, editableClaim.getStartDate().getMonth(), editableClaim.getStartDate().getDate(), null);
 		
 		/*we set the claim from date*/
@@ -144,7 +141,7 @@ public class NewClaimActivity extends Activity {
 			claimDescription = dataExtractor.getText().toString();
 		
 			/*from Date*/
-			dateExtractor = (DatePicker) findViewById(R.id.fromDatePicker);
+			dateExtractor = (DatePicker) findViewById(R.id.fromDate);
 			start = new Date(dateExtractor.getYear()-1900, dateExtractor.getMonth(), dateExtractor.getDayOfMonth());
 			
 			/*to Date*/
@@ -175,16 +172,9 @@ public class NewClaimActivity extends Activity {
 					claimController.editClaim(newClaim);
 					Toast toast = Toast.makeText(NewClaimActivity.this, "Edited Claim", Toast.LENGTH_SHORT);
 					toast.show();
-				}
-				
-				
-				
-	
+				}		
 
 				finish();
-
 			}
-		
-
 		}
 }

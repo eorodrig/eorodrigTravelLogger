@@ -1,0 +1,114 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.travellogger.NewClaimActivity" >
+
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/textView1"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:text="@string/claim_name"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/NewClaimNameText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" >
+
+                <requestFocus />
+            </EditText>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="96dp" >
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:text="@string/claim_description"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/NewClaimDescriptionText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:inputType="textMultiLine"
+                android:lines="3" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="115dp" >
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="66dp"
+                android:layout_height="wrap_content"
+                android:text="@string/from_date"
+                android:textAlignment="textEnd"
+                android:textSize="20sp" />
+
+            <DatePicker
+                android:id="@+id/expenseDate"
+                android:layout_width="wrap_content"
+                android:layout_height="115dp"
+                android:layout_marginBottom="39dp"
+                android:calendarViewShown="false"
+                android:spinnersShown="false" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="115dp" >
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="66dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.31"
+                android:text="@string/to_date"
+                android:textSize="20sp" />
+
+            <DatePicker
+                android:id="@+id/toDatePicker"
+                android:layout_width="225dp"
+                android:layout_height="115dp"
+                android:layout_weight="0.97"
+                android:calendarViewShown="false" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/NewClaimAddButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/linearLayout1"
+        android:layout_below="@+id/linearLayout1"
+        android:layout_marginTop="16dp"
+        android:onClick="onClickAddClaimButton"
+        android:text="@string/add_claim_button" />
+
+</RelativeLayout>

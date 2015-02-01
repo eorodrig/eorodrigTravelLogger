@@ -1,8 +1,13 @@
 package com.example.travellogger;
 
+import java.util.Date;
+
+import android.text.format.DateFormat;
+
 public class Expense {
 
-	protected String date;
+	protected Date date;
+	protected String expenseDate;
 	
 	protected String category;
 	protected String description;
@@ -23,7 +28,7 @@ public class Expense {
 	 * @param amountSpent	= Expense Amount
 	 * @param currency		= Currency Type
 	 */
-	public Expense(String expenseDate, String category, String description, double amountSpent, String currency, int currencyID, int categoryID){
+	public Expense(Date expenseDate, String category, String description, double amountSpent, String currency, int currencyID, int categoryID){
 		this.date = expenseDate;
 		this.category = category;
 		this.description = description;
@@ -43,7 +48,7 @@ public class Expense {
 	 * @param amountSpent	= Expense Amount
 	 * @param currency		= Currency Type
 	 */
-	public void updateExpense(String expenseDate, String category, String description, double amountSpent, String currency, int currencyID, int categoryID){
+	public void updateExpense(Date expenseDate, String category, String description, double amountSpent, String currency, int currencyID, int categoryID){
 		this.date = expenseDate;
 		this.category = category;
 		this.description = description;
@@ -56,12 +61,16 @@ public class Expense {
 	
 	public String toString(){
 		
-		return this.category + "\n" + this.description + "\n" + this.date +  "\n" + "Total: " + this.amountSpent  + " " +  this.currency.substring(0, 3)  ; 
+		DateFormat dateFormat = new DateFormat();
+		
+		this.expenseDate = dateFormat.format("dd-MMM-yyyy", this.date).toString();
+		
+		return this.category + "\n" + this.description + "\n" + this.expenseDate +  "\n" + "Total: " + this.amountSpent  + " " +  this.currency.substring(0, 3)  ; 
 
 		
 	}
 	
-	public String getDate(){
+	public Date getDate(){
 		return date;
 	}
 	

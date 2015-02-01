@@ -1,11 +1,14 @@
 package com.example.travellogger;
 
+import java.util.Date;
+
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -17,61 +20,91 @@ public class NewExpenseActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_new_expense);
 		
+		DatePicker edp = (DatePicker) findViewById(R.id.expenseDatePicker);
+		edp.setCalendarViewShown(false);
+		
+	}
+	
+	
+	@Override
+	protected void onResume(){
+
+		super.onResume();
+		
+		//We make an expense controller
 		ExpenseController expenseController = new ExpenseController();
 		
-		//if not null, we edit
-		if (expenseController.getExpenseToEdit() ==null){
-			expenseController.setEditStatus(false);
-			
-			Button button = (Button) findViewById(R.id.AddExpenseButton);			
-			button.setText("Add New Expense");
-		}
 		
+		//if this is null, we make a new claim, else we edit a claim
+		if (expenseController.getExpenseToEdit() ==null){
+			this.initNewExpense(expenseController);
+		}
 		else
 			{
-			Expense editableExpense = expenseController.getExpenseToEdit();
-			TextView dataExtractor;
-			Spinner spinnerExtractor;
-			
-		
-			
-			spinnerExtractor = (Spinner)findViewById(R.id.NewExpenseTypeSpinner);
-			spinnerExtractor.setSelection(editableExpense.getCategoryID());
-			
-			dataExtractor = (TextView)findViewById(R.id.NewExpenseDescriptionText);
-			dataExtractor.setText(editableExpense.getDescription());
-			
-			
-			String day, month, year;
-			
-			day = editableExpense.getDate().substring(0, 2);
-			month = editableExpense.getDate().substring(3, 5);
-			year = editableExpense.getDate().substring(6, 10);			
-			
-			dataExtractor = (TextView)findViewById(R.id.NewExpenseDayText);
-			dataExtractor.setText(day);
-			dataExtractor = (TextView)findViewById(R.id.NewExpenseMonthText);
-			dataExtractor.setText(month);
-			dataExtractor = (TextView)findViewById(R.id.NewExpenseYearText);
-			dataExtractor.setText(year);
-			
-			
-			spinnerExtractor = (Spinner)findViewById(R.id.NewExpenseCurrencySpinner);
-			spinnerExtractor.setSelection(editableExpense.getCurrencyID());
-			
-			dataExtractor = (TextView)findViewById(R.id.NewExpenseAmountText);
-			dataExtractor.setText(editableExpense.getAmount());
-			
-			
-			expenseController.resetExpenseToEdit();;
-			expenseController.setEditStatus(true);
-			
-			Button button = (Button) findViewById(R.id.AddExpenseButton);			
-			button.setText("Edit Expense");
-
+			this.initEditExpense(expenseController);
 			}
-
 	}
+
+	
+	
+
+
+
+	/*This will init the form and format it as a new expense*/
+	private void initNewExpense(ExpenseController expenseController){
+		expenseController.setEditStatus(false);
+		
+		Button button = (Button) findViewById(R.id.AddExpenseButton);			
+		button.setText("Add New Expense");
+
+		
+	}
+	
+	/*This will init the form and format it as an edit expense form with filled out fields*/
+	private void initEditExpense(ExpenseController expenseController) {
+		
+		//gets the current expense
+		Expense editableExpense = expenseController.getExpenseToEdit();
+		
+		//This is the types we will use
+		TextView dataExtractor;
+		Spinner spinnerExtractor;
+		DatePicker dateExtractor;
+		
+		//claim type
+		spinnerExtractor = (Spinner)findViewById(R.id.NewExpenseTypeSpinner);
+		spinnerExtractor.setSelection(editableExpense.getCategoryID());
+		
+		//claim description
+		dataExtractor = (TextView)findViewById(R.id.NewExpenseDescriptionText);
+		dataExtractor.setText(editableExpense.getDescription());
+		
+		//claim date
+		dateExtractor = (DatePicker) findViewById(R.id.expenseDatePicker);
+		dateExtractor.init(editableExpense.getDate().getYear()+1900, editableExpense.getDate().getMonth(), editableExpense.getDate().getDate(), null);
+	
+		//currency spinner
+		spinnerExtractor = (Spinner)findViewById(R.id.NewExpenseCurrencySpinner);
+		spinnerExtractor.setSelection(editableExpense.getCurrencyID());
+		
+		//amount
+		dataExtractor = (TextView)findViewById(R.id.NewExpenseAmountText);
+		dataExtractor.setText(editableExpense.getAmount());
+		
+		/*resets the edit parameter*/
+		expenseController.resetExpenseToEdit();
+		
+		/*Sets the state of the expense to edit*/
+		expenseController.setEditStatus(true);
+		
+		
+		Button button = (Button) findViewById(R.id.AddExpenseButton);			
+		button.setText("Edit Expense");
+	}
+	
+		
+
+
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -95,40 +128,42 @@ public class NewExpenseActivity extends Activity {
 	public void onClickAddExpenseButton(View view){
 		
 		String expenseType, expenseDescription;
-		String ed, em, ey, expenseDate;
+		Date expenseDate;
 		String currency, amount;
 		
-		int currencyID, categoryID;
+		//spinner position
+		int categoryID,currencyID;
 
-		
+		//types
 		TextView dataExtractor;
 		Spinner spinnerExtractor;
+		DatePicker dateExtractor;
 		
+		//expense type
 		spinnerExtractor = (Spinner)findViewById(R.id.NewExpenseTypeSpinner);
 		expenseType = spinnerExtractor.getSelectedItem().toString();
 		categoryID = spinnerExtractor.getSelectedItemPosition();
 	
-		
+		//expense description
 		dataExtractor = (TextView)findViewById(R.id.NewExpenseDescriptionText);
 		expenseDescription = dataExtractor.getText().toString();
 		
+		//expense Date
+		dateExtractor = (DatePicker)findViewById(R.id.expenseDatePicker);
+		expenseDate = new Date(dateExtractor.getYear()-1900, dateExtractor.getMonth(), dateExtractor.getDayOfMonth());
 		
-		dataExtractor = (TextView)findViewById(R.id.NewExpenseDayText);
-		ed = dataExtractor.getText().toString();
-		dataExtractor = (TextView)findViewById(R.id.NewExpenseMonthText);
-		em = dataExtractor.getText().toString();
-		dataExtractor = (TextView)findViewById(R.id.NewExpenseYearText);
-		ey = dataExtractor.getText().toString();
-		expenseDate = ed + "/" + em +"/" + ey;
-		
+		//amount
 		dataExtractor = (TextView)findViewById(R.id.NewExpenseAmountText);
 		amount = dataExtractor.getText().toString();
+		
+		//currency
 		spinnerExtractor = (Spinner)findViewById(R.id.NewExpenseCurrencySpinner);
 		currency = spinnerExtractor.getSelectedItem().toString();
 		currencyID = spinnerExtractor.getSelectedItemPosition();
 		
 		
-		if (((expenseDescription.isEmpty()) || (ed.isEmpty()) || (em.isEmpty()) || (ey.isEmpty())  ||(amount.isEmpty())))
+		//verify that the fields are filled out
+		if (((expenseDescription.isEmpty()) ||(amount.isEmpty())))
 			{ 
 				Toast toast = Toast.makeText(NewExpenseActivity.this, "Complete All Fields Before Adding Expense", Toast.LENGTH_LONG);
 				toast.show();
@@ -136,31 +171,28 @@ public class NewExpenseActivity extends Activity {
 			}
 		else
 		{
-			//Expense newExpense = new Expense(expenseDate,expenseType, expenseDescription, Double.valueOf(amount), currency, categoryID, categoryID);
-			
+			//new expense
 			Expense newExpense = new Expense(expenseDate,expenseType, expenseDescription, Double.valueOf(amount), currency, currencyID, categoryID);
+			
+			//new expense controller
 			ExpenseController expenseController = new ExpenseController();
 			
+			// Add new expense
 			if (expenseController.getEditStatus() == false){
 				expenseController.addExpense(newExpense);
+				
+				Toast toast = Toast.makeText(NewExpenseActivity.this, "New Expense Added", Toast.LENGTH_SHORT);
+				toast.show();
 			}
+			//else edit expense
 			else
 			{
 				expenseController.editExpense(newExpense);
+				Toast toast = Toast.makeText(NewExpenseActivity.this, "Edited Expense", Toast.LENGTH_SHORT);
+				toast.show();
 			}
-			
 
-			
-			//MainActivity.claimList.addClaim(newClaim);
-
-			Toast toast = Toast.makeText(NewExpenseActivity.this, "New Claim Added", Toast.LENGTH_SHORT);
-			toast.show();
-
-			
-			//toast = Toast.makeText(NewClaimActivity.this, claimController.getClaimList().getClaims().get(0).toString(), Toast.LENGTH_SHORT);
-			//toast.show();
-			
-			onBackPressed();
+			finish();
 		}
 		
 
