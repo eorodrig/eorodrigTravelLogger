@@ -1,0 +1,151 @@
+package com.example.travellogger;
+
+import java.io.FileOutputStream;
+import java.io.OutputStreamWriter;
+import java.io.Writer;
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+
+
+public class ClaimController {
+
+	private static ClaimList claimList = null;
+	private static int claimListNumber = 0;
+	private static Claim claimToEdit = null;
+	private static boolean editStatus = false;
+	
+
+///////////////////CLaim List operators
+	
+	
+	//return claim list, if null return new list
+	static public ClaimList getClaimList(){
+		
+		if (claimList == null){
+			claimList = new ClaimList();
+		}
+		
+		
+		return claimList;
+		
+	}
+	
+	public void addClaim(Claim newClaim){
+		if (claimList == null){
+			claimList = new ClaimList();
+		}
+		claimList.addClaim(newClaim);
+	}
+	
+	
+	public void removeClaim(Claim newClaim){
+		claimList.removeClaim(newClaim);
+		
+	}
+	
+	
+	public Claim getClaimAtIndex(int index){
+		return claimList.getClaims().get(index);
+	}
+	
+	public void updateClaims(Claim newClaim){
+		
+		claimList.updateClaim(claimListNumber, newClaim);
+	}
+
+	
+	
+/////////////Controller operators	
+	
+	//getters/setters for editStatus
+	public void setEditStatus(boolean status){
+		this.editStatus = status;
+	}
+	public boolean getEditStatus(){
+		return this.editStatus;
+	}
+	
+	
+
+	//Get/Set the current Claim index (List index)
+	public void setIndexOfCurrentClaim(int index){
+		claimListNumber = index;
+	}
+	public int getIndexOfCurrentClaim(){
+		return claimListNumber;
+	}
+	
+	
+	
+	public void setClaimToEdit(int index) {
+		claimToEdit = getClaimAtIndex(index); 
+	}
+
+	public void resetClaimToEdit(){
+		claimToEdit = null;
+	}
+	
+	
+	
+	public Claim getClaimToEdit() {
+		return claimToEdit;
+		
+	}
+	public void editClaim(Claim newClaim) {
+		claimList.updateClaim(claimListNumber, newClaim);
+		
+	}
+
+
+	public void save(){
+		String fileName = "TravelLoggerDate.gson";
+		Gson gson = new Gson();
+		Type listOfTestObject = new TypeToken<ArrayList<Claim>>(){}.getType();
+		
+		
+		
+		try {
+			Writer osWriter = new OutputStreamWriter( new FileOutputStream(fileName, false ));
+			gson.toJson(claimList , osWriter);
+			osWriter.close();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		 
+	}
+
+	public void load(){
+		String fileName = "TravelLoggerDate.gson";
+		Gson gson = new Gson();
+		Type listOfTestObject = new TypeToken<ArrayList<Claim>>(){}.getType();
+		
+		
+		
+		try {
+			Reader isReader = new InputStreamReader( new FileInputStream((fileName) ) );
+			
+			
+			claimList.clear();
+			claimList.addAll((ArrayList<Claim>) gson.fromJson(isReader, listOfTestObject)); 
+
+		    isReader.close();
+		    
+		} catch (FileNotFoundException e) {
+			// TODO: handle exception
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+			
+
+	
+}
+

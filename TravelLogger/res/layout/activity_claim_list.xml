@@ -7,15 +7,29 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.travellogger.ClaimListActivity" >
+    tools:context="com.eorodrig.TravelLogger.ClaimListActivity" >
 
-    <ListView
-        android:id="@+id/ClaimListView"
+    <LinearLayout
+        android:id="@+id/linearLayout1"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true" >
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
 
-    </ListView>
+        <ListView
+            android:id="@+id/ClaimListView"
+            android:layout_width="wrap_content"
+            android:layout_height="353dp" >
+        </ListView>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/newClaimButton2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/linearLayout1"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="16dp"
+        android:onClick="onClickAddNewClaim"
+        android:text="@string/add_claim_button" />
 
 </RelativeLayout>

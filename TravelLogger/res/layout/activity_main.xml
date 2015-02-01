@@ -9,27 +9,16 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.travellogger.MainActivity" >
-
-    <Button
-        android:id="@+id/MenuNewClaimButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="27dp"
-        android:onClick="onClickAddNewClaim"
-        android:text="Add New Claim" />
+    tools:context="com.eorodrig.TravelLogger.MainActivity" >
 
     <Button
         android:id="@+id/ViewEditSubmitClaimButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/MenuNewClaimButton"
-        android:layout_below="@+id/MenuNewClaimButton"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="16dp"
         android:onClick="onClickListClaims"
-        android:text="View/Edit/Submit Claim" />
+        android:text="Active Claims" />
 
     <Button
         android:id="@+id/ViewSubmittedClaimsButton"
@@ -38,6 +27,6 @@
         android:layout_alignLeft="@+id/ViewEditSubmitClaimButton"
         android:layout_below="@+id/ViewEditSubmitClaimButton"
         android:layout_marginTop="17dp"
-        android:text="View Submitted Claims" />
+        android:text="Administrative" />
 
 </RelativeLayout>
