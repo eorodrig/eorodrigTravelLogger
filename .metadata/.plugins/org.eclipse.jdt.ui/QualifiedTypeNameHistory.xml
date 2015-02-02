@@ -1,11 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="com.example.travellogger.EmptyClaimExeption"/>
-<fullyQualifiedTypeName name="android.R"/>
-<fullyQualifiedTypeName name="android.R.id"/>
-<fullyQualifiedTypeName name="android.R.layout"/>
-<fullyQualifiedTypeName name="android.widget.ArrayAdapter"/>
-<fullyQualifiedTypeName name="java.util.List"/>
 <fullyQualifiedTypeName name="android.widget.AdapterView.OnItemLongClickListener"/>
 <fullyQualifiedTypeName name="android.app.AlertDialog"/>
 <fullyQualifiedTypeName name="android.app.AlertDialog.Builder"/>
@@ -16,7 +10,6 @@
 <fullyQualifiedTypeName name="com.example.travellogger.ClaimListActivity"/>
 <fullyQualifiedTypeName name="com.example.travellogger.NewClaimActivity"/>
 <fullyQualifiedTypeName name="java.security.PublicKey"/>
-<fullyQualifiedTypeName name="android.widget.Button"/>
 <fullyQualifiedTypeName name="com.example.travellogger.NewExpenseActivity"/>
 <fullyQualifiedTypeName name="java.lang.String"/>
 <fullyQualifiedTypeName name="com.example.travellogger.ExpenseController"/>
@@ -33,7 +26,6 @@
 <fullyQualifiedTypeName name="com.example.travellogger.Claim"/>
 <fullyQualifiedTypeName name="java.lang.Override"/>
 <fullyQualifiedTypeName name="com.example.travellogger.listenersList"/>
-<fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="com.google.gson.Gson"/>
 <fullyQualifiedTypeName name="java.lang.reflect.Type"/>
 <fullyQualifiedTypeName name="com.google.gson.reflect.TypeToken"/>
@@ -48,16 +40,24 @@
 <fullyQualifiedTypeName name="com.example.travellogger.ClaimList"/>
 <fullyQualifiedTypeName name="com.example.travellogger.ClaimController"/>
 <fullyQualifiedTypeName name="android.app.Application"/>
-<fullyQualifiedTypeName name="android.content.Context"/>
 <fullyQualifiedTypeName name="java.util.ResourceBundle.Control"/>
-<fullyQualifiedTypeName name="com.eorodrig.TravelLogger.Expense"/>
-<fullyQualifiedTypeName name="com.eorodrig.TravelLogger.ExpenseController"/>
-<fullyQualifiedTypeName name="com.eorodrig.TravelLogger.ClaimListActivity"/>
 <fullyQualifiedTypeName name="java.lang.Double"/>
-<fullyQualifiedTypeName name="java.lang.Exception"/>
 <fullyQualifiedTypeName name="com.eorodrig.TravelLogger.EmptyClaimException"/>
-<fullyQualifiedTypeName name="com.eorodrig.TravelLogger.ClaimController"/>
 <fullyQualifiedTypeName name="java.util.Comparator"/>
 <fullyQualifiedTypeName name="java.lang.Comparable"/>
 <fullyQualifiedTypeName name="java.util.Collections"/>
+<fullyQualifiedTypeName name="java.lang.reflect.InvocationTargetException"/>
+<fullyQualifiedTypeName name="android.widget.Button"/>
+<fullyQualifiedTypeName name="com.eorodrig.TravelLogger.ExpenseController"/>
+<fullyQualifiedTypeName name="com.eorodrig.TravelLogger.R.id"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="android.content.Context"/>
+<fullyQualifiedTypeName name="android.widget.ArrayAdapter"/>
+<fullyQualifiedTypeName name="android.widget.ListView"/>
+<fullyQualifiedTypeName name="com.eorodrig.TravelLogger.ClaimListActivity"/>
+<fullyQualifiedTypeName name="com.eorodrig.TravelLogger.ClaimController"/>
+<fullyQualifiedTypeName name="com.eorodrig.TravelLogger.ClaimList"/>
+<fullyQualifiedTypeName name="com.eorodrig.TravelLogger.ExpenseList"/>
+<fullyQualifiedTypeName name="java.lang.Exception"/>
+<fullyQualifiedTypeName name="com.eorodrig.TravelLogger.Expense"/>
 </qualifiedTypeNameHistroy>
