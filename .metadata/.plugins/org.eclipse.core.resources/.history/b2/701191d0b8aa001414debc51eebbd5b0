@@ -1,0 +1,147 @@
+/*
+ *     <one line to give the program's name and a brief idea of what it does.>
+    Copyright (C) <2015>  <Edwin Rodriguez eorodrig@ualberta.ca>
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+package com.eorodrig.TravelLogger;
+
+import java.util.ArrayList;
+import java.util.Collections;
+
+public class ClaimList {
+
+	//this is a list of claims
+	protected ArrayList<Claim> claimList;
+	
+	//this is a list of listeners
+	protected ArrayList<Listener> listeners;
+	
+	
+	/**
+	 * Constructor will init the lists
+	 */
+	public ClaimList(){
+		claimList = new ArrayList<Claim>();
+		listeners = new ArrayList<Listener>();
+	}
+	
+	
+	////////////////////////////////
+	/*
+	 * These are the arrayList calls
+	 */
+	/////////////////////////
+	
+	/**
+	 * This will return list of claims
+	 * @return
+	 */
+	public ArrayList<Claim> getClaims(){
+		return claimList;
+	}
+	
+	
+	public void addClaim(Claim newClaim){
+		claimList.add(newClaim);
+		notifyListeners();
+		
+	}
+	
+	public void addAll(ArrayList<Claim> list) {
+		this.claimList.clear();
+		this.claimList.addAll(list);
+	
+		
+	}
+	
+	public void removeClaim(Claim claim){
+		claimList.remove(claim);
+		notifyListeners();
+	}
+	
+	public void updateClaim(int index, Claim newClaim ){
+		claimList.remove(index);
+		claimList.add(index, newClaim);
+		notifyListeners();
+	}
+
+
+	
+	
+	public Claim getClaim(int index) throws EmptyClaimException{
+		if (claimList.size() > 0)
+		return claimList.get(index);
+		else
+			throw new EmptyClaimException("Out of bounds");
+	}
+	
+
+	
+	public int size(){
+		return this.getClaims().size();
+	}
+	
+
+	
+	
+	
+	public void addListener(Listener listener){
+		listeners.add(listener);
+	}
+	
+	public void notifyListeners(){
+		try{
+			if (listeners.size() >  0)
+				{
+					Collections.sort(claimList);
+				
+					for (Listener listener: listeners)
+						{
+							listener.update();	
+						}
+				}
+			}
+		catch (Exception e){
+			
+		}
+
+	}
+	
+	
+
+	public void removeAllListeners(){
+		listeners.clear();
+	}
+
+
+
+
+
+
+
+	public void addExpenses() {
+		for (Claim claim: claimList){
+	
+			claim.sumExpenses();
+			
+			
+		}
+		
+	}
+
+
+
+}

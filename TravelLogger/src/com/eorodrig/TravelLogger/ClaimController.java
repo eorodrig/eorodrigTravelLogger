@@ -24,12 +24,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
-import java.io.Reader;
-import java.io.Writer;
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Type;
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Date;
 
 import com.google.gson.Gson;
@@ -41,27 +36,46 @@ import android.content.Context;
 
 public class ClaimController {
 
+	//these are the attributes for the claim controller
+	//these are all static as they need to remain in memory
+	
+	//claim list to hold claims
 	private static ClaimList claimList = null;
+	
+	//the index of the current claim
 	private static int claimListNumber = 0;
+	
+	//a temporary claim which is editable
 	private static Claim claimToEdit = null;
+	
+	//the boolean status of the editability of the claim
 	private static boolean editStatus = false;
 	
+	private final static String FILENAME  = "TravelLoggerDate.sav";
+	
 
-///////////////////CLaim List operators
+	////////////////////////
+	/*
+	 * CLaim List operators
+	 */
+	///////////////////////////
 	
-	
-	//return claim list, if null return new list
+	/**
+	 * return claim list, if null return new list
+	 * @return
+	 */
 	static public ClaimList getClaimList(){
 		
 		if (claimList == null){
 			claimList = new ClaimList();
-		}
-		
-		
+		}	
 		return claimList;
-		
 	}
 	
+	/**
+	 * add a claim, if claimList is empty, make a new one
+	 * @param newClaim
+	 */
 	public void addClaim(Claim newClaim){
 		if (claimList == null){
 			claimList = new ClaimList();
@@ -69,25 +83,56 @@ public class ClaimController {
 		claimList.addClaim(newClaim);
 	}
 	
-	
+	/**
+	 * remove a claim
+	 * @param newClaim
+	 */
 	public void removeClaim(Claim newClaim){
 		claimList.removeClaim(newClaim);
 		
 	}
 	
-	
+	/**
+	 * return a claim at a selected index of the list
+	 * @param index
+	 * @return
+	 */
 	public Claim getClaimAtIndex(int index){
 		return claimList.getClaims().get(index);
 	}
 	
+	/**
+	 * this will update take in the new claim and overide its previous instance in the list
+	 * @param newClaim
+	 */
 	public void updateClaims(Claim newClaim){
 		
 		claimList.updateClaim(claimListNumber, newClaim);
 	}
 
 	
+	/**
+	 * This will call the edit claim calls and edit the current current claim
+	 * @param claim
+	 * @param claimDescription
+	 * @param start
+	 * @param end
+	 */
+	public void editClaim(String claim, String claimDescription, Date start,Date end) {
+		
+		//This will edit the claim
+		this.claimList.getClaims().get(claimListNumber).editClaim(claim, claimDescription, start, end);
 	
-/////////////Controller operators	
+		//this will notify the listener
+		this.claimList.notifyListeners();
+		
+	}
+	
+	//////////////////////////
+	/*
+	 * Controller operators	
+	 */
+	/////////////////////////////////
 	
 	//getters/setters for editStatus
 	public void setEditStatus(boolean status){
@@ -108,37 +153,43 @@ public class ClaimController {
 	}
 	
 	
-	
+	// Get/Set/Reset the editable claim
 	public void setClaimToEdit(int index) {
 		claimToEdit = getClaimAtIndex(index); 
 	}
-
 	public void resetClaimToEdit(){
 		claimToEdit = null;
 	}
-	
-	
-	
 	public Claim getClaimToEdit() {
 		return claimToEdit;
 		
 	}
 
-
-
+	
+	/////////////////
+	/*
+	 * These are the GSON Save/Load methods
+	 */
+	//////////////////////////
+	
+	/**
+	 * This will save the current claimList
+	 * @param context
+	 */
 	public void save(Context context){
-		String fileName = "TravelLoggerDate.sav";
 		Gson gson = new Gson();
-
+		
+		//try to save
 		try {
-
-			FileOutputStream fos = context.openFileOutput(fileName, 0);
-					
-			OutputStreamWriter osw = new OutputStreamWriter(fos);
 			
-			//gson.toJson(claimList, osw);
+			//this will create the new file and use GSON to save the claimlist to it
+			FileOutputStream fos = context.openFileOutput(FILENAME, 0);
+			OutputStreamWriter osw = new OutputStreamWriter(fos);
 			gson.toJson(claimList, osw);
+			
+			//this will force it to write
 			osw.flush();
+			//this will close the streams
 			osw.close();
 			fos.close();
 			
@@ -155,26 +206,27 @@ public class ClaimController {
 	
 
 	
-	
+	/**
+	 * This will load the saved file from GSON
+	 * @param context
+	 */
 	public void load(Context context){
-		String fileName = "TravelLoggerDate.sav";
+		
 		Gson gson = new Gson();
 		
 		try {
-			FileInputStream fis = context.openFileInput(fileName);
+			
+			//This will open the Save file
+			FileInputStream fis = context.openFileInput(FILENAME);
 			InputStreamReader isr = new InputStreamReader(fis);
-
+			
+			//this will get the type of the claimList
 			Type claimListType = new TypeToken<ClaimList>() {}.getType();
 			
-			
-			//ArrayList<Claim>list = new ArrayList<Claim>();
+			//this will load the file
 			claimList = gson.fromJson(isr, claimListType);
-			
-			
-			//list = gson.fromJson( );
-			//claimList.addAll(list);
-			
-			//new TypeToken<ArrayList<String>>() {}.getType();
+
+			//this will close the streams
 			isr.close();
 			fis.close();
 						
@@ -185,25 +237,16 @@ public class ClaimController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-			
-			
 
-	
 	}
 
-	
-	public void editClaim(Claim newClaim, ExpenseList expenseList) {
-		claimList.updateClaim(claimListNumber, newClaim);
-		
-	}
-	public void editClaim(String claim, String claimDescription, Date start,
-			Date end) {
-		
-		this.claimList.getClaims().get(claimListNumber).editClaim(claim, claimDescription, start, end);
-		this.claimList.notifyListeners();
-		
-	}
-	
+
+	//////////////////////////////////////
+	/*
+	 *These are the submit/approve/return calls for the project 
+	 *they will change the status of the claim, and notify the listeners
+	 */
+	////////////////////////////////////
 	
 	public void submitClaim(int index){
 		claimList.getClaims().get(index).submit();
