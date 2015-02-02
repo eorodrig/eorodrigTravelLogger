@@ -327,7 +327,7 @@ public class Claim implements Comparable<Claim>{
 	 * Claim will return -1 if:
 	 * 		Caller is before the parameter
 	 * 	Claim will return 1 if:
-	 * 		Caller is after the parameter
+	 * 		Caller is after the paramater
 	 * else it will return 0 if both start date and end dates are the same
 	 */
 	@Override
@@ -357,32 +357,23 @@ public class Claim implements Comparable<Claim>{
 	}
 
 
-	///////////////////////////////////
-	/*
-	 * These will change the editable attribute, and the claim status based on the type of method
-	 */
-	////////////////////////////////
-	public void submit(){
-		claimStatus = "Submitted";
-		editable = false;
-	}
-		
-	public void approve(){
-		claimStatus = "Approved";
-		editable = false;
-	}
+public void submit(){
+	claimStatus = "Submitted";
+	editable = false;
+}
 	
-	public void returned(){
-		claimStatus = "Returned";
-		editable = true;
-	}
-	
-	
-	/**
-	 * This will return the editibility of the claim
-	 * @return true if claim is editable
-	 */
-	public boolean isEditable(){
-		return editable;
-	}
+public void approve(){
+	claimStatus = "Approved";
+	editable = false;
+}
+
+public void returned(){
+	claimStatus = "Returned";
+	editable = true;
+}
+
+
+public boolean isEditable(){
+	return editable;
+}
 }

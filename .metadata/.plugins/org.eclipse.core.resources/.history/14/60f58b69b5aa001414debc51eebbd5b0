@@ -379,7 +379,7 @@ public class Claim implements Comparable<Claim>{
 	
 	
 	/**
-	 * This will return the editibility of the claim
+	 * This will return the editability of the claim
 	 * @return true if claim is editable
 	 */
 	public boolean isEditable(){
