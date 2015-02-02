@@ -68,18 +68,9 @@ public class ClaimListActivity extends Activity{
 	protected void onResume(){
 		super.onResume();
 
-		//ClaimController.getClaimList().addExpenses();
-		//cadp.notifyDataSetChanged();
-		
-		ListView listView = (ListView)findViewById(R.id.ClaimListView);
-		final ArrayList<Claim> claimList = ClaimController.getClaimList().getClaims();
-		final ArrayAdapter <Claim> claimAdapter = new ArrayAdapter<Claim>(this, android.R.layout.simple_list_item_1, claimList);
-		listView.setAdapter(claimAdapter);
-		cadp = claimAdapter;
+		ClaimController.getClaimList().addExpenses();
 		cadp.notifyDataSetChanged();
 		
-		/*This sets up a controller for the listview*/
-		this.setupControllerListener(claimList, claimAdapter);
 	}
 
 	
@@ -108,49 +99,75 @@ public class ClaimListActivity extends Activity{
 				//position of claim
 				final int finalClaimPosition = position;
 
-				//this sets up the menu items for the on hold menu
-				builder.setItems(R.array.selected_item_list, new OnClickListener() {
-					
-					//this will direct the app to the correct action
-					@Override
-					public void onClick(DialogInterface dialog, int which) {
-
-						//view
-						if (which == 0){
-
-							ClaimController claimController = new ClaimController();
-							claimController.setIndexOfCurrentClaim(finalClaimPosition);
-					   	 	Intent intent = new Intent(ClaimListActivity.this, ExpenseListActivity.class);
-					   	 	startActivity(intent);
-						}
-						//edit
-						if (which == 1){
-							ClaimController claimController = new ClaimController();
-							claimController.setIndexOfCurrentClaim(finalClaimPosition);
+				try {
+					if (ClaimController.getClaimList().getClaim(position).editable){
+						
+						//this sets up the menu items for the on hold menu
+						builder.setItems(R.array.selected_item_list, new OnClickListener() {
 							
-							claimController.setClaimToEdit(finalClaimPosition);
-					   	 	Intent intent = new Intent(ClaimListActivity.this, NewClaimActivity.class);
-					   	 	startActivity(intent);
-							
-						}
-						//delete
-						if (which == 2){
-							
-							ClaimController claimController = new ClaimController();
-							Claim removedClaim = claimController.getClaimAtIndex(finalClaimPosition);
-							
-							claimController.removeClaim(removedClaim);
-							
-						}
-						//submit
-						if (which == 3){
+							//this will direct the app to the correct action
+							@Override
+							public void onClick(DialogInterface dialog, int which) {
 
 
-						}
-							
+								//view
+								if (which == 0){
+
+									ClaimController claimController = new ClaimController();
+									claimController.setIndexOfCurrentClaim(finalClaimPosition);
+							   	 	Intent intent = new Intent(ClaimListActivity.this, ExpenseListActivity.class);
+							   	 	startActivity(intent);
+								}
+								//edit
+								if (which == 1){
+										ClaimController claimController = new ClaimController();
+										claimController.setIndexOfCurrentClaim(finalClaimPosition);
+											
+										claimController.setClaimToEdit(finalClaimPosition);
+										Intent intent = new Intent(ClaimListActivity.this, NewClaimActivity.class);
+
+								}
+								//delete
+								if (which == 2)
+								{
+										ClaimController claimController = new ClaimController();
+										Claim removedClaim = claimController.getClaimAtIndex(finalClaimPosition);
+											
+										claimController.removeClaim(removedClaim);
+								}
+								//submit
+								if (which == 3){
+									ClaimController claimController = new ClaimController();
+									claimController.submitClaim(finalClaimPosition);
+								}	
+							}					
+						});
 						
 					}
-				});
+					else
+					{
+						//this sets up the menu items for the on hold menu
+						builder.setItems(R.array.uneditable_item_list, new OnClickListener() {
+							
+							//this will direct the app to the correct action
+							@Override
+							public void onClick(DialogInterface dialog, int which) {
+
+
+								//view
+								if (which == 0){
+
+									ClaimController claimController = new ClaimController();
+									claimController.setIndexOfCurrentClaim(finalClaimPosition);
+							   	 	Intent intent = new Intent(ClaimListActivity.this, ExpenseListActivity.class);
+							   	 	startActivity(intent);
+								}	}});
+					}
+				} catch (EmptyClaimException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+
 				
 			
 				builder.show();
@@ -173,15 +190,10 @@ public class ClaimListActivity extends Activity{
 			//we set the update method for the listener
 			@Override
 			public void update(){
-
-
 				claimAdapter.notifyDataSetChanged();
 				
 				ClaimController controller = new ClaimController();
-				
 				controller.save(context);
-				
-				
 			}
 			
 			});

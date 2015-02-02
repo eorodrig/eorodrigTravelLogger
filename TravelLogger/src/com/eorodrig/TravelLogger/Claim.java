@@ -21,6 +21,7 @@ public class Claim implements Comparable<Claim>{
 	protected String totalAmount;
 	
 	protected String claimStatus;
+	protected boolean editable;
 	
 	
 	protected ExpenseList expenseList;
@@ -53,6 +54,7 @@ public class Claim implements Comparable<Claim>{
 		this.claimStatus = "In Progress";
 		this.expenseList = new ExpenseList();
 		this.formatCost();
+		this.editable = true;
 
 	}
 	
@@ -161,7 +163,7 @@ public class Claim implements Comparable<Claim>{
 		this.startDate = dateFormat.format("dd-MMM-yyyy", this.start).toString();
 		this.endDate = dateFormat.format("dd-MMM-yyyy", this.end).toString();
 		
-		return this.claimName + "\n" + this.claimDescription + "\n" + this.startDate + " to " + this.endDate + totalAmount   ; 
+		return this.claimName+  "\n" + this.claimDescription +"\n" + this.claimStatus  + "\n" + this.startDate + " to " + this.endDate + totalAmount   ; 
 	}
 
 	
@@ -289,5 +291,24 @@ public int compareTo(Claim rhs) {
 		return 0;
 }
 
+
+public void submit(){
+	claimStatus = "Submitted";
+	editable = false;
+}
 	
+public void approve(){
+	claimStatus = "Approved";
+	editable = false;
+}
+
+public void returned(){
+	claimStatus = "Returned";
+	editable = true;
+}
+
+
+public boolean isEditable(){
+	return editable;
+}
 }

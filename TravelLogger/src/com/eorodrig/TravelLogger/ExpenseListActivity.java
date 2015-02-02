@@ -17,6 +17,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -48,10 +49,20 @@ public class ExpenseListActivity extends Activity {
 		//add observer
 		this.setupExpenseController(expenseAdapter);
 		
-		//setup long click listener
-		this.setupLongClickListener(listView, expenseController);
+
 		
-	
+		if (expenseController.isEditable())
+		{
+			Button button = (Button)findViewById(R.id.NewExpenseButton);
+			button.setVisibility(View.VISIBLE);
+			//setup long click listener
+			this.setupLongClickListener(listView, expenseController);
+		}
+		else
+		{
+			Button button = (Button)findViewById(R.id.NewExpenseButton);
+			button.setVisibility(View.INVISIBLE);
+		}
 
 
 		
@@ -69,55 +80,55 @@ public class ExpenseListActivity extends Activity {
 	private void setupLongClickListener(ListView listView, final ExpenseController expenseController) {
 		listView.setOnItemLongClickListener(new OnItemLongClickListener() {
 
-			
-			//http://developer.android.com/guide/topics/ui/dialogs.html  jan  18 710pm
-			@Override
-			public boolean onItemLongClick(AdapterView<?> adapterView, View view,
-					int position, long id) {
-				
-				AlertDialog.Builder builder = new AlertDialog.Builder(ExpenseListActivity.this);
-				builder.setCancelable(true);
-				final int finalExpensePosition = position;
-				//Toast.makeText(ClaimListActivity.this, claimList.get(position).toString(), Toast.LENGTH_SHORT).show();
-				
-			   //builder.setItems(R.array.selected_item_list, new OnClickListener());
-
-				builder.setItems(R.array.selected_expense_list, new OnClickListener() {
+				//http://developer.android.com/guide/topics/ui/dialogs.html  jan  18 710pm
+				@Override
+				public boolean onItemLongClick(AdapterView<?> adapterView, View view,
+						int position, long id) {
 					
-					@Override
-					public void onClick(DialogInterface dialog, int which) {
-						//Toast.makeText(ClaimListActivity.this, String.valueOf(which), Toast.LENGTH_SHORT).show();
-						//edit
-						if (which == 0){
-							ExpenseController expenseController = new ExpenseController();
-							expenseController.setIndexOfCurrentExpense(finalExpensePosition);
-							
-							expenseController.setExpenseToEdit();
-							
-							//Toast.makeText(ExpenseListActivity.this, , Toast.LENGTH_SHORT).show();
-					   	 	Intent intent = new Intent(ExpenseListActivity.this, NewExpenseActivity.class);
-					   	 	startActivity(intent);
-						}
-						//delete
-						if (which == 1){
-							
-							Expense removedExpense = expenseController.getExpense(finalExpensePosition);
-							
-							
-							
-							expenseController.removeExpense(removedExpense);
-
-						}
-							
+					AlertDialog.Builder builder = new AlertDialog.Builder(ExpenseListActivity.this);
+					builder.setCancelable(true);
+					final int finalExpensePosition = position;
+	
+					
+	
+					builder.setItems(R.array.selected_expense_list, new OnClickListener() {
 						
-					}
-				});	
-			
-				builder.show();
-
-				return false;
-			}
-		});
+						@Override
+						public void onClick(DialogInterface dialog, int which) {
+							//Toast.makeText(ClaimListActivity.this, String.valueOf(which), Toast.LENGTH_SHORT).show();
+							//edit
+							if (which == 0){
+								ExpenseController expenseController = new ExpenseController();
+								expenseController.setIndexOfCurrentExpense(finalExpensePosition);
+								
+								expenseController.setExpenseToEdit();
+								
+								//Toast.makeText(ExpenseListActivity.this, , Toast.LENGTH_SHORT).show();
+						   	 	Intent intent = new Intent(ExpenseListActivity.this, NewExpenseActivity.class);
+						   	 	startActivity(intent);
+							}
+							//delete
+							if (which == 1){
+								
+								Expense removedExpense = expenseController.getExpense(finalExpensePosition);
+								
+								
+								
+								expenseController.removeExpense(removedExpense);
+	
+							}
+								
+							
+						}
+					});	
+				
+					builder.show();
+	
+					return false;
+				}
+			});
+		
+		
 		
 	}
 

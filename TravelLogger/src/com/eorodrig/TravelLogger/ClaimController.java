@@ -117,8 +117,8 @@ public class ClaimController {
 					
 			OutputStreamWriter osw = new OutputStreamWriter(fos);
 			
-			gson.toJson(claimList, osw);
-			
+			//gson.toJson(claimList, osw);
+			gson.toJson(claimList.getClaims(), osw);
 			osw.flush();
 			osw.close();
 			fos.close();
@@ -145,11 +145,14 @@ public class ClaimController {
 			FileInputStream fis = context.openFileInput(fileName);
 			InputStreamReader isr = new InputStreamReader(fis);
 
-			Type claimListType = new TypeToken<ClaimList>(){}.getType();
+			Type ArrayListclaimListType = new TypeToken<ArrayList<Claim>>() {}.getType();
 			
-			claimList = (ClaimList) gson.fromJson(isr, claimListType);
-
 			
+			ArrayList<Claim>list = new ArrayList<Claim>();
+			list = gson.fromJson(isr, ArrayListclaimListType );
+			claimList.addAll(list);
+			
+			//new TypeToken<ArrayList<String>>() {}.getType();
 			isr.close();
 			fis.close();
 						
@@ -158,8 +161,6 @@ public class ClaimController {
 			// TODO: handle exception
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (Exception e){
 			e.printStackTrace();
 		}
 			
@@ -179,6 +180,12 @@ public class ClaimController {
 		this.claimList.getClaims().get(claimListNumber).editClaim(claim, claimDescription, start, end);
 		this.claimList.notifyListeners();
 		
+	}
+	
+	
+	public void submitClaim(int index){
+		claimList.getClaims().get(index).submit();
+		claimList.notifyListeners();
 	}
 }
 

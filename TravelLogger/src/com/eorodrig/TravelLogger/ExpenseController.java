@@ -112,6 +112,14 @@ public class ExpenseController {
 	}
 	
 	
+	public boolean isEditable(){
+		if (currentClaim.isEditable())
+		{
+			return true;
+		}
+		return false;
+	}
+	
 
 	
 }

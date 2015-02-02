@@ -93,6 +93,7 @@ public class ClaimList {
 
 
 	public void addAll(ArrayList<Claim> list) {
+		this.claimList.clear();
 		this.claimList.addAll(list);
 	
 		
