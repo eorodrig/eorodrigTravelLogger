@@ -41,6 +41,7 @@ public class NewExpenseActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_new_expense);
 		
+		//these will init the date picker
 		DatePicker edp = (DatePicker) findViewById(R.id.expenseDatePicker);
 		edp.setCalendarViewShown(false);
 		
@@ -56,7 +57,7 @@ public class NewExpenseActivity extends Activity {
 		ExpenseController expenseController = new ExpenseController();
 		
 		
-		//if this is null, we make a new claim, else we edit a claim
+		//if this is null, we make a new expense, else we edit a expense
 		if (expenseController.getExpenseToEdit() ==null){
 			this.initNewExpense(expenseController);
 		}
@@ -146,6 +147,12 @@ public class NewExpenseActivity extends Activity {
 		return super.onOptionsItemSelected(item);
 	}
 	
+	
+	
+	/**
+	 * This is the method call for the add/Edit Expense button
+	 * @param view
+	 */
 	public void onClickAddExpenseButton(View view){
 		
 		String expenseType, expenseDescription;
@@ -183,13 +190,14 @@ public class NewExpenseActivity extends Activity {
 		currencyID = spinnerExtractor.getSelectedItemPosition();
 		
 		
-		//verify that the fields are filled out
+		//if fields are not filled out, inform user
 		if (((expenseDescription.isEmpty()) ||(amount.isEmpty())))
 			{ 
 				Toast toast = Toast.makeText(NewExpenseActivity.this, "Complete All Fields Before Adding Expense", Toast.LENGTH_LONG);
 				toast.show();
 
 			}
+		//else add/edit the expense
 		else
 		{
 			//new expense

@@ -51,6 +51,7 @@ public class ClaimController {
 	//the boolean status of the editability of the claim
 	private static boolean editStatus = false;
 	
+	//this is the filename we save/load to/from
 	private final static String FILENAME  = "TravelLoggerDate.sav";
 	
 

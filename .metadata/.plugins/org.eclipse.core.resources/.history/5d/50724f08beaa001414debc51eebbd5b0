@@ -1,0 +1,111 @@
+/*
+ *     <one line to give the program's name and a brief idea of what it does.>
+    Copyright (C) <2015>  <Edwin Rodriguez eorodrig@ualberta.ca>
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+package com.eorodrig.TravelLogger;
+
+import java.util.ArrayList;
+import java.util.Collections;
+
+
+public class ExpenseList {
+
+	//this will hold a list of expenses
+	protected ArrayList<Expense> expenseList;
+	
+	//this will hold a list of listeners
+	protected ArrayList<Listener> listeners;
+
+	
+	/**
+	 * Constructor will init exepense and listener lists
+	 */
+	public ExpenseList(){
+		expenseList = new ArrayList<Expense>();
+		listeners = new ArrayList<Listener>();
+	}
+	
+	
+	///////////////////////////////////////////
+	/*
+	 * Expense list calls
+	 */
+	///////////////////////////////////
+	/**
+	 * this will get a list of expenses
+	 * @return
+	 */
+	public ArrayList<Expense> getExpenseList(){
+		return expenseList;
+	}
+	
+	/**
+	 * This will add an expense to the expense list and notify the listeners
+	 * @param newExpense
+	 */
+	public void addExpense(Expense newExpense){
+		expenseList.add(newExpense);
+		notifyListeners();
+	}
+	
+	public void removeExpense(Expense Expense){
+		expenseList.remove(Expense);
+		notifyListeners();
+	}
+	
+	public Expense getExpense(int index){
+		return expenseList.get(index);
+	
+	}
+	
+	public void addListener(Listener listener){
+		listeners.add(listener);
+	}
+	
+	private void notifyListeners(){
+		if (listeners.size() >0)
+		{
+			Collections.sort(expenseList);
+			for (Listener listener: listeners){
+				listener.update();
+			}
+
+		}
+		
+	}
+	
+	private void removeListener(Listener listener){
+		listeners.remove(listener);
+	}
+	
+	public void removeAllListeners(){
+		listeners.clear();
+	}
+
+
+	public void updateClaim(int index, Expense newExpense) {
+		expenseList.remove(index);
+		expenseList.add(index, newExpense);
+		notifyListeners();
+		
+	}
+	
+
+	
+
+	
+}

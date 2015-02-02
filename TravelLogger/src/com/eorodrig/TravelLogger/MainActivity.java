@@ -18,9 +18,7 @@
 
 package com.eorodrig.TravelLogger;
 
-
 import com.eorodrig.TravelLogger.R;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -28,6 +26,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+
+//retired main Activity
+//would have implemented a splash screen with 2 buttons 
+//one for users
+//one for admin (approve/return claims)
 public class MainActivity extends Activity {
 
 	public static final ClaimList claimList = new ClaimList();

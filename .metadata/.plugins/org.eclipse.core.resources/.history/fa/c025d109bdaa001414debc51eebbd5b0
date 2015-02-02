@@ -1,0 +1,162 @@
+/*
+ *     <one line to give the program's name and a brief idea of what it does.>
+    Copyright (C) <2015>  <Edwin Rodriguez eorodrig@ualberta.ca>
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+package com.eorodrig.TravelLogger;
+
+public class ExpenseController {
+
+	//these are the attributes for the expense controller
+	//these are all static as they need to remain in memory
+
+	//will hold 1 claim's expense list
+	private static ExpenseList expenseList = null;
+	
+	//will hold the current claim
+	private Claim currentClaim;
+	
+	//will hold the list index of the current expense
+	private static int expenseListNumber = 0;
+	
+	//these will hold the expense we wish to edit
+	private static Expense expenseToEdit = null;
+	//this will hold the editability of the current status
+	private static boolean editStatus = false;
+	
+	
+	
+	/////////////////////////////////
+	/*
+	 * Expense list calls
+	 */
+	///////////////////////////////////////
+	
+	/**
+	 * this return a list of expenses, if empty, it will create a new list
+	 * @return
+	 */
+	static public ExpenseList getExpenseList(){
+		
+		if (expenseList == null){
+			expenseList = new ExpenseList();
+		}
+		return expenseList;
+	}
+	
+	
+	public Expense getExpense(int index){
+		return expenseList.getExpense(index);
+	
+	}
+
+	public void setExpenseToEdit() {
+		expenseToEdit = getExpense(expenseListNumber);
+		
+	}
+	
+	public void resetExpenseToEdit(){
+		this.expenseToEdit = null;
+	}
+	
+	
+
+	public Expense getExpenseToEdit(){
+		return expenseToEdit;
+	}
+	
+	//getter/setter values for edit flag
+	public void setEditStatus(boolean status){
+		this.editStatus = status;
+	}
+	public boolean getEditStatus(){
+		return this.editStatus;
+	}
+	
+	
+
+	
+	public void addExpense(Expense newExpense){
+		if (expenseList == null){
+			expenseList = new ExpenseList();
+		}
+	
+		 expenseList.addExpense(newExpense);
+	}
+	
+	public void removeExpense(Expense expense){
+		expenseList.removeExpense(expense);
+		
+	}
+	
+	public void setCurrentClaim(){
+		ClaimController claimController = new ClaimController();
+		int currentClaimIndex = claimController.getIndexOfCurrentClaim();
+		try{
+			currentClaim = ClaimController.getClaimList().getClaim(currentClaimIndex);
+			expenseList = currentClaim.getExpenses();
+		}
+		catch(EmptyClaimException e)
+		{
+			
+		}
+		
+
+		
+		
+
+	}
+
+
+
+	public void updateExpenses() {
+		ClaimController claimController = new ClaimController();
+		claimController.updateClaims(currentClaim);
+
+		
+	}
+
+
+
+	public void setIndexOfCurrentExpense(int position) {
+		this.expenseListNumber = position;
+		
+	}
+	
+	public int getIndexOfCurrentExpense() {
+		return this.expenseListNumber;
+		
+	}
+
+
+
+	public void editExpense(Expense newExpense) {
+		expenseList.updateClaim(expenseListNumber, newExpense);
+		
+	}
+	
+	
+	public boolean isEditable(){
+		if (currentClaim.isEditable())
+		{
+			return true;
+		}
+		return false;
+	}
+	
+
+	
+}

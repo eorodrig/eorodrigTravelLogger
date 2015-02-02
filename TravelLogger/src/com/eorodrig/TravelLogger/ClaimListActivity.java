@@ -57,6 +57,7 @@ public class ClaimListActivity extends Activity{
 		//This will remove all the old listeners as they result in null point exceptions
 		ClaimController.getClaimList().removeAllListeners();
 		
+		
 		//this will set up the claim adapter
 		ListView listView = (ListView)findViewById(R.id.ClaimListView);
 		final ArrayList<Claim> claimList = ClaimController.getClaimList().getClaims();

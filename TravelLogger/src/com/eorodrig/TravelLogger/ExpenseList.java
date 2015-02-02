@@ -24,42 +24,82 @@ import java.util.Collections;
 
 public class ExpenseList {
 
+	//this will hold a list of expenses
 	protected ArrayList<Expense> expenseList;
+	
+	//this will hold a list of listeners
 	protected ArrayList<Listener> listeners;
 
 	
-	
+	/**
+	 * Constructor will init exepense and listener lists
+	 */
 	public ExpenseList(){
 		expenseList = new ArrayList<Expense>();
 		listeners = new ArrayList<Listener>();
 	}
 	
 	
+	///////////////////////////////////////////
+	/*
+	 * Expense list calls
+	 */
+	///////////////////////////////////
+	/**
+	 * this will get a list of expenses
+	 * @return
+	 */
 	public ArrayList<Expense> getExpenseList(){
 		return expenseList;
 	}
 	
-	
+	/**
+	 * This will add an expense to the expense list and notify the listeners
+	 * @param newExpense
+	 */
 	public void addExpense(Expense newExpense){
 		expenseList.add(newExpense);
 		notifyListeners();
 	}
 	
+	/**
+	 * This will remove an expense to the expense list and notify the listeners
+	 * @param newExpense
+	 */
 	public void removeExpense(Expense Expense){
 		expenseList.remove(Expense);
 		notifyListeners();
 	}
 	
+	/**
+	 * This will get an expense from the selected index
+	 * @param index
+	 * @return
+	 */
 	public Expense getExpense(int index){
 		return expenseList.get(index);
 	
 	}
 	
+	///////////////////////////////
+	/*
+	 * Listner list callers
+	 */
+	///////////////////////////////
+	/**
+	 * This will add a listener to the listeners list
+	 * @param listener
+	 */
 	public void addListener(Listener listener){
 		listeners.add(listener);
 	}
 	
+	
+	/**
+	 * This will notify all listeners to update the activity
+	 */
 	private void notifyListeners(){
+		//if there are listeners, Sort the expense list then update the activity
 		if (listeners.size() >0)
 		{
 			Collections.sort(expenseList);
@@ -68,18 +108,21 @@ public class ExpenseList {
 			}
 
 		}
-		
 	}
-	
-	private void removeListener(Listener listener){
-		listeners.remove(listener);
-	}
-	
+
+	/**
+	 * This will remove all the listeners from the listeners 
+	 */
 	public void removeAllListeners(){
 		listeners.clear();
 	}
 
 
+	/**
+	 * This will update the current claim so it includes all the new expense changes
+	 * @param index
+	 * @param newExpense
+	 */
 	public void updateClaim(int index, Expense newExpense) {
 		expenseList.remove(index);
 		expenseList.add(index, newExpense);

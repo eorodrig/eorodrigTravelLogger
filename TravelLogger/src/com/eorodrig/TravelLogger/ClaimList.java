@@ -161,6 +161,13 @@ public class ClaimList {
 	 */
 	public void removeAllListeners(){
 		listeners.clear();
+		
+		
+		for (Claim claim: claimList)
+		{
+			claim.getExpenses().removeAllListeners();
+
+		}
 	}
 
 

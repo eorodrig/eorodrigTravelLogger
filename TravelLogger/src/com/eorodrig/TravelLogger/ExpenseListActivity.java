@@ -20,10 +20,7 @@
 package com.eorodrig.TravelLogger;
 
 import java.util.ArrayList;
-import java.util.ResourceBundle.Control;
-
 import com.eorodrig.TravelLogger.R;
-
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
@@ -38,14 +35,11 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.Spinner;
-import android.widget.TextView;
-import android.widget.Toast;
 import android.widget.AdapterView.OnItemLongClickListener;
 
 public class ExpenseListActivity extends Activity {
 	
-	
+	// this is needed to update the activity
 	private Context context;
 
 	@Override
@@ -69,24 +63,23 @@ public class ExpenseListActivity extends Activity {
 		this.setupExpenseController(expenseAdapter);
 		
 
-		
+		//we set the current view depending on the editability of the claim
+		//if it is editable, enable all options
 		if (expenseController.isEditable())
 		{
+			//enable new expense button
 			Button button = (Button)findViewById(R.id.NewExpenseButton);
 			button.setVisibility(View.VISIBLE);
 			//setup long click listener
 			this.setupLongClickListener(listView, expenseController);
 		}
+		//if it is not editable, just do a view only mode
 		else
 		{
+			//disable add new expense button
 			Button button = (Button)findViewById(R.id.NewExpenseButton);
 			button.setVisibility(View.INVISIBLE);
 		}
-
-
-		
-	
-		
 	}
 	
 	@Override
@@ -96,48 +89,48 @@ public class ExpenseListActivity extends Activity {
 
 	}
 
+	/**
+	 * This will set up the long click listener
+	 * @param listView
+	 * @param expenseController
+	 */
 	private void setupLongClickListener(ListView listView, final ExpenseController expenseController) {
 		listView.setOnItemLongClickListener(new OnItemLongClickListener() {
 
-				//http://developer.android.com/guide/topics/ui/dialogs.html  jan  18 710pm
+				//Source: http://developer.android.com/guide/topics/ui/dialogs.html  jan  18 710pm
+				//this will set up the on Long Click listeners
 				@Override
-				public boolean onItemLongClick(AdapterView<?> adapterView, View view,
-						int position, long id) {
+				public boolean onItemLongClick(AdapterView<?> adapterView, View view,int position, long id) {
 					
+					//this will init the pop up menu
 					AlertDialog.Builder builder = new AlertDialog.Builder(ExpenseListActivity.this);
 					builder.setCancelable(true);
 					final int finalExpensePosition = position;
-	
 					
-	
+					//we set the options for the pop up button
 					builder.setItems(R.array.selected_expense_list, new OnClickListener() {
 						
 						@Override
 						public void onClick(DialogInterface dialog, int which) {
-							//Toast.makeText(ClaimListActivity.this, String.valueOf(which), Toast.LENGTH_SHORT).show();
+					
 							//edit
 							if (which == 0){
+								//we set the expense to edit
 								ExpenseController expenseController = new ExpenseController();
 								expenseController.setIndexOfCurrentExpense(finalExpensePosition);
-								
 								expenseController.setExpenseToEdit();
 								
-								//Toast.makeText(ExpenseListActivity.this, , Toast.LENGTH_SHORT).show();
+								//we change the activity to the new expense activity
 						   	 	Intent intent = new Intent(ExpenseListActivity.this, NewExpenseActivity.class);
 						   	 	startActivity(intent);
 							}
 							//delete
 							if (which == 1){
-								
+								//we delete the selected expense
 								Expense removedExpense = expenseController.getExpense(finalExpensePosition);
-								
-								
-								
 								expenseController.removeExpense(removedExpense);
-	
 							}
-								
-							
+	
 						}
 					});	
 				
@@ -145,29 +138,32 @@ public class ExpenseListActivity extends Activity {
 	
 					return false;
 				}
-			});
-		
-		
-		
+			});	
 	}
 
+	
+	/**
+	 * This will init the setup Expense controller by adding it to the listeners list
+	 * @param expenseAdapter
+	 */
 	private void setupExpenseController(final ArrayAdapter<Expense> expenseAdapter) {
 		ExpenseController.getExpenseList().addListener(new Listener(){
 			@Override
 			public void update(){
 				
+				//update the current activitys
 				expenseAdapter.notifyDataSetChanged();
 				
+				//save the claims to file
 				ClaimController claimController = new ClaimController();
-				
 				claimController.save(context);
-
 			}
 
 		});
 		
 	}
 
+	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
@@ -188,7 +184,11 @@ public class ExpenseListActivity extends Activity {
 	}
 	
 	
-	
+	/**
+	 * This is the button call for the "Add new expense button"
+	 * will change activity to the new expense activity
+	 * @param view
+	 */
 	public void onClickNewExpenseButton(View view){
 		Intent intent = new Intent(ExpenseListActivity.this, NewExpenseActivity.class);
 		startActivity(intent);

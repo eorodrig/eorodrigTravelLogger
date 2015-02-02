@@ -138,7 +138,10 @@ public class NewClaimActivity extends Activity {
 	
 	
 	
-	
+	/**
+	 * This is the Button call for the Add/Edit Claim button
+	 * @param view
+	 */
 	public void onClickAddClaimButton(View view){
 		
 			String claim, claimDescription;
@@ -186,9 +189,9 @@ public class NewClaimActivity extends Activity {
 					Toast toast = Toast.makeText(NewClaimActivity.this, "New Claim Added", Toast.LENGTH_SHORT);
 					toast.show();
 				}
+				/*Edit the claim*/
 				else
 				{
-					//claimController.editClaim(newClaim);
 					claimController.editClaim(claim, claimDescription, start, end);
 					Toast toast = Toast.makeText(NewClaimActivity.this, "Edited Claim", Toast.LENGTH_SHORT);
 					toast.show();

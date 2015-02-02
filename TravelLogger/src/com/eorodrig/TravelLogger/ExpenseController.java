@@ -20,41 +20,120 @@ package com.eorodrig.TravelLogger;
 
 public class ExpenseController {
 
+	//these are the attributes for the expense controller
+	//these are all static as they need to remain in memory
+
+	//will hold 1 claim's expense list
 	private static ExpenseList expenseList = null;
+	
+	//will hold the current claim
 	private Claim currentClaim;
+	
+	//will hold the list index of the current expense
 	private static int expenseListNumber = 0;
+	
+	//these will hold the expense we wish to edit
 	private static Expense expenseToEdit = null;
+	//this will hold the editability of the current status
 	private static boolean editStatus = false;
 	
 	
-	//get the list of expenses for a claim
+	
+	/////////////////////////////////
+	/*
+	 * Expense list calls
+	 */
+	///////////////////////////////////////
+	
+	/**
+	 * this return a list of expenses, if empty, it will create a new list
+	 * @return
+	 */
 	static public ExpenseList getExpenseList(){
 		
 		if (expenseList == null){
 			expenseList = new ExpenseList();
 		}
-		
-		
 		return expenseList;
+	}
+	
+	/**
+	 * This will get an expense at a selected index
+	 * @param index
+	 * @return
+	 */
+	public Expense getExpense(int index){
+		return expenseList.getExpense(index);
+	
+	}
+	
+	/**
+	 * This will add an expense to the expense list,
+	 * if list is empty it will make a new list
+	 * @param newExpense
+	 */
+	public void addExpense(Expense newExpense){
+		if (expenseList == null){
+			expenseList = new ExpenseList();
+		}
+	
+		 expenseList.addExpense(newExpense);
+	}
+	
+	
+	/**
+	 * this will remove the specified expense from the expense list
+	 * @param expense
+	 */
+	public void removeExpense(Expense expense){
+		expenseList.removeExpense(expense);
 		
 	}
 	
 	
-
+	
+	
+	
+	
+	//////////////////////////////
+	/*
+	 * Controller calls
+	 */
+	////////////////////////////////
+	/**
+	 * This will set the current Claim using the stored index of the current claim
+	 */
+	public void setCurrentClaim(){
+		//this will extract the current claim index
+		ClaimController claimController = new ClaimController();
+		int currentClaimIndex = claimController.getIndexOfCurrentClaim();
+		
+		//try to extract the current claim and extract that claims expense list
+		try{
+			currentClaim = ClaimController.getClaimList().getClaim(currentClaimIndex);
+			expenseList = currentClaim.getExpenses();
+		}
+		catch(EmptyClaimException e)
+		{
+			
+		}
+	}
+	
+	
+	//this will set/get/reset the expense edit
 	public void setExpenseToEdit() {
 		expenseToEdit = getExpense(expenseListNumber);
 		
 	}
-	
 	public void resetExpenseToEdit(){
 		this.expenseToEdit = null;
 	}
 	
-	
-
 	public Expense getExpenseToEdit(){
 		return expenseToEdit;
 	}
+	
+	
 	
 	//getter/setter values for edit flag
 	public void setEditStatus(boolean status){
@@ -65,71 +144,36 @@ public class ExpenseController {
 	}
 	
 	
-	public Expense getExpense(int index){
-		return expenseList.getExpense(index);
-	
-	}
-	
-	public void addExpense(Expense newExpense){
-		if (expenseList == null){
-			expenseList = new ExpenseList();
-		}
-	
-		 expenseList.addExpense(newExpense);
-	}
-	
-	public void removeExpense(Expense expense){
-		expenseList.removeExpense(expense);
-		
-	}
-	
-	public void setCurrentClaim(){
-		ClaimController claimController = new ClaimController();
-		int currentClaimIndex = claimController.getIndexOfCurrentClaim();
-		try{
-			currentClaim = ClaimController.getClaimList().getClaim(currentClaimIndex);
-			expenseList = currentClaim.getExpenses();
-		}
-		catch(EmptyClaimException e)
-		{
-			
-		}
-		
-
-		
-		
-
-	}
-
-
-
+	/**
+	 * This will update the expenses to the claimList
+	 */
 	public void updateExpenses() {
 		ClaimController claimController = new ClaimController();
 		claimController.updateClaims(currentClaim);
-
-		
 	}
 
 
-
+	//this will set/get the index of the current expense
 	public void setIndexOfCurrentExpense(int position) {
-		this.expenseListNumber = position;
-		
+		expenseListNumber = position;
 	}
 	
 	public int getIndexOfCurrentExpense() {
-		return this.expenseListNumber;
-		
+		return expenseListNumber;
 	}
 
 
-
+	/**
+	 * This will update the current expense with the editted values
+	 * @param newExpense
+	 */
 	public void editExpense(Expense newExpense) {
 		expenseList.updateClaim(expenseListNumber, newExpense);
 		
 	}
 	
 	
+	/**This will check to see if the current claim is editable*/
 	public boolean isEditable(){
 		if (currentClaim.isEditable())
 		{

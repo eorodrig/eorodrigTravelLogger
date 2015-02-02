@@ -1,0 +1,198 @@
+/*
+ *     <one line to give the program's name and a brief idea of what it does.>
+    Copyright (C) <2015>  <Edwin Rodriguez eorodrig@ualberta.ca>
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+
+package com.eorodrig.TravelLogger;
+
+import java.util.ArrayList;
+import com.eorodrig.TravelLogger.R;
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.ListView;
+import android.widget.AdapterView.OnItemLongClickListener;
+
+public class ExpenseListActivity extends Activity {
+	
+	// this is needed to update the activity
+	private Context context;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_expense_list);
+		context = this;
+		
+		//We set expense Controller to the current claim
+		ExpenseController expenseController = new ExpenseController();
+		expenseController.setCurrentClaim();
+		
+		//we init the adapter
+		ListView listView = (ListView)findViewById(R.id.ExpenseListView);
+		final ArrayList<Expense> expenseList = ExpenseController.getExpenseList().getExpenseList();
+		final ArrayAdapter <Expense> expenseAdapter = new ArrayAdapter<Expense>(this, android.R.layout.simple_list_item_1, expenseList);
+		listView.setAdapter(expenseAdapter);
+		
+
+		//add observer
+		this.setupExpenseController(expenseAdapter);
+		
+
+		//we set the current view depending on the editability of the claim
+		//if it is editable, enable all options
+		if (expenseController.isEditable())
+		{
+			//enable new expense button
+			Button button = (Button)findViewById(R.id.NewExpenseButton);
+			button.setVisibility(View.VISIBLE);
+			//setup long click listener
+			this.setupLongClickListener(listView, expenseController);
+		}
+		//if it is not editable, just do a view only mode
+		else
+		{
+			//disable add new expense button
+			Button button = (Button)findViewById(R.id.NewExpenseButton);
+			button.setVisibility(View.INVISIBLE);
+		}
+	}
+	
+	@Override
+	protected void onStop(){
+		super.onStop();
+
+
+	}
+
+	/**
+	 * This will set up the long click listener
+	 * @param listView
+	 * @param expenseController
+	 */
+	private void setupLongClickListener(ListView listView, final ExpenseController expenseController) {
+		listView.setOnItemLongClickListener(new OnItemLongClickListener() {
+
+				//Source: http://developer.android.com/guide/topics/ui/dialogs.html  jan  18 710pm
+				//this will set up the on Long Click listeners
+				@Override
+				public boolean onItemLongClick(AdapterView<?> adapterView, View view,int position, long id) {
+					
+					//this will init the pop up menu
+					AlertDialog.Builder builder = new AlertDialog.Builder(ExpenseListActivity.this);
+					builder.setCancelable(true);
+					final int finalExpensePosition = position;
+					
+					//we set the options for the pop up button
+					builder.setItems(R.array.selected_expense_list, new OnClickListener() {
+						
+						@Override
+						public void onClick(DialogInterface dialog, int which) {
+					
+							//edit
+							if (which == 0){
+								//we set the expense to edit
+								ExpenseController expenseController = new ExpenseController();
+								expenseController.setIndexOfCurrentExpense(finalExpensePosition);
+								expenseController.setExpenseToEdit();
+								
+								//we change the activity to the new expense activity
+						   	 	Intent intent = new Intent(ExpenseListActivity.this, NewExpenseActivity.class);
+						   	 	startActivity(intent);
+							}
+							//delete
+							if (which == 1){
+								//we delete the selected expense
+								Expense removedExpense = expenseController.getExpense(finalExpensePosition);
+								expenseController.removeExpense(removedExpense);
+							}
+	
+						}
+					});	
+				
+					builder.show();
+	
+					return false;
+				}
+			});	
+	}
+
+	
+	/**
+	 * This will init the setup Expense controller by adding it to the listeners list
+	 * @param expenseAdapter
+	 */
+	private void setupExpenseController(final ArrayAdapter<Expense> expenseAdapter) {
+		ExpenseController.getExpenseList().addListener(new Listener(){
+			@Override
+			public void update(){
+				
+				//update the current activitys
+				expenseAdapter.notifyDataSetChanged();
+				
+				//save the claims to file
+				ClaimController claimController = new ClaimController();
+				claimController.save(context);
+			}
+
+		});
+		
+	}
+
+	
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.expense_list, menu);
+		return true;
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		// Handle action bar item clicks here. The action bar will
+		// automatically handle clicks on the Home/Up button, so long
+		// as you specify a parent activity in AndroidManifest.xml.
+		int id = item.getItemId();
+		if (id == R.id.action_settings) {
+			return true;
+		}
+		return super.onOptionsItemSelected(item);
+	}
+	
+	
+	/**
+	 * This is the button call for the "Add new expense button"
+	 * will change activity to the new expense acttivity
+	 * @param view
+	 */
+	public void onClickNewExpenseButton(View view){
+		Intent intent = new Intent(ExpenseListActivity.this, NewExpenseActivity.class);
+		startActivity(intent);
+	}
+	
+}
+
