@@ -11,7 +11,6 @@ import java.io.Writer;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Date;
 
 import com.google.gson.Gson;
@@ -119,7 +118,7 @@ public class ClaimController {
 			OutputStreamWriter osw = new OutputStreamWriter(fos);
 			
 			//gson.toJson(claimList, osw);
-			gson.toJson(claimList, osw);
+			gson.toJson(claimList.getClaims(), osw);
 			osw.flush();
 			osw.close();
 			fos.close();
@@ -146,15 +145,13 @@ public class ClaimController {
 			FileInputStream fis = context.openFileInput(fileName);
 			InputStreamReader isr = new InputStreamReader(fis);
 
-			Type claimListType = new TypeToken<ClaimList>() {}.getType();
+			Type ArrayListclaimListType = new TypeToken<ArrayList<Claim>>() {}.getType();
 			
 			
-			//ArrayList<Claim>list = new ArrayList<Claim>();
-			claimList = gson.fromJson(isr, claimListType);
-			
-			
-			//list = gson.fromJson( );
-			//claimList.addAll(list);
+			ArrayList<Claim>list = new ArrayList<Claim>();
+			list = gson.fromJson(json, typeOfT);
+			list = gson.fromJson(isr, ArrayListclaimListType );
+			claimList.addAll(list);
 			
 			//new TypeToken<ArrayList<String>>() {}.getType();
 			isr.close();

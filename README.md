@@ -9,3 +9,4 @@ http://stackoverflow.com/questions/17674308/date-from-edittext--Accessed 2015 ja
 
 
 http://stackoverflow.com/questions/5813434/trouble-with-gson-serializing-an-arraylist-of-pojos  jan 31/2015 @ 1050pm  gson
+http://stackoverflow.com/questions/6173400/how-to-programmatically-hide-a-button-in-android-sdk   feb 2 @12:52 am

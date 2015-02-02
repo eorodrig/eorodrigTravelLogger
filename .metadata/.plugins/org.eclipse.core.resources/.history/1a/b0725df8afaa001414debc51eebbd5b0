@@ -47,8 +47,6 @@ public class ClaimListActivity extends Activity{
 		ClaimController controller = new ClaimController();
 		controller.load(context);
 		
-		controller.getClaimList().removeAllListeners();
-		
 		ListView listView = (ListView)findViewById(R.id.ClaimListView);
 		final ArrayList<Claim> claimList = ClaimController.getClaimList().getClaims();
 		final ArrayAdapter <Claim> claimAdapter = new ArrayAdapter<Claim>(this, android.R.layout.simple_list_item_1, claimList);
@@ -169,18 +167,24 @@ public class ClaimListActivity extends Activity{
 								if (which == 1){
 
 									ClaimController claimController = new ClaimController();
-
-									claimController.approveClaim(finalClaimPosition);
-
+									try {
+										claimController.getClaimList().getClaim(finalClaimPosition).approve();
+									} catch (EmptyClaimException e) {
+										// TODO Auto-generated catch block
+										e.printStackTrace();
+									}
 								}
 								
 								//return
 								if (which == 2){
 
 									ClaimController claimController = new ClaimController();
-	
-									claimController.returnClaim(finalClaimPosition);
-
+									try {
+										claimController.getClaimList().getClaim(finalClaimPosition).returned();
+									} catch (EmptyClaimException e) {
+										// TODO Auto-generated catch block
+										e.printStackTrace();
+									}
 								}
 							
 							

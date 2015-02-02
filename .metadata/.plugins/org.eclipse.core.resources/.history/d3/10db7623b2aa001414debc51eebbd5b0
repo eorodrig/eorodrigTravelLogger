@@ -146,11 +146,11 @@ public class ClaimController {
 			FileInputStream fis = context.openFileInput(fileName);
 			InputStreamReader isr = new InputStreamReader(fis);
 
-			Type claimListType = new TypeToken<ClaimList>() {}.getType();
+			Type claimListType = new TypeToken<ArrayList<Claim>>() {}.getType();
 			
 			
 			//ArrayList<Claim>list = new ArrayList<Claim>();
-			claimList = gson.fromJson(isr, claimListType);
+			claimList.addAll((ArrayList<Claim>) gson.fromJson(isr, ArrayListclaimListType));
 			
 			
 			//list = gson.fromJson( );

@@ -150,7 +150,7 @@ public class ClaimController {
 			
 			
 			//ArrayList<Claim>list = new ArrayList<Claim>();
-			claimList = gson.fromJson(isr, claimListType);
+			claimList.addAll((ArrayList<Claim>) gson.fromJson(isr, ArrayListclaimListType));
 			
 			
 			//list = gson.fromJson( );

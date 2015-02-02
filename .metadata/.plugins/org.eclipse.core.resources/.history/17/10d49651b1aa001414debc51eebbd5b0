@@ -45,9 +45,7 @@ public class ClaimListActivity extends Activity{
 		
 		/*Load the GSON file*/
 		ClaimController controller = new ClaimController();
-		controller.load(context);
-		
-		controller.getClaimList().removeAllListeners();
+		//controller.load(context);
 		
 		ListView listView = (ListView)findViewById(R.id.ClaimListView);
 		final ArrayList<Claim> claimList = ClaimController.getClaimList().getClaims();
