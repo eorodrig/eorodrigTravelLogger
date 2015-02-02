@@ -187,15 +187,5 @@ public class ClaimController {
 		claimList.getClaims().get(index).submit();
 		claimList.notifyListeners();
 	}
-	
-	public void approveClaim(int index){
-		claimList.getClaims().get(index).approve();
-		claimList.notifyListeners();
-	}
-	
-	public void returnClaim(int index){
-		claimList.getClaims().get(index).returned();
-		claimList.notifyListeners();
-	}
 }
 

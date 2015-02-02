@@ -3,12 +3,9 @@ package com.eorodrig.TravelLogger;
 import java.util.ArrayList;
 
 import android.app.Activity;
-import android.content.Context;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
 
 public class AdminActivity extends Activity {
 
@@ -34,10 +31,10 @@ public class AdminActivity extends Activity {
 		
 		
 		/*This sets up a controller for the listview*/
-		//this.setupControllerListener(claimList, claimAdapter);
+		this.setupControllerListener(claimList, claimAdapter);
 		
 		/*This sets up the listener*/
-		//this.setupLongClickListener(listView);
+		this.setupLongClickListener(listView);
 
 		
 		}
@@ -45,7 +42,7 @@ public class AdminActivity extends Activity {
 	}
 	
 	
-	/*
+	
 	
 
 	@Override
@@ -99,7 +96,9 @@ public class ClaimListActivity extends Activity{
 		super.onPause();
 
 	}
-=
+	
+	
+	/*This sets up the long click listener*/
 	private void setupLongClickListener(ListView listView) {
 		
 		//set up the listener
@@ -245,11 +244,10 @@ public class ClaimListActivity extends Activity{
 	/**
 	 * This is the onClick method for the Add New Claim Button
 	 * @param view
--
+	 */
     public void onClickAddNewClaim(View view){
    	 	Intent intent = new Intent(ClaimListActivity.this, NewClaimActivity.class);
    	 	startActivity(intent);
    }
 
 }
-*/

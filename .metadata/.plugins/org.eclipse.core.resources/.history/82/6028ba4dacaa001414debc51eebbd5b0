@@ -2,7 +2,7 @@
 <resources>
 
     <string name="app_name">eorodrig Expense Logger</string>
-    <string name="title_activity_claim_list">eorodrig Expense Logger</string>
+    <string name="title_activity_claim_list">Claim List</string>
     <string name="title_activity_expense_list">Expense List</string>
     <string name="title_activity_new_claim">Claim</string>
     <string name="claim_name">Claim Name:</string>
@@ -22,8 +22,6 @@
     
         <string-array name="uneditable_item_list">
         <item>View</item>
-         <item>Approve</item>
-          <item>Return</item>
     </string-array>
     
     <string-array name="selected_expense_list">

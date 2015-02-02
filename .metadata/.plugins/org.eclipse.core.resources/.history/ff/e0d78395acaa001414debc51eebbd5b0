@@ -22,8 +22,6 @@
     
         <string-array name="uneditable_item_list">
         <item>View</item>
-         <item>Approve</item>
-          <item>Return</item>
     </string-array>
     
     <string-array name="selected_expense_list">

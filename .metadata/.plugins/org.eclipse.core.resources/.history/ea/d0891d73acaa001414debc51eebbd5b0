@@ -192,10 +192,5 @@ public class ClaimController {
 		claimList.getClaims().get(index).approve();
 		claimList.notifyListeners();
 	}
-	
-	public void returnClaim(int index){
-		claimList.getClaims().get(index).returned();
-		claimList.notifyListeners();
-	}
 }
 

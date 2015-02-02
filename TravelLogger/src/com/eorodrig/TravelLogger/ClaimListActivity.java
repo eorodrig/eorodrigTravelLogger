@@ -161,7 +161,36 @@ public class ClaimListActivity extends Activity{
 									claimController.setIndexOfCurrentClaim(finalClaimPosition);
 							   	 	Intent intent = new Intent(ClaimListActivity.this, ExpenseListActivity.class);
 							   	 	startActivity(intent);
-								}	}});
+								}
+								
+								//approve
+								if (which == 1){
+
+									ClaimController claimController = new ClaimController();
+									try {
+										claimController.getClaimList().getClaim(finalClaimPosition).approve();
+									} catch (EmptyClaimException e) {
+										// TODO Auto-generated catch block
+										e.printStackTrace();
+									}
+								}
+								
+								//return
+								if (which == 2){
+
+									ClaimController claimController = new ClaimController();
+									try {
+										claimController.getClaimList().getClaim(finalClaimPosition).returned();
+									} catch (EmptyClaimException e) {
+										// TODO Auto-generated catch block
+										e.printStackTrace();
+									}
+								}
+							
+							
+							
+							
+							}});
 					}
 				} catch (EmptyClaimException e) {
 					// TODO Auto-generated catch block
