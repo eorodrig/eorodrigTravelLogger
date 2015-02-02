@@ -3,6 +3,7 @@ This is an expense claim application for cmput 301.
 
 
 This is my submission for Assignment1
+Walkthrough: https://www.youtube.com/watch?v=_0mKJ3j5_ck
 
 Part A: Directory description
 Part B: References
@@ -80,7 +81,7 @@ I/O not implemented:
 	Date Boundaries on claims.
 		IE. A start date which is after the end date is acceptable.
 Memory Limitations of the program not calculated
-
+On a physical device, the input fields do not close the virtual keboard.
 
 
 Part E: Future implementations (if required)
