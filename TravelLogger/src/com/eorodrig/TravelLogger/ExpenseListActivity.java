@@ -58,6 +58,13 @@ public class ExpenseListActivity extends Activity {
 	
 		
 	}
+	
+	@Override
+	protected void onStop(){
+		super.onStop();
+
+
+	}
 
 	private void setupLongClickListener(ListView listView, final ExpenseController expenseController) {
 		listView.setOnItemLongClickListener(new OnItemLongClickListener() {

@@ -10,6 +10,7 @@ import java.util.ArrayList;
 
 
 
+
 import com.eorodrig.TravelLogger.R;
 
 import android.app.Activity;
@@ -33,6 +34,7 @@ import android.widget.Toast;
 public class ClaimListActivity extends Activity{
 
 	private Context context;
+	ArrayAdapter <Claim> cadp;
 	
 	
 	@Override
@@ -49,6 +51,8 @@ public class ClaimListActivity extends Activity{
 		final ArrayList<Claim> claimList = ClaimController.getClaimList().getClaims();
 		final ArrayAdapter <Claim> claimAdapter = new ArrayAdapter<Claim>(this, android.R.layout.simple_list_item_1, claimList);
 		listView.setAdapter(claimAdapter);
+		cadp = claimAdapter;
+		
 		
 		/*This sets up a controller for the listview*/
 		this.setupControllerListener(claimList, claimAdapter);
@@ -64,9 +68,18 @@ public class ClaimListActivity extends Activity{
 	protected void onResume(){
 		super.onResume();
 
-		ClaimController.getClaimList().addExpenses();
-		ClaimController.getClaimList().notifyListeners();
-
+		//ClaimController.getClaimList().addExpenses();
+		//cadp.notifyDataSetChanged();
+		
+		ListView listView = (ListView)findViewById(R.id.ClaimListView);
+		final ArrayList<Claim> claimList = ClaimController.getClaimList().getClaims();
+		final ArrayAdapter <Claim> claimAdapter = new ArrayAdapter<Claim>(this, android.R.layout.simple_list_item_1, claimList);
+		listView.setAdapter(claimAdapter);
+		cadp = claimAdapter;
+		cadp.notifyDataSetChanged();
+		
+		/*This sets up a controller for the listview*/
+		this.setupControllerListener(claimList, claimAdapter);
 	}
 
 	

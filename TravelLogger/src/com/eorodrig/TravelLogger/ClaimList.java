@@ -65,21 +65,21 @@ public class ClaimList {
 	}
 	
 	public void notifyListeners(){
-		if (listeners.size() >0)
-			{
-				Collections.sort(claimList);
-			
-				for (Listener listener: listeners){
-		
-				listener.update();
-			
-			
+		try{
+			if (listeners.size() >  0)
+				{
+					Collections.sort(claimList);
+				
+					for (Listener listener: listeners)
+						{
+							listener.update();	
+						}
 				}
-		
 			}
-		
-		
-		
+		catch (Exception e){
+			
+		}
+
 	}
 	
 	private void removeListener(Listener listener){

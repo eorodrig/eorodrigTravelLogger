@@ -44,10 +44,11 @@ public class ExpenseList {
 	private void notifyListeners(){
 		if (listeners.size() >0)
 		{
+			Collections.sort(expenseList);
 			for (Listener listener: listeners){
 				listener.update();
 			}
-			Collections.sort(expenseList);
+
 		}
 		
 	}

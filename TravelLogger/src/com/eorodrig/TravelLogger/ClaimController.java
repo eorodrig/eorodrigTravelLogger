@@ -8,6 +8,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.Reader;
 import java.io.Writer;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Date;
@@ -103,10 +104,7 @@ public class ClaimController {
 		return claimToEdit;
 		
 	}
-	public void editClaim(Claim newClaim, ExpenseList expenseList) {
-		claimList.updateClaim(claimListNumber, newClaim);
-		
-	}
+
 
 
 	public void save(Context context){
@@ -161,12 +159,20 @@ public class ClaimController {
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} catch (Exception e){
+			e.printStackTrace();
 		}
+			
 			
 
 	
 	}
 
+	
+	public void editClaim(Claim newClaim, ExpenseList expenseList) {
+		claimList.updateClaim(claimListNumber, newClaim);
+		
+	}
 	public void editClaim(String claim, String claimDescription, Date start,
 			Date end) {
 		
